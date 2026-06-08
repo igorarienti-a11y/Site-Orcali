@@ -1,0 +1,4 @@
+# Previews e arquivos de trabalho (screenshots, temporários)
+_*
+*.tmp
+.DS_Store
