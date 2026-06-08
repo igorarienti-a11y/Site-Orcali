@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="preload" as="image" href="assets/img/hero.jpg">
+<link rel="preload" as="image" href="assets/img/hero-facilities.jpg">
 <style>
 :root{
   --navy:        oklch(34% 0.13 256);
@@ -79,21 +79,21 @@ header.scrolled{box-shadow:var(--shadow-sm)}
 .burger span{width:26px;height:2.6px;background:var(--navy);border-radius:2px}
 
 /* HERO */
-.hero{position:relative;min-height:clamp(560px,86vh,820px);display:flex;align-items:center;color:var(--white);isolation:isolate;overflow:hidden}
+.hero{position:relative;min-height:calc(100svh - 108px);display:flex;align-items:center;color:var(--white);isolation:isolate;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:-2}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 22%}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(100deg, var(--navy-900) 8%, oklch(22% .10 256/.92) 38%, oklch(22% .10 256/.62) 62%, oklch(22% .10 256/.35) 100%)}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:-1;background:linear-gradient(transparent, oklch(22% .10 256/.85))}
-.hero .wrap{width:100%;padding-block:clamp(48px,9vw,96px)}
-.hero-badge{display:inline-flex;align-items:center;gap:9px;background:oklch(99% 0 0/.1);border:1px solid oklch(99% 0 0/.2);backdrop-filter:blur(6px);padding:8px 16px;border-radius:100px;font-size:.82rem;font-weight:600;letter-spacing:.04em;margin-bottom:var(--space-lg)}
+.hero .wrap{width:100%;padding-block:clamp(20px,4vw,44px)}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:oklch(99% 0 0/.1);border:1px solid oklch(99% 0 0/.2);backdrop-filter:blur(6px);padding:8px 16px;border-radius:100px;font-size:.82rem;font-weight:600;letter-spacing:.04em;margin-bottom:var(--space-md)}
 .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 oklch(73% .18 138/.6);animation:pulse 2.4s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 oklch(73% .18 138/.55)}70%{box-shadow:0 0 0 12px oklch(73% .18 138/0)}100%{box-shadow:0 0 0 0 oklch(73% .18 138/0)}}
-.hero h1{color:var(--white);font-size:clamp(2.3rem,5.4vw,4.4rem);font-weight:900;max-width:17ch;letter-spacing:-.035em;line-height:1;overflow-wrap:break-word}
+.hero h1{color:var(--white);font-size:clamp(2rem,4vw,3.4rem);font-weight:900;max-width:17ch;letter-spacing:-.035em;line-height:1;overflow-wrap:break-word}
 .hero h1 .hl{color:var(--green)}
-.hero .lead{margin-top:var(--space-lg);font-size:clamp(1.08rem,1.7vw,1.32rem);color:oklch(99% 0 0/.88);max-width:48ch;line-height:1.6}
-.hero .slogan{margin-top:var(--space-md);font-family:"Archivo";font-weight:500;font-size:1rem;color:var(--navy-300)}
-.hero-cta{display:flex;gap:var(--space-md);margin-top:var(--space-2xl);flex-wrap:wrap}
+.hero .lead{margin-top:var(--space-md);font-size:clamp(1rem,1.5vw,1.22rem);color:oklch(99% 0 0/.88);max-width:46ch;line-height:1.55}
+.hero .slogan{margin-top:var(--space-sm);font-family:"Archivo";font-weight:500;font-size:.95rem;color:var(--navy-300)}
+.hero-cta{display:flex;gap:var(--space-md);margin-top:var(--space-lg);flex-wrap:wrap}
 
 /* STATS overlap */
 .stats{margin-top:calc(var(--space-3xl) * -1);position:relative;z-index:5}
@@ -300,11 +300,11 @@ footer a:hover{color:var(--green)}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"><img src="assets/img/hero.jpg" alt="Equipes Orcali em operação: monitoramento, portaria e limpeza" width="1920" height="940"></div>
+  <div class="hero-bg"><img src="assets/img/hero-facilities.jpg" alt="Profissional de limpeza Orcali em operação" width="768" height="940"></div>
   <div class="wrap">
     <span class="hero-badge reveal"><span class="dot"></span> Grupo ORCALI · Serviços de Facilities</span>
     <h1 class="reveal" style="transition-delay:.05s">Operações que <span class="hl">não podem parar</span> precisam de facilities que não falham.</h1>
-    <p class="lead reveal" style="transition-delay:.1s">Soluções integradas e personalizadas em facilities — limpeza, higienização, portaria e conservação, com equipe própria, supervisão e cobertura de faltas. Sua operação funciona com previsibilidade; o resto é com a ORCALI.</p>
+    <p class="lead reveal" style="transition-delay:.1s">Soluções integradas e personalizadas em facilities — com equipe própria, supervisão e cobertura de faltas para sua operação funcionar com previsibilidade.</p>
     <p class="slogan reveal" style="transition-delay:.15s">Há mais de 58 anos, cuidando do que é seu.</p>
     <div class="hero-cta reveal" style="transition-delay:.2s">
       <a href="#orcamento" class="btn btn-primary btn-lg">Solicitar orçamento gratuito
@@ -320,7 +320,7 @@ footer a:hover{color:var(--green)}
     <div class="stats-card reveal">
       <div class="stat"><b>+58</b><span>anos no mercado</span></div>
       <div class="stat"><b>+5.000</b><span>colaboradores próprios</span></div>
-      <div class="stat"><b>1.554</b><span>clientes ativos</span></div>
+      <div class="stat"><b>+1.500</b><span>clientes ativos</span></div>
       <div class="stat"><b class="g">ISO 9001</b><span>gestão certificada</span></div>
     </div>
   </div>
