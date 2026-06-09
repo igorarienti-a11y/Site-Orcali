@@ -576,10 +576,12 @@ const segmentos=[
  ['shop','Shopping & Varejo','Limpeza e recepção que sustentam a experiência','s6.jpg'],
 ];
 const faqs=[
- ['Como os serviços de facilities da Orcali beneficiam minha empresa?','São projetados para integrar todos os processos operacionais da sua empresa, resultando em maior eficiência e redução de custos. As soluções personalizadas garantem que tudo funcione de forma otimizada e sem interrupções.'],
- ['Como a Orcali garante a melhoria contínua dos serviços?','Implementamos um sistema de melhoria contínua que avalia e aperfeiçoa constantemente processos e resultados, com soluções inovadoras que melhoram a performance operacional e reduzem custos ao longo do tempo.'],
- ['Quais tecnologias a Orcali utiliza na operação?','Sistemas de monitoramento de última geração, controle de acesso, gestão via QR Code e centro de controle operacional. A tecnologia se adapta às necessidades específicas da sua operação.'],
- ['Quais os benefícios em conformidade e flexibilidade?','Conformidade total com as regulamentações, evitando problemas jurídicos e multas, além de soluções flexíveis que se adaptam ao porte e à necessidade do seu negócio.'],
+ ['A Orcali disponibiliza cobertura para faltas, férias e afastamentos?','Sim. A empresa possui profissionais volantes e estrutura operacional para minimizar impactos na rotina do cliente e garantir a continuidade dos serviços.'],
+ ['Como funciona a supervisão dos postos?','A Orcali conta com supervisão regionalizada, realizando visitas periódicas aos clientes para acompanhamento da qualidade, orientação das equipes e alinhamento das necessidades operacionais.'],
+ ['Quem fornece os uniformes e EPIs?','A Orcali é responsável pelo fornecimento e controle dos uniformes e EPIs necessários para a execução das atividades.'],
+ ['A Orcali realiza treinamento dos colaboradores?','Sim. Todos os profissionais passam por processos de integração, treinamento e orientação conforme as exigências de cada operação.'],
+ ['É possível personalizar a escala e a carga horária dos profissionais?','Sim. A operação é estruturada de acordo com as necessidades específicas de cada cliente.'],
+ ['Em quanto tempo a operação pode ser implantada?','O prazo varia conforme a complexidade da operação e quantidade de profissionais necessários, sendo definido durante o processo de contratação.'],
 ];
 const svg=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
 svcgrid.innerHTML=servicos.map((s,i)=>`<article class="svc reveal" style="transition-delay:${(i%4)*.05}s"><span class="ico"><i class="${s[0]}"></i></span><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join('');
