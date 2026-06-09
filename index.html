@@ -450,21 +450,21 @@ fbq('init','1650240729249255');
           <div class="fh">Cotação ORCALI · Facilities</div>
           <div class="fs">Preencha abaixo. Leva menos de 1 minuto.</div>
           <div class="frow">
-            <div class="field"><label for="nome">Nome*</label><input id="nome" required placeholder="Seu nome"></div>
-            <div class="field"><label for="empresa">Empresa*</label><input id="empresa" required placeholder="Razão social"></div>
+            <div class="field"><label for="nome">Nome*</label><input id="nome" name="nome" required placeholder="Seu nome"></div>
+            <div class="field"><label for="empresa">Empresa*</label><input id="empresa" name="empresa" required placeholder="Razão social"></div>
           </div>
           <div class="frow">
-            <div class="field"><label for="email">E-mail corporativo*</label><input id="email" type="email" required placeholder="voce@empresa.com.br"></div>
-            <div class="field"><label for="tel">Telefone / WhatsApp*</label><input id="tel" required placeholder="(48) 90000-0000"></div>
+            <div class="field"><label for="email">E-mail corporativo*</label><input id="email" name="email" type="email" required placeholder="voce@empresa.com.br"></div>
+            <div class="field"><label for="tel">Telefone / WhatsApp*</label><input id="tel" name="tel" required placeholder="(48) 90000-0000"></div>
           </div>
           <div class="frow">
-            <div class="field"><label for="estado">Estado*</label><select id="estado" required><option value="" selected disabled>UF</option><option>SC</option><option>PR</option><option>RS</option><option>SP</option><option>Outro</option></select></div>
-            <div class="field"><label for="cidade">Cidade*</label><input id="cidade" required placeholder="Sua cidade"></div>
+            <div class="field"><label for="estado">Estado*</label><select id="estado" name="estado" required><option value="" selected disabled>UF</option><option>SC</option><option>PR</option><option>RS</option><option>SP</option><option>Outro</option></select></div>
+            <div class="field"><label for="cidade">Cidade*</label><input id="cidade" name="cidade" required placeholder="Sua cidade"></div>
           </div>
           <div class="field"><label for="segmento">Segmento*</label>
-            <select id="segmento" required><option value="" selected disabled>Selecione o segmento</option>
+            <select id="segmento" name="segmento" required><option value="" selected disabled>Selecione o segmento</option>
               <option>Clínicas e Hospitais</option><option>Instituições de Ensino</option><option>Instituições Financeiras</option><option>Condomínios</option><option>Shopping e Varejo</option><option>Indústria</option><option>Logística · Portos e Aeroportos</option><option>Outro</option></select></div>
-          <div class="field"><label for="msg">Como podemos ajudar?</label><textarea id="msg" placeholder="Ex: limpeza técnica + portaria para 2 unidades..."></textarea></div>
+          <div class="field"><label for="msg">Como podemos ajudar?</label><textarea id="msg" name="msg" placeholder="Ex: limpeza técnica + portaria para 2 unidades..."></textarea></div>
           <label class="consent"><input type="checkbox" required> Li e concordo com a <a href="#" style="color:var(--green-deep);text-decoration:underline">política de privacidade</a>.</label>
           <button type="submit" class="btn btn-primary btn-lg">Solicitar Orçamento →</button>
           <p class="form-note">🔒 Dados tratados conforme a LGPD. Sem spam — contato só do comercial.</p>
