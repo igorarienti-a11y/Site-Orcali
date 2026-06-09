@@ -2,3 +2,5 @@
 _*
 *.tmp
 .DS_Store
+
+.vercel
