@@ -188,6 +188,16 @@ section{padding-block:clamp(64px,8vw,118px)}
 .ben h3{color:var(--white);font-size:1.2rem;margin-bottom:var(--space-xs)}
 .ben p{color:var(--navy-300);font-size:.93rem;line-height:1.6}
 
+/* CERTS */
+.certs{background:var(--surface)}
+.certs-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-md);margin-top:var(--space-2xl)}
+.cert-pill{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--space-lg) var(--space-xl);border-radius:var(--radius-sm);background:var(--white);border:1px solid var(--line);min-width:148px;transition:.22s var(--ease)}
+.cert-pill:hover{border-color:var(--navy-300);box-shadow:var(--shadow-sm);transform:translateY(-3px)}
+.cert-pill .cn{font-family:"Chivo";font-weight:900;font-size:1.08rem;color:var(--navy);line-height:1.1;letter-spacing:-.01em}
+.cert-pill .cs{font-size:.74rem;color:var(--ink-soft);margin-top:4px;font-weight:500;max-width:16ch;line-height:1.35}
+.cert-img{padding:var(--space-md)}.cert-img img{height:80px;width:auto;object-fit:contain;filter:grayscale(1) opacity(.7);transition:filter .22s var(--ease)}
+.cert-img:hover img{filter:grayscale(.4) opacity(1)}
+
 /* FAQ */
 .faq-wrap{max-width:840px;margin-inline:auto}
 .faq-item{border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--white);margin-bottom:var(--space-sm);overflow:hidden;transition:border-color .2s,box-shadow .2s}
@@ -248,6 +258,9 @@ footer a:hover{color:var(--green)}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:760px){
+  .certs-grid{gap:var(--space-sm)}
+  .cert-pill{min-width:calc(50% - var(--space-sm));padding:var(--space-md)}
+
   .nav-links{display:none}.burger{display:flex}
   .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--white);padding:var(--space-lg);gap:var(--space-md);box-shadow:var(--shadow-md);border-bottom:1px solid var(--line)}
   .frow{grid-template-columns:1fr}
@@ -420,6 +433,18 @@ fbq('init','1650240729249255');
   </div>
 </section>
 
+<!-- CERTIFICAÇÕES -->
+<section class="certs">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Conformidade e Qualidade</span>
+      <h2>Certificações Atendidas</h2>
+      <p>Operamos em conformidade com as principais normas e certificações do mercado, garantindo padrões rigorosos em cada segmento atendido.</p>
+    </div>
+    <div class="certs-grid" id="certsgrid"></div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="faq">
   <div class="wrap">
@@ -458,7 +483,7 @@ fbq('init','1650240729249255');
             <div class="field"><label for="tel">Telefone / WhatsApp*</label><input id="tel" name="tel" required placeholder="(48) 90000-0000"></div>
           </div>
           <div class="frow">
-            <div class="field"><label for="estado">Estado*</label><select id="estado" name="estado" required><option value="" selected disabled>UF</option><option>SC</option><option>PR</option><option>RS</option><option>SP</option><option>Outro</option></select></div>
+            <div class="field"><label for="estado">Estado*</label><select id="estado" name="estado" required><option value="" selected disabled>UF</option><option>SC</option><option>PR</option><option>Outro</option></select></div>
             <div class="field"><label for="cidade">Cidade*</label><input id="cidade" name="cidade" required placeholder="Sua cidade"></div>
           </div>
           <div class="field"><label for="segmento">Segmento*</label>
@@ -550,6 +575,21 @@ const servicos=[
  ['fas fa-car','Motorista','Condutores habilitados para transporte de equipe, cargas e executivos.'],
  ['fas fa-concierge-bell','Recepcionista e Zelador','Recepção que acolhe visitantes e zeladoria que mantém o prédio em ordem.'],
 ];
+const certs=[
+ {img:'assets/img/certs/iso14001.png',        alt:'ISO 14001'},
+ {img:'assets/img/certs/iso31000.png',        alt:'ISO 31000'},
+ {img:'assets/img/certs/iso9001.png',         alt:'ISO 9001:2015'},
+ {img:'assets/img/certs/ccsa.png',            alt:'CCSA'},
+ {img:'assets/img/certs/nfpa.png',            alt:'NFPA'},
+ {img:'assets/img/certs/iqg.png',             alt:'IQG Health Services Accreditation'},
+ {img:'assets/img/certs/joint-commission.png',alt:'Joint Commission International'},
+ {img:'assets/img/certs/ona.png',             alt:'ONA'},
+ {img:'assets/img/certs/isps-code.png',       alt:'ISPS Code'},
+ {img:'assets/img/certs/nsc.png',             alt:'NSC National Safety Council'},
+ {img:'assets/img/certs/sgis.png',            alt:'SGIS'},
+ {img:'assets/img/certs/planetree.png',       alt:'Planetree'},
+ {img:'assets/img/certs/cqh.png',             alt:'CQH'},
+];
 const beneficios=[
  ['01','Integração de Processos','Soluções que integram todos os processos operacionais da sua organização — mais eficiência e melhor qualidade na entrega.'],
  ['02','Customização','Serviços totalmente personalizados para atender às necessidades específicas da sua empresa.'],
@@ -584,6 +624,10 @@ const faqs=[
  ['Em quanto tempo a operação pode ser implantada?','O prazo varia conforme a complexidade da operação e quantidade de profissionais necessários, sendo definido durante o processo de contratação.'],
 ];
 const svg=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+certsgrid.innerHTML=certs.map((c,i)=>c.img
+ ?`<div class="cert-pill cert-img reveal" style="transition-delay:${(i%6)*.04}s"><img src="${c.img}" alt="${c.alt}" loading="lazy"></div>`
+ :`<div class="cert-pill reveal" style="transition-delay:${(i%6)*.04}s"><span class="cn">${c.name}</span><span class="cs">${c.sub}</span></div>`
+).join('');
 svcgrid.innerHTML=servicos.map((s,i)=>`<article class="svc reveal" style="transition-delay:${(i%4)*.05}s"><span class="ico"><i class="${s[0]}"></i></span><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join('');
 bengrid.innerHTML=beneficios.map((b,i)=>`<article class="ben reveal" style="transition-delay:${(i%3)*.07}s"><div class="num">${b[0]}</div><h3>${b[1]}</h3><p>${b[2]}</p></article>`).join('');
 seggrid.innerHTML=segmentos.map((s,i)=>`<article class="segc reveal" style="transition-delay:${(i%3)*.07}s"><img src="assets/img/${s[3]}" alt="${s[1]}" loading="lazy" width="370" height="230"><div class="arrow">${svg('<path d="M5 12h14M13 6l6 6-6 6"/>')}</div><div class="body"><span class="ico">${svg(segIcon[s[0]])}</span><h3>${s[1]}</h3><p>${s[2]}</p></div></article>`).join('');
