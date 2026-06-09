@@ -1,7 +1,6 @@
 {
   "functions": {
-    "api/leads.js": {
-      "runtime": "edge"
-    }
+    "api/leads.js":    { "runtime": "edge" },
+    "api/pageview.js": { "runtime": "edge" }
   }
 }
