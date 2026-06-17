@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORCALI Segurança Patrimonial · Vigilância profissional no Sul do Brasil</title>
+<meta name="description" content="Segurança patrimonial para operações que não podem parar no Sul do Brasil: vigilância armada e desarmada, apoio tático, ronda motorizada e portaria com vigilantes próprios, treinados e supervisionados. Há mais de 58 anos cuidando do que é seu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@500;600;700;800;900&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="preload" as="image" href="assets/img/hero-seguranca.jpg">
+<style>
+:root{
+  --navy:        oklch(34% 0.13 256);
+  --navy-deep:   oklch(22% 0.10 256);
+  --navy-900:    oklch(17% 0.07 256);
+  --navy-700:    oklch(42% 0.12 256);
+  --navy-300:    oklch(74% 0.07 256);
+  --green:       oklch(73% 0.18 138);
+  --green-deep:  oklch(61% 0.17 138);
+  --green-soft:  oklch(95% 0.045 138);
+
+  --bg:        oklch(99% 0.004 256);
+  --surface:   oklch(97% 0.007 256);
+  --surface-2: oklch(94% 0.009 256);
+  --line:      oklch(89% 0.012 256);
+  --ink:       oklch(26% 0.04 256);
+  --ink-soft:  oklch(46% 0.03 256);
+  --white:     oklch(99.5% 0.002 256);
+
+  --space-2xs:4px; --space-xs:8px; --space-sm:12px; --space-md:16px;
+  --space-lg:24px; --space-xl:32px; --space-2xl:48px; --space-3xl:64px; --space-4xl:96px; --space-5xl:128px;
+
+  --maxw:1220px;
+  --radius:18px; --radius-sm:11px;
+  --shadow-sm:0 1px 2px oklch(34% .13 256/.06),0 3px 10px oklch(34% .13 256/.06);
+  --shadow-md:0 10px 34px oklch(34% .13 256/.13);
+  --shadow-lg:0 30px 70px oklch(22% .10 256/.28);
+  --ease:cubic-bezier(.2,1,.32,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Roboto",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Chivo",sans-serif;line-height:1.02;color:var(--navy);letter-spacing:-.02em;font-weight:800}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--space-lg)}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--green);border-radius:2px}
+.eyebrow.light{color:var(--green)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:"Chivo",sans-serif;font-weight:700;font-size:.97rem;padding:15px 26px;border-radius:var(--radius-sm);cursor:pointer;border:2px solid transparent;transition:transform .22s var(--ease),background .22s,box-shadow .22s,border-color .22s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--green);color:var(--navy-deep);box-shadow:0 8px 22px oklch(73% .18 138/.4)}
+.btn-primary:hover{background:var(--green-deep);transform:translateY(-3px);box-shadow:0 14px 32px oklch(73% .18 138/.5)}
+.btn-ghost{border-color:oklch(99% 0 0/.4);color:var(--white)}
+.btn-ghost:hover{border-color:var(--white);background:oklch(99% 0 0/.12)}
+.btn-lg{padding:18px 32px;font-size:1.05rem}
+
+/* TOPBAR + HEADER */
+.topbar{background:var(--navy-900);color:var(--navy-300);font-size:.85rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:9px;gap:var(--space-md)}
+.topbar .left,.topbar .right{display:flex;gap:var(--space-lg);align-items:center}
+.topbar a{color:oklch(99% 0 0/.82);font-weight:500}.topbar a:hover{color:var(--white)}
+.topbar .phone{color:var(--white);font-weight:700;font-family:"Chivo";letter-spacing:.02em}
+header{position:sticky;top:0;z-index:50;background:oklch(99.5% .002 256/.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s,padding .3s}
+header.scrolled{box-shadow:var(--shadow-sm)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:var(--space-lg)}
+.nav-logo img{height:46px;width:auto}
+.nav-links{display:flex;align-items:center;gap:var(--space-lg);list-style:none}
+.nav-links a{font-weight:600;font-size:.95rem;color:var(--ink-soft);position:relative;transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-7px;height:2px;width:0;background:var(--green);transition:width .25s var(--ease);border-radius:2px}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:var(--space-sm)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2.6px;background:var(--navy);border-radius:2px}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100svh - 108px);display:flex;align-items:center;color:var(--white);isolation:isolate;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:18% center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(100deg, var(--navy-900) 8%, oklch(22% .10 256/.92) 38%, oklch(22% .10 256/.62) 62%, oklch(22% .10 256/.35) 100%)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;z-index:-1;background:linear-gradient(transparent, oklch(22% .10 256/.85))}
+.hero .wrap{width:100%;padding-block:clamp(20px,4vw,44px)}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:oklch(99% 0 0/.1);border:1px solid oklch(99% 0 0/.2);backdrop-filter:blur(6px);padding:8px 16px;border-radius:100px;font-size:.82rem;font-weight:600;letter-spacing:.04em;margin-bottom:var(--space-md)}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 oklch(73% .18 138/.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 oklch(73% .18 138/.55)}70%{box-shadow:0 0 0 12px oklch(73% .18 138/0)}100%{box-shadow:0 0 0 0 oklch(73% .18 138/0)}}
+.hero h1{color:var(--white);font-size:clamp(2rem,4vw,3.4rem);font-weight:900;max-width:17ch;letter-spacing:-.035em;line-height:1;overflow-wrap:break-word}
+.hero h1 .hl{color:var(--green)}
+.hero .lead{margin-top:var(--space-md);font-size:clamp(1rem,1.5vw,1.22rem);color:oklch(99% 0 0/.88);max-width:46ch;line-height:1.55}
+.hero .slogan{margin-top:var(--space-sm);font-family:"Chivo";font-weight:500;font-size:.95rem;color:var(--navy-300)}
+.hero-cta{display:flex;gap:var(--space-md);margin-top:var(--space-lg);flex-wrap:wrap}
+
+/* STATS overlap */
+.stats{margin-top:calc(var(--space-3xl) * -1);position:relative;z-index:5}
+.stats-card{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
+.stat{background:var(--white);padding:clamp(20px,3vw,34px) var(--space-lg);text-align:center}
+.stat b{font-family:"Chivo";font-weight:900;font-size:clamp(2rem,4vw,3rem);color:var(--navy);display:block;line-height:1;letter-spacing:-.03em}
+.stat b .g{color:var(--green-deep)}
+.stat span{font-size:.86rem;color:var(--ink-soft);margin-top:8px;display:block;font-weight:500}
+
+/* SECTIONS */
+section{padding-block:clamp(64px,8vw,118px)}
+.sec-head{max-width:64ch;margin-bottom:var(--space-2xl)}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .eyebrow{justify-content:center}
+.sec-head h2{font-size:clamp(2rem,4.2vw,3.3rem);margin-top:var(--space-sm);font-weight:800;letter-spacing:-.03em}
+.sec-head p{margin-top:var(--space-md);color:var(--ink-soft);font-size:1.1rem;max-width:58ch}
+
+/* SOBRE split */
+.about .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.about-media{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3}
+.about-media img{width:100%;height:100%;object-fit:cover}
+.about-media .tag{position:absolute;left:18px;bottom:18px;background:oklch(22% .1 256/.78);backdrop-filter:blur(8px);color:var(--white);padding:10px 16px;border-radius:100px;font-size:.84rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.about-media .tag i{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.about .quote{font-family:"Chivo";font-weight:700;font-size:clamp(1.3rem,2.2vw,1.7rem);color:var(--navy);line-height:1.2;margin:var(--space-sm) 0 var(--space-lg)}
+.about p{color:var(--ink-soft);margin-bottom:var(--space-md);max-width:54ch}
+
+/* PAIN */
+.pain{background:var(--navy-900);color:var(--white);position:relative;overflow:hidden}
+.pain::before{content:"";position:absolute;inset:0;opacity:.5;background-image:linear-gradient(oklch(99% 0 0/.04) 1px,transparent 1px),linear-gradient(90deg,oklch(99% 0 0/.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(120% 80% at 80% 0,#000,transparent 75%)}
+.pain .sec-head h2{color:var(--white)}.pain .sec-head p{color:var(--navy-300)}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);position:relative}
+.pain-card{background:oklch(99% 0 0/.05);border:1px solid oklch(99% 0 0/.12);border-radius:var(--radius);padding:var(--space-xl);transition:transform .25s var(--ease),background .25s}
+.pain-card:hover{transform:translateY(-5px);background:oklch(99% 0 0/.09)}
+.pain-card .q{font-family:"Chivo";font-weight:800;color:var(--white);font-size:1.2rem;margin-bottom:var(--space-sm)}
+.pain-card p{color:var(--navy-300);font-size:.95rem}
+.pain-card .seg{margin-top:var(--space-md);font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:var(--space-md)}
+.svc{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-sm);padding:var(--space-xl) var(--space-lg);transition:.25s var(--ease);overflow:hidden}
+.svc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.svc:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent}
+.svc:hover::after{transform:scaleX(1)}
+.svc .ico{width:54px;height:54px;border-radius:50%;background:var(--green);color:var(--white);display:grid;place-items:center;margin-bottom:var(--space-md);transition:.25s var(--ease)}
+.svc:hover .ico{background:var(--green-deep);transform:scale(1.06)}
+.svc .ico i{font-size:22px;line-height:1}
+.svc h3{font-size:1.06rem;font-weight:700}
+.svc p{margin-top:6px;font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+
+/* DIFERENCIAL */
+.diff{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+.diff .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.diff .eyebrow{color:var(--green)}
+.diff h2{color:var(--white);font-size:clamp(1.9rem,3.6vw,2.8rem);margin:var(--space-sm) 0 var(--space-xl);max-width:16ch}
+.diff-list{display:flex;flex-direction:column;gap:var(--space-md)}
+.diff-item{display:flex;gap:var(--space-md);align-items:flex-start}
+.diff-item .ico{flex:none;width:50px;height:50px;border-radius:14px;background:oklch(99% 0 0/.08);border:1px solid oklch(99% 0 0/.14);color:var(--green);display:grid;place-items:center}
+.diff-item .ico svg{width:25px;height:25px}
+.diff-item h3{color:var(--white);font-size:1.12rem;margin-bottom:3px}
+.diff-item p{color:var(--navy-300);font-size:.95rem;max-width:42ch}
+.diff-media{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:5/6}
+.diff-media img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+.diff-media .ov{position:absolute;inset:0;background:linear-gradient(transparent 45%,oklch(22% .1 256/.92))}
+.diff-quote{position:absolute;left:24px;right:24px;bottom:24px}
+.diff-quote p{font-family:"Chivo";font-weight:700;font-size:clamp(1.15rem,1.9vw,1.5rem);color:var(--white);line-height:1.2}
+.diff-quote p em{color:var(--green);font-style:normal}
+
+/* SEGMENTS — image cards */
+.seg-section{background:var(--surface)}
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md)}
+.segc{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;isolation:isolate;box-shadow:var(--shadow-sm);cursor:pointer}
+.segc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s var(--ease)}
+.segc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,oklch(22% .1 256/.15) 0%,oklch(22% .1 256/.45) 45%,oklch(17% .07 256/.92) 100%)}
+.segc:hover img{transform:scale(1.08)}
+.segc:hover{box-shadow:var(--shadow-lg)}
+.segc .body{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--space-lg);color:var(--white)}
+.segc .ico{width:34px;height:34px;color:var(--green);margin-bottom:auto}
+.segc .ico svg{width:34px;height:34px}
+.segc h3{color:var(--white);font-size:1.2rem;font-weight:800}
+.segc p{color:oklch(99% 0 0/.82);font-size:.85rem;margin-top:3px}
+.segc .arrow{position:absolute;top:var(--space-lg);right:var(--space-lg);width:34px;height:34px;border-radius:50%;background:oklch(99% 0 0/.14);backdrop-filter:blur(4px);display:grid;place-items:center;opacity:0;transform:translateX(-6px);transition:.3s var(--ease)}
+.segc:hover .arrow{opacity:1;transform:none}
+.segc .arrow svg{width:16px;height:16px;color:var(--white)}
+
+/* BENEFITS */
+.benefits{background:var(--navy-deep);color:var(--white)}
+.benefits .sec-head h2{color:var(--white)}.benefits .sec-head p{color:var(--navy-300)}
+.ben-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-md)}
+.ben{padding:var(--space-xl);border-radius:var(--radius);background:oklch(99% 0 0/.045);border:1px solid oklch(99% 0 0/.1);transition:.25s var(--ease)}
+.ben:hover{background:oklch(99% 0 0/.08);transform:translateY(-4px)}
+.ben .num{font-family:"Chivo";font-weight:900;font-size:2rem;color:var(--green);line-height:1;opacity:.55;margin-bottom:var(--space-sm)}
+.ben h3{color:var(--white);font-size:1.2rem;margin-bottom:var(--space-xs)}
+.ben p{color:var(--navy-300);font-size:.93rem;line-height:1.6}
+
+/* CERTS */
+.certs{background:var(--surface)}
+.certs-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-md);margin-top:var(--space-2xl)}
+.cert-pill{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--space-lg) var(--space-xl);border-radius:var(--radius-sm);background:var(--white);border:1px solid var(--line);min-width:148px;transition:.22s var(--ease)}
+.cert-pill:hover{border-color:var(--navy-300);box-shadow:var(--shadow-sm);transform:translateY(-3px)}
+.cert-pill .cn{font-family:"Chivo";font-weight:900;font-size:1.08rem;color:var(--navy);line-height:1.1;letter-spacing:-.01em}
+.cert-pill .cs{font-size:.74rem;color:var(--ink-soft);margin-top:4px;font-weight:500;max-width:16ch;line-height:1.35}
+.cert-img{padding:var(--space-md)}.cert-img img{height:80px;width:auto;object-fit:contain;filter:grayscale(1) opacity(.7);transition:filter .22s var(--ease)}
+.cert-img:hover img{filter:grayscale(.4) opacity(1)}
+
+/* FAQ */
+.faq-wrap{max-width:840px;margin-inline:auto}
+.faq-item{border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--white);margin-bottom:var(--space-sm);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.faq-item[open]{border-color:var(--navy-300);box-shadow:var(--shadow-sm)}
+.faq-q{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-lg);cursor:pointer;list-style:none;font-family:"Chivo";font-weight:700;font-size:1.06rem;color:var(--navy)}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q .pm{flex:none;margin-left:auto;width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green-deep);display:grid;place-items:center;transition:.3s var(--ease);font-size:1.3rem}
+.faq-item[open] .pm{transform:rotate(45deg);background:var(--navy);color:var(--white)}
+.faq-a{padding:0 var(--space-lg) var(--space-lg);color:var(--ink-soft);font-size:.98rem;max-width:72ch}
+
+/* FORM */
+.cta-form{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-900) 100%);color:var(--white);position:relative;overflow:hidden}
+.cta-form::before{content:"";position:absolute;width:600px;height:600px;right:-200px;top:-200px;background:radial-gradient(circle,oklch(73% .18 138/.16),transparent 65%)}
+.form-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:start;position:relative}
+.form-info h2{color:var(--white);font-size:clamp(2rem,3.8vw,2.9rem);max-width:14ch}
+.form-info .lead{color:var(--navy-300);margin-top:var(--space-md);font-size:1.08rem;max-width:42ch}
+.form-info .checks{margin-top:var(--space-xl);display:flex;flex-direction:column;gap:var(--space-sm)}
+.form-info .checks div{display:flex;align-items:center;gap:12px;color:oklch(99% 0 0/.9);font-size:.98rem}
+.form-info .checks .ck{flex:none;width:24px;height:24px;border-radius:50%;background:var(--green);color:var(--navy-deep);display:grid;place-items:center;font-size:.72rem;font-weight:900}
+.form-card{background:var(--white);border-radius:var(--radius);padding:clamp(22px,3vw,38px);box-shadow:var(--shadow-lg);color:var(--ink)}
+.form-card .fh{font-family:"Chivo";font-weight:800;color:var(--navy);font-size:1.3rem}
+.form-card .fs{color:var(--ink-soft);font-size:.9rem;margin-bottom:var(--space-lg)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-sm)}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:var(--space-sm)}
+.field label{font-size:.82rem;font-weight:600;color:var(--navy-700)}
+.field input,.field select,.field textarea{font-family:inherit;font-size:.95rem;color:var(--ink);padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);transition:.2s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px oklch(73% .18 138/.18)}
+.field textarea{resize:vertical;min-height:72px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--ink-soft);margin:var(--space-sm) 0 var(--space-lg)}
+.consent input{margin-top:3px;accent-color:var(--green-deep)}
+.form-card .btn-primary{width:100%;justify-content:center}
+.form-note{text-align:center;font-size:.78rem;color:var(--ink-soft);margin-top:var(--space-sm)}
+.form-success{display:none;text-align:center;padding:var(--space-3xl) var(--space-md)}
+.form-success .big-ck{width:68px;height:68px;border-radius:50%;background:var(--green-soft);color:var(--green-deep);display:grid;place-items:center;margin:0 auto var(--space-md);font-size:2rem}
+.form-success h3{color:var(--navy);font-size:1.5rem}.form-success p{color:var(--ink-soft);margin-top:var(--space-xs)}
+
+/* FOOTER */
+footer{background:var(--navy-900);color:var(--navy-300);padding-block:var(--space-4xl) var(--space-xl);font-size:.93rem}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:var(--space-2xl);padding-bottom:var(--space-2xl);border-bottom:1px solid oklch(99% 0 0/.12)}
+footer h4{color:var(--white);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:var(--space-md);font-family:"Chivo"}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+footer a:hover{color:var(--green)}
+.foot-logo img{height:42px;margin-bottom:var(--space-md)}
+.foot-logo .desc{max-width:36ch;color:var(--navy-300);line-height:1.65}
+.foot-contact b{color:var(--white);font-family:"Chivo";font-size:1.3rem;display:block;margin-bottom:var(--space-xs)}
+.foot-bottom{display:flex;justify-content:space-between;gap:var(--space-md);flex-wrap:wrap;padding-top:var(--space-lg);font-size:.83rem;color:var(--navy-300)}
+
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .about .wrap,.diff .wrap,.form-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .diff-media{aspect-ratio:16/10;max-height:420px}
+  .seg-grid{grid-template-columns:repeat(2,1fr)}
+  .pain-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-card{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  .certs-grid{gap:var(--space-sm)}
+  .cert-pill{min-width:calc(50% - var(--space-sm));padding:var(--space-md)}
+
+  .nav-links{display:none}.burger{display:flex}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--white);padding:var(--space-lg);gap:var(--space-md);box-shadow:var(--shadow-md);border-bottom:1px solid var(--line)}
+  .frow{grid-template-columns:1fr}
+  .seg-grid{grid-template-columns:1fr}
+  .stats{margin-top:calc(var(--space-xl) * -1)}
+  .foot-grid{grid-template-columns:1fr;gap:var(--space-xl)}
+  .topbar .left{display:none}
+  .topbar .right{width:100%;justify-content:space-between}
+  .hero{min-height:auto}
+  .hero .wrap{padding-block:48px 56px}
+  .hero h1{font-size:clamp(1.7rem,7vw,2.5rem);max-width:100%;letter-spacing:-.02em}
+  .hero .lead{font-size:1.02rem;max-width:100%}
+  .hero-cta{gap:12px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.segc img{transition:none}}
+</style>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1650240729249255');
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="left">
+      <span>Atendimento: 2ª a 6ª · 08h–18h</span><a href="#">Canal do Cliente</a>
+    </div>
+    <div class="right">
+      <a href="#">Trabalhe Conosco</a><a class="phone" href="tel:08002428888">0800 242 8888</a>
+    </div>
+  </div>
+</div>
+
+<header id="top">
+  <nav class="wrap nav">
+    <a href="#top" class="nav-logo" aria-label="ORCALI"><img src="assets/img/logo-color.png" alt="ORCALI Segurança e Serviços" width="975" height="240"></a>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#diferencial">Diferencial</a></li>
+      <li><a href="#segmentos">Segmentos</a></li>
+      <li><a href="#beneficios">Benefícios</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#orcamento" class="btn btn-primary">Solicitar Orçamento</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><img src="assets/img/hero-seguranca.jpg" alt="Vigilantes patrimoniais da Orcali em operação" width="1280" height="940"></div>
+  <div class="wrap">
+    <span class="hero-badge reveal"><span class="dot"></span> Grupo ORCALI · Segurança Patrimonial</span>
+    <h1 class="reveal" style="transition-delay:.05s">A segurança do seu patrimônio começa com a <span class="hl">pessoa certa</span> no lugar certo.</h1>
+    <p class="lead reveal" style="transition-delay:.1s">Vigilância patrimonial armada e desarmada, apoio tático e portaria — com vigilantes próprios, treinados e supervisionados, dimensionados para a sua operação.</p>
+    <p class="slogan reveal" style="transition-delay:.15s">Há mais de 58 anos, cuidando do que é seu.</p>
+    <div class="hero-cta reveal" style="transition-delay:.2s">
+      <a href="#orcamento" class="btn btn-primary btn-lg">Solicitar orçamento
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#servicos" class="btn btn-ghost btn-lg">Ver soluções</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-card reveal">
+      <div class="stat"><b>+58</b><span>anos no mercado</span></div>
+      <div class="stat"><b>+5.000</b><span>colaboradores próprios</span></div>
+      <div class="stat"><b>1.554</b><span>clientes atendidos</span></div>
+      <div class="stat"><b class="g">ISO 9001</b><span>gestão certificada</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="about">
+  <div class="wrap">
+    <div class="about-media reveal">
+      <img src="assets/img/seguranca-patrimonial.png" alt="Agente de segurança patrimonial Orcali" loading="lazy" style="object-position:center 22%" width="470" height="470">
+      <span class="tag"><i></i> Vigilantes próprios, treinados e supervisionados</span>
+    </div>
+    <div class="reveal" style="transition-delay:.1s">
+      <span class="eyebrow">Quem é a ORCALI</span>
+      <p class="quote">Segurança patrimonial feita de gente preparada — selecionada, treinada e supervisionada.</p>
+      <p>Desde 1968, a ORCALI protege hospitais, indústrias, instituições financeiras, condomínios e shoppings por todo o Sul — com vigilantes próprios, apoio tático e supervisão presencial em campo.</p>
+      <p>Unimos seleção criteriosa, treinamento contínuo e gestão por indicadores para reduzir riscos e perdas patrimoniais — para que você concentre energia no seu core business, não na sua segurança.</p>
+      <a href="#orcamento" class="btn btn-primary" style="margin-top:var(--space-md)">Falar com um especialista</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow light">O custo invisível das falhas</span>
+      <h2>O que acontece quando a vigilância falha?</h2>
+      <p>Em operações críticas, uma falha de vigilância ou de controle de acesso não é um detalhe — é perda patrimonial, risco à vida e interrupção. Por isso, segurança patrimonial exige gente preparada e gestão, não apenas posto.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal"><div class="q">Um hospital não pode parar.</div><p>Áreas restritas, proteção de pacientes e fluxo intenso de pessoas exigem vigilância e controle de acesso contínuos.</p><div class="seg">Saúde</div></div>
+      <div class="pain-card reveal" style="transition-delay:.08s"><div class="q">Uma instituição de ensino não pode parar.</div><p>Fluxo intenso de alunos, visitantes e veículos exige controle de acesso e vigilância para manter o campus seguro.</p><div class="seg">Ensino</div></div>
+      <div class="pain-card reveal" style="transition-delay:.16s"><div class="q">Uma instituição financeira não pode parar.</div><p>Agências e centros administrativos exigem vigilância especializada e protocolos rígidos contra riscos.</p><div class="seg">Financeiro</div></div>
+      <div class="pain-card reveal" style="transition-delay:.24s"><div class="q">Uma indústria não pode parar.</div><p>Perímetros extensos, ativos de alto valor e logística 24h exigem ronda, portaria e vigilância integrada.</p><div class="seg">Indústria</div></div>
+      <div class="pain-card reveal" style="transition-delay:.32s"><div class="q">Um condomínio não pode parar.</div><p>Portaria e controle de acesso são a primeira linha de proteção de moradores e visitantes.</p><div class="seg">Condomínios</div></div>
+      <div class="pain-card reveal" style="transition-delay:.40s"><div class="q">Um shopping não pode parar.</div><p>Grande público, lojas e estacionamento exigem vigilância, apoio tático e resposta rápida a incidentes.</p><div class="seg">Shopping & Varejo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Soluções de Segurança Patrimonial</span>
+      <h2>Proteção feita por gente preparada.</h2>
+      <p>Da vigilância armada à portaria e ao apoio tático — equipe própria, treinada e supervisionada, dimensionada para a sua operação.</p>
+    </div>
+    <div class="svc-grid" id="svcgrid"></div>
+  </div>
+</section>
+
+<!-- DIFERENCIAL -->
+<section class="diff" id="diferencial">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">O diferencial ORCALI</span>
+      <h2>Não entregamos postos. Entregamos segurança gerida.</h2>
+      <div class="diff-list">
+        <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span><div><h3>Equipe própria, treinada e supervisionada</h3><p>Vigilantes selecionados, formados e geridos pela Orcali, com supervisão presencial em campo.</p></div></div>
+        <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span><div><h3>Cobertura de faltas e afastamentos</h3><p>Profissionais volantes repõem ausências, férias e afastamentos sem deixar brecha na sua segurança.</p></div></div>
+        <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span><div><h3>Gestão por indicadores e SLA</h3><p>Metas de desempenho acordadas em contrato, com supervisão e relatórios do que foi entregue.</p></div></div>
+        <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><h3>Conformidade e legislação</h3><p>Operação dimensionada conforme a legislação de segurança privada, auditável de ponta a ponta.</p></div></div>
+      </div>
+    </div>
+    <div class="diff-media reveal" style="transition-delay:.12s">
+      <img src="assets/img/op2.jpg" alt="Equipe própria de segurança patrimonial Orcali" loading="lazy" width="470" height="470">
+      <div class="ov"></div>
+      <div class="diff-quote"><p>Por trás de toda operação protegida existe uma <em>equipe preparada</em> vigiando.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTOS -->
+<section class="seg-section" id="segmentos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Segmentos de atuação</span>
+      <h2>Cada setor tem seus riscos. Conhecemos os seus.</h2>
+      <p>De controle de acesso em hospital à ronda em indústria — o protocolo de vigilância muda conforme o segmento.</p>
+    </div>
+    <div class="seg-grid" id="seggrid"></div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="benefits" id="beneficios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow light">Por que a ORCALI</span>
+      <h2>Mais proteção, menos risco.</h2>
+      <p>6 razões pelas quais decisores confiam a segurança patrimonial da sua operação à Orcali.</p>
+    </div>
+    <div class="ben-grid" id="bengrid"></div>
+  </div>
+</section>
+
+<!-- CERTIFICAÇÕES -->
+<section class="certs">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Conformidade e Qualidade</span>
+      <h2>Certificações Atendidas</h2>
+      <p>Operamos em conformidade com as principais normas e certificações do mercado, garantindo padrões rigorosos em cada segmento atendido.</p>
+    </div>
+    <div class="certs-grid" id="certsgrid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2>Perguntas que decisores fazem</h2>
+    </div>
+    <div class="faq-wrap" id="faqwrap"></div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="cta-form" id="orcamento">
+  <div class="wrap">
+    <div class="form-grid">
+      <div class="form-info reveal">
+        <span class="eyebrow light">Solicite uma proposta</span>
+        <h2 style="margin-top:var(--space-sm)">Solicite um Orçamento</h2>
+        <p class="lead">Preencha o formulário e nossa equipe de segurança patrimonial entrará em contato com você.</p>
+        <div class="checks">
+          <div><span class="ck">✓</span> Diagnóstico de segurança patrimonial sob medida para a sua operação</div>
+          <div><span class="ck">✓</span> Proposta com escopo, equipe e dimensionamento detalhados</div>
+          <div><span class="ck">✓</span> Atendimento humano: 2ª a 6ª, 08h–18h</div>
+        </div>
+      </div>
+      <div class="form-card reveal" style="transition-delay:.1s">
+        <form id="leadform" novalidate>
+          <div class="fh">Cotação ORCALI · Segurança Patrimonial</div>
+          <div class="fs">Preencha abaixo. Leva menos de 1 minuto.</div>
+          <div class="frow">
+            <div class="field"><label for="nome">Nome*</label><input id="nome" name="nome" required placeholder="Seu nome"></div>
+            <div class="field"><label for="empresa">Empresa*</label><input id="empresa" name="empresa" required placeholder="Razão social"></div>
+          </div>
+          <div class="frow">
+            <div class="field"><label for="email">E-mail corporativo*</label><input id="email" name="email" type="email" required placeholder="voce@empresa.com.br"></div>
+            <div class="field"><label for="tel">Telefone / WhatsApp*</label><input id="tel" name="tel" required placeholder="(48) 90000-0000"></div>
+          </div>
+          <div class="frow">
+            <div class="field"><label for="estado">Estado*</label><select id="estado" name="estado" required><option value="" selected disabled>UF</option><option>SC</option><option>PR</option><option>Outro</option></select></div>
+            <div class="field"><label for="cidade">Cidade*</label><input id="cidade" name="cidade" required placeholder="Sua cidade"></div>
+          </div>
+          <div class="field"><label for="segmento">Segmento*</label>
+            <select id="segmento" name="segmento" required><option value="" selected disabled>Selecione o segmento</option>
+              <option>Clínicas e Hospitais</option><option>Instituições de Ensino</option><option>Instituições Financeiras</option><option>Condomínios</option><option>Shopping e Varejo</option><option>Indústria</option><option>Logística · Portos e Aeroportos</option><option>Outro</option></select></div>
+          <div class="field"><label for="msg">Como podemos ajudar?</label><textarea id="msg" name="msg" placeholder="Ex: vigilância patrimonial armada 24h para 1 unidade industrial, com portaria e ronda..."></textarea></div>
+          <label class="consent"><input type="checkbox" required> Li e concordo com a <a href="#" style="color:var(--green-deep);text-decoration:underline">política de privacidade</a>.</label>
+          <button type="submit" class="btn btn-primary btn-lg">Solicitar Orçamento →</button>
+          <p class="form-note">🔒 Dados tratados conforme a LGPD. Sem spam — contato só do comercial.</p>
+        </form>
+        <div class="form-success" id="success"><div class="big-ck">✓</div><h3>Solicitação enviada!</h3><p>Um especialista da ORCALI vai retornar em breve.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <img src="assets/img/logo-white.png" alt="ORCALI" height="42">
+        <p class="desc">Fundada há mais de 58 anos, a ORCALI é um dos grupos de terceirização mais experientes e respeitados do Sul do Brasil.</p>
+      </div>
+      <div>
+        <h4>Segurança Patrimonial</h4>
+        <ul><li><a href="#servicos">Vigilância Armada</a></li><li><a href="#servicos">Vigilância Desarmada</a></li><li><a href="#servicos">Apoio Tático & Ronda</a></li><li><a href="#servicos">Portaria e Controle de Acesso</a></li><li><a href="#segmentos">Segmentos atendidos</a></li></ul>
+      </div>
+      <div class="foot-contact">
+        <h4>Contato</h4>
+        <b>0800 242 8888</b>
+        <ul><li><a href="mailto:comercial@orcali.com.br">comercial@orcali.com.br</a></li><li>2ª a 6ª feira · 08h às 18h</li><li>Av. Mauro Ramos, 755 — Florianópolis/SC</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ORCALI Segurança e Serviços Ltda · CNPJ 83.930.214/0001-94</span>
+      <span>Há mais de 58 anos, cuidando do que é seu.</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
+
+const _p      = new URLSearchParams(location.search);
+const _utmKeys= ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+const _stored = (() => { try { return JSON.parse(localStorage.getItem('_utms') || '{}'); } catch(e) { return {}; } })();
+const _utms   = {};
+_utmKeys.forEach(k => { _utms[k] = _p.get(k) || _stored[k] || ''; });
+if (Object.values(_utms).some(Boolean)) localStorage.setItem('_utms', JSON.stringify(_utms));
+
+const _ck     = n => { const m = document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)')); return m ? decodeURIComponent(m[2]) : ''; };
+const _fbclid = _p.get('fbclid') || JSON.parse(localStorage.getItem('_clickids')||'{}').fbclid || '';
+const _ids    = (() => { try { return JSON.parse(localStorage.getItem('_clickids') || '{}'); } catch(e) { return {}; } })();
+
+Typebot.initBubble({
+  typebot: 'orcali-facilities',
+  theme: {
+    button: { backgroundColor: '#29a71a', customIconSrc: 'https://cdn-icons-png.flaticon.com/512/3670/3670051.png', size: 'large' },
+    chatWindow: { backgroundColor: '#F8F8F8' },
+  },
+  prefilledVariables: {
+    utm_source:   _utms.utm_source,
+    utm_medium:   _utms.utm_medium,
+    utm_campaign: _utms.utm_campaign,
+    utm_term:     _utms.utm_term,
+    utm_content:  _utms.utm_content,
+    fbclid:       _fbclid,
+    gclid:        _ids.gclid   || _p.get('gclid')   || '',
+    gbraid:       _ids.gbraid  || _p.get('gbraid')  || '',
+    wbraid:       _ids.wbraid  || _p.get('wbraid')  || '',
+    ttclid:       _ids.ttclid  || _p.get('ttclid')  || '',
+    msclkid:      _ids.msclkid || _p.get('msclkid') || '',
+  },
+});
+</script>
+
+<script>
+const servicos=[
+ ['fas fa-user-shield','Vigilância Patrimonial Armada','Vigilantes armados para operações de maior risco, dimensionados conforme a legislação de segurança privada.'],
+ ['fas fa-shield-alt','Vigilância Patrimonial Desarmada','Vigilantes desarmados para proteção de instalações, prevenção e controle no dia a dia da operação.'],
+ ['fas fa-running','Apoio Tático & Resposta Rápida','Equipes táticas preparadas para dissuasão e resposta imediata a ocorrências.'],
+ ['fas fa-motorcycle','Ronda Motorizada','Rondas programadas em perímetros extensos e em múltiplas unidades, com registro de cada ponto.'],
+ ['fas fa-door-open','Portaria e Controle de Acesso','Gestão presencial da entrada e saída de pessoas e veículos, com protocolos definidos com o cliente.'],
+ ['fas fa-concierge-bell','Recepção e Portaria Qualificada','Profissionais que unem atendimento e segurança no primeiro contato da sua operação.'],
+ ['fas fa-users','Segurança de Eventos','Planejamento e equipe dedicada para a segurança de eventos corporativos e institucionais.'],
+ ['fas fa-clipboard-check','Supervisão e Gestão Operacional','Supervisores em campo sustentam o padrão da operação e respondem por indicadores acordados.'],
+];
+const certs=[
+ {img:'assets/img/certs/iso14001.png',        alt:'ISO 14001'},
+ {img:'assets/img/certs/iso31000.png',        alt:'ISO 31000'},
+ {img:'assets/img/certs/iso9001.png',         alt:'ISO 9001:2015'},
+ {img:'assets/img/certs/ccsa.png',            alt:'CCSA'},
+ {img:'assets/img/certs/nfpa.png',            alt:'NFPA'},
+ {img:'assets/img/certs/iqg.png',             alt:'IQG Health Services Accreditation'},
+ {img:'assets/img/certs/joint-commission.png',alt:'Joint Commission International'},
+ {img:'assets/img/certs/ona.png',             alt:'ONA'},
+ {img:'assets/img/certs/isps-code.png',       alt:'ISPS Code'},
+ {img:'assets/img/certs/nsc.png',             alt:'NSC National Safety Council'},
+ {img:'assets/img/certs/sgis.png',            alt:'SGIS'},
+ {img:'assets/img/certs/planetree.png',       alt:'Planetree'},
+ {img:'assets/img/certs/cqh.png',             alt:'CQH'},
+];
+const beneficios=[
+ ['01','Equipe Própria','Vigilantes contratados, treinados e geridos pela Orcali — não repassamos sua segurança a terceiros.'],
+ ['02','Operação sem Brechas','Faltas, férias e afastamentos cobertos por profissionais volantes, sem interrupção na sua segurança.'],
+ ['03','Treinamento Contínuo','Seleção criteriosa, formação e reciclagem periódica de toda a equipe operacional.'],
+ ['04','Conformidade Legal','Operação dimensionada conforme a legislação de segurança privada e auditável de ponta a ponta.'],
+ ['05','Supervisão Presencial','Supervisores acompanham a operação em campo e mantêm o padrão acordado em contrato.'],
+ ['06','Foco no seu Core Business','Você concentra energia no seu negócio; a Orcali cuida da proteção do seu patrimônio.'],
+];
+const segIcon={
+ saude:'<path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-3Z"/><path d="M12 8v6M9 11h6"/>',
+ edu:'<path d="M3 9l9-5 9 5-9 5-9-5ZM7 11v5c0 1 2.2 2 5 2s5-1 5-2v-5"/>',
+ fin:'<path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6M9 21v-6h6v6"/>',
+ cond:'<path d="M4 21V5l8-3 8 3v16M9 21v-4h6v4M8 8h2M14 8h2M8 12h2M14 12h2"/>',
+ shop:'<path d="M4 8h16l-1 13H5L4 8ZM8 8a4 4 0 0 1 8 0"/>',
+ ind:'<path d="M3 21V11l6 3V11l6 3V7l6 3v11H3ZM7 21v-3M13 21v-3M19 21v-3"/>'
+};
+const segmentos=[
+ ['saude','Clínicas e Hospitais','Controle de acesso e vigilância em áreas críticas','s4.jpg'],
+ ['edu','Instituições de Ensino','Vigilância e controle de fluxo no campus','s2.jpg'],
+ ['fin','Instituições Financeiras','Vigilância especializada e protocolos rígidos','s3.jpg'],
+ ['ind','Indústria','Ronda, portaria e proteção de perímetro 24h','industria.jpg'],
+ ['cond','Condomínios','Portaria, controle de acesso e rondas','s5.jpg'],
+ ['shop','Shopping & Varejo','Vigilância, apoio tático e resposta rápida','s6.jpg'],
+];
+const faqs=[
+ ['A Orcali oferece vigilância armada e desarmada?','Sim. A Orcali estrutura a modalidade de vigilância conforme o nível de risco de cada operação, sempre em conformidade com a legislação de segurança privada.'],
+ ['Os vigilantes são próprios ou terceirizados?','Os profissionais são próprios da Orcali — selecionados, treinados, uniformizados e supervisionados pela empresa, e não repassados a terceiros.'],
+ ['Como a Orcali cobre faltas, férias e afastamentos?','A empresa mantém profissionais volantes e estrutura operacional para repor ausências e minimizar impactos na rotina do cliente, sem brecha na segurança.'],
+ ['A operação de vigilância é regulamentada?','Sim. A atividade de segurança privada é regulamentada e fiscalizada pela Polícia Federal, e a Orcali opera em conformidade com a legislação vigente.'],
+ ['Quem fornece os uniformes, equipamentos e EPIs?','A Orcali é responsável pelo fornecimento e controle dos uniformes, equipamentos e EPIs necessários para a execução das atividades.'],
+ ['Em quanto tempo a operação de segurança pode ser implantada?','O prazo varia conforme a complexidade da operação e a quantidade de profissionais necessários, sendo definido durante o processo de contratação.'],
+];
+const svg=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+certsgrid.innerHTML=certs.map((c,i)=>c.img
+ ?`<div class="cert-pill cert-img reveal" style="transition-delay:${(i%6)*.04}s"><img src="${c.img}" alt="${c.alt}" loading="lazy"></div>`
+ :`<div class="cert-pill reveal" style="transition-delay:${(i%6)*.04}s"><span class="cn">${c.name}</span><span class="cs">${c.sub}</span></div>`
+).join('');
+svcgrid.innerHTML=servicos.map((s,i)=>`<article class="svc reveal" style="transition-delay:${(i%4)*.05}s"><span class="ico"><i class="${s[0]}"></i></span><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join('');
+bengrid.innerHTML=beneficios.map((b,i)=>`<article class="ben reveal" style="transition-delay:${(i%3)*.07}s"><div class="num">${b[0]}</div><h3>${b[1]}</h3><p>${b[2]}</p></article>`).join('');
+seggrid.innerHTML=segmentos.map((s,i)=>`<article class="segc reveal" style="transition-delay:${(i%3)*.07}s"><img src="assets/img/${s[3]}" alt="${s[1]}" loading="lazy" width="370" height="230"><div class="arrow">${svg('<path d="M5 12h14M13 6l6 6-6 6"/>')}</div><div class="body"><span class="ico">${svg(segIcon[s[0]])}</span><h3>${s[1]}</h3><p>${s[2]}</p></div></article>`).join('');
+faqwrap.innerHTML=faqs.map((f,i)=>`<details class="faq-item reveal"${i===0?' open':''}><summary class="faq-q">${f[0]}<span class="pm">+</span></summary><div class="faq-a">${f[1]}</div></details>`).join('');
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const hd=document.querySelector('header');addEventListener('scroll',()=>hd.classList.toggle('scrolled',scrollY>10),{passive:true});
+burger.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.addEventListener('click',e=>{if(e.target.tagName==='A')navlinks.classList.remove('open')});
+function getCookie(n){var m=document.cookie.match(new RegExp('(^| )'+n+'=([^;]+)'));return m?decodeURIComponent(m[2]):''}
+function genEvtId(){return'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0;return(c==='x'?r:(r&0x3|0x8)).toString(16)})}
+function getUtms(){var p=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content'],cur={};keys.forEach(k=>{if(p.get(k))cur[k]=p.get(k)});var st=localStorage.getItem('_utms');if(!st&&Object.keys(cur).length)localStorage.setItem('_utms',JSON.stringify(cur));var stored=localStorage.getItem('_utms');return stored?JSON.parse(stored):cur}
+function getClickIds(){var p=new URLSearchParams(location.search),ks=['fbclid','gclid','ttclid','msclkid','gbraid','wbraid'],cur={};ks.forEach(k=>{if(p.get(k))cur[k]=p.get(k)});if(Object.keys(cur).length)localStorage.setItem('_clickids',JSON.stringify(cur));var st=localStorage.getItem('_clickids');return st?JSON.parse(st):{}}
+function getBrowserData(){var ids=getClickIds(),fbclid=ids.fbclid||'',fbc=getCookie('_fbc');if(!fbc&&fbclid)fbc='fb.1.'+Date.now()+'.'+fbclid;return{event_id:genEvtId(),fbp:getCookie('_fbp'),fbc:fbc,fbclid:fbclid,gclid:ids.gclid||'',gbraid:ids.gbraid||'',wbraid:ids.wbraid||'',ttclid:ids.ttclid||'',msclkid:ids.msclkid||'',page_url:location.href,referrer:document.referrer,user_agent:navigator.userAgent,language:navigator.language,screen:screen.width+'x'+screen.height,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,utms:getUtms()}}
+fetch('/api/pageview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:genEvtId(),fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),page_url:location.href,user_agent:navigator.userAgent})}).catch(function(){});
+leadform.addEventListener('submit',async function(e){e.preventDefault();if(!e.target.checkValidity()){e.target.reportValidity();return}
+var btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Enviando…';
+var f=new FormData(e.target),br=getBrowserData();
+try{var res=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('nome'),email:f.get('email'),phone:f.get('tel'),empresa:f.get('empresa'),segmento:f.get('segmento'),estado:f.get('estado'),cidade:f.get('cidade'),message:f.get('msg'),...br})});
+if(!res.ok)throw new Error('HTTP '+res.status)}catch(err){btn.disabled=false;btn.textContent='Solicitar Orçamento →';alert('Erro ao enviar. Tente novamente.');return}
+e.target.style.display='none';success.style.display='block'});
+</script>
+</body>
+</html>
