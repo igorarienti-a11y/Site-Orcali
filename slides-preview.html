@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orcali — Slides Tráfego (Preview)</title>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0B0D18;
+  --bg2:#0F1220;
+  --card:#141728;
+  --card2:#1A1F35;
+  --green:#72BF45;
+  --green-dim:rgba(114,191,69,.15);
+  --green-border:rgba(114,191,69,.3);
+  --blue:#002E6E;
+  --blue-mid:#1B3A8C;
+  --white:#FFFFFF;
+  --gray:#8892A8;
+  --gray2:#B0BACF;
+  --line:rgba(255,255,255,.07);
+  --slide-w:1280px;
+  --slide-h:720px;
+}
+body{background:#070810;font-family:'Chivo',sans-serif;display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 20px 80px;-webkit-font-smoothing:antialiased}
+
+.label{color:var(--gray);font-size:11px;letter-spacing:.14em;text-transform:uppercase;align-self:flex-start;max-width:var(--slide-w);width:100%;padding-left:4px}
+
+.slide{
+  width:var(--slide-w);
+  height:var(--slide-h);
+  background:var(--bg);
+  border-radius:4px;
+  overflow:hidden;
+  position:relative;
+  flex-shrink:0;
+  border:1px solid var(--line);
+}
+
+/* ── DECORATIVE ELEMENTS ── */
+.deco-circle{position:absolute;border-radius:50%;pointer-events:none}
+.deco-line{position:absolute;pointer-events:none;background:var(--line)}
+
+/* ── SLIDE COUNTER ── */
+.slide-num{position:absolute;bottom:28px;right:36px;font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.1em}
+
+/* ── GREEN ACCENT BAR (top) ── */
+.accent-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green) 0%,rgba(114,191,69,0) 100%)}
+
+/* ═══════════════════════════════
+   SLIDE 1 — DIVIDER
+═══════════════════════════════ */
+.s1{background:linear-gradient(135deg,#0B0D18 0%,#0D1730 50%,#0B0D18 100%)}
+.s1 .big-circle{width:560px;height:560px;border:1px solid rgba(114,191,69,.08);top:50%;left:50%;transform:translate(-50%,-50%)}
+.s1 .mid-circle{width:380px;height:380px;border:1px solid rgba(114,191,69,.12);top:50%;left:50%;transform:translate(-50%,-50%)}
+.s1 .sm-circle{width:220px;height:220px;background:radial-gradient(circle,rgba(114,191,69,.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.s1 .content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.s1 .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);font-weight:600}
+.s1 .title{font-size:52px;font-weight:900;color:var(--white);text-align:center;line-height:1.05;letter-spacing:-.02em}
+.s1 .title span{color:var(--green)}
+.s1 .sub{font-size:16px;color:var(--gray2);font-weight:400;margin-top:4px}
+.s1 .divider-line{width:48px;height:3px;background:var(--green);border-radius:2px;margin:0 auto}
+
+/* ═══════════════════════════════
+   SLIDE 2 — OBJETIVOS
+═══════════════════════════════ */
+.s2 .header{padding:52px 64px 0}
+.s2 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.s2 .eyebrow::before{content:'';width:20px;height:2px;background:var(--green);border-radius:2px}
+.s2 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s2 .cards{position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;height:380px}
+.s2 .card{background:var(--card);display:flex;flex-direction:column;justify-content:flex-end;padding:36px 40px;position:relative;overflow:hidden}
+.s2 .card::before{content:attr(data-n);position:absolute;top:28px;left:40px;font-size:72px;font-weight:900;color:rgba(255,255,255,.04);line-height:1}
+.s2 .card-icon{font-size:28px;margin-bottom:12px}
+.s2 .card h3{font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;line-height:1.2}
+.s2 .card p{font-size:13px;color:var(--gray2);line-height:1.55;font-family:'Roboto',sans-serif;font-weight:400}
+.s2 .card .card-tag{display:inline-flex;align-items:center;gap:6px;background:var(--green-dim);border:1px solid var(--green-border);color:var(--green);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:14px;width:fit-content}
+.s2 .card.highlight{background:var(--card2)}
+.s2 .card.accent{background:linear-gradient(135deg,#0F1729 0%,#0d1a24 100%)}
+.s2 .card.accent .card-tag{background:rgba(0,46,110,.3);border-color:rgba(0,46,110,.6);color:#6B9FFF}
+
+/* ═══════════════════════════════
+   SLIDE 3 — VERBA
+═══════════════════════════════ */
+.s3 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:40px}
+.s3 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700;display:flex;align-items:center;gap:8px}
+.s3 .eyebrow::before{content:'';width:20px;height:2px;background:var(--green);border-radius:2px}
+.s3 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05;margin-top:10px}
+.s3 .budget-total{display:flex;align-items:baseline;gap:8px}
+.s3 .budget-total .val{font-size:64px;font-weight:900;color:var(--green);letter-spacing:-.03em;line-height:1}
+.s3 .budget-total .period{font-size:16px;color:var(--gray);font-weight:500;align-self:flex-end;padding-bottom:8px}
+.s3 .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;align-content:center}
+.s3 .plat{background:var(--card);border-radius:12px;padding:32px 36px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+.s3 .plat.google{border-top:3px solid #4285F4}
+.s3 .plat.meta{border-top:3px solid #0082FB}
+.s3 .plat-name{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+.s3 .plat-val{font-size:44px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1}
+.s3 .plat-pct{font-size:13px;color:var(--gray2);font-weight:500}
+.s3 .plat-roles{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.s3 .role{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray2);font-family:'Roboto',sans-serif}
+.s3 .role::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.s3 .google .role::before{background:#4285F4}
+.s3 .meta .role::before{background:#0082FB}
+.s3 .bar-wrap{position:absolute;bottom:0;left:0;right:0;height:4px;background:rgba(255,255,255,.06)}
+.s3 .bar-fill{height:100%}
+.s3 .google .bar-fill{background:#4285F4;width:69%}
+.s3 .meta .bar-fill{background:#0082FB;width:31%}
+
+/* ═══════════════════════════════
+   SLIDE 4 — META ALCANCE
+═══════════════════════════════ */
+.s4{background:linear-gradient(160deg,#0B0D18 60%,#0D1A24 100%)}
+.s4 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:28px}
+.s4 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6B9FFF;font-weight:700;display:flex;align-items:center;gap:8px}
+.s4 .eyebrow::before{content:'';width:20px;height:2px;background:#6B9FFF;border-radius:2px}
+.s4 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s4 h2 span{color:#6B9FFF}
+.s4 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1}
+.s4 .left-block{display:flex;flex-direction:column;gap:16px;justify-content:center}
+.s4 .stat-row{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:10px;padding:18px 24px}
+.s4 .stat-icon{font-size:24px;width:44px;text-align:center}
+.s4 .stat-info h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px}
+.s4 .stat-info p{font-size:12px;color:var(--gray);font-family:'Roboto',sans-serif}
+.s4 .right-block{display:flex;flex-direction:column;gap:12px;justify-content:center}
+.s4 .niche-card{background:var(--card);border-radius:10px;padding:20px 24px;border-left:3px solid var(--green)}
+.s4 .niche-card.b{border-color:#4285F4}
+.s4 .niche-card.c{border-color:#F4B400}
+.s4 .niche-card h4{font-size:13px;font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.s4 .niche-card p{font-size:12px;color:var(--gray);font-family:'Roboto',sans-serif;line-height:1.5}
+
+/* ═══════════════════════════════
+   SLIDE 5 — META RETARGETING
+═══════════════════════════════ */
+.s5 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:28px}
+.s5 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6B9FFF;font-weight:700;display:flex;align-items:center;gap:8px}
+.s5 .eyebrow::before{content:'';width:20px;height:2px;background:#6B9FFF;border-radius:2px}
+.s5 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s5 h2 span{color:#6B9FFF}
+.s5 .flow{display:flex;align-items:center;gap:0;flex:1;justify-content:center}
+.s5 .step{background:var(--card);border-radius:12px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;width:200px;flex-shrink:0}
+.s5 .step-icon{font-size:32px}
+.s5 .step h4{font-size:14px;font-weight:800;color:var(--white);line-height:1.2}
+.s5 .step p{font-size:11px;color:var(--gray);font-family:'Roboto',sans-serif;line-height:1.45}
+.s5 .arrow{width:40px;height:2px;background:var(--line);flex-shrink:0;position:relative}
+.s5 .arrow::after{content:'▶';position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--gray)}
+.s5 .step.highlight{border:1px solid rgba(114,191,69,.3);background:linear-gradient(135deg,#0F1C14 0%,#0d1810 100%)}
+.s5 .step.highlight h4{color:var(--green)}
+.s5 .detail{background:var(--card);border-radius:12px;padding:24px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.s5 .det-item h4{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px}
+.s5 .det-item p{font-size:12px;color:var(--gray2);font-family:'Roboto',sans-serif;line-height:1.5}
+
+/* ═══════════════════════════════
+   SLIDE 6 — GOOGLE SEARCH
+═══════════════════════════════ */
+.s6 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:28px}
+.s6 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4285F4;font-weight:700;display:flex;align-items:center;gap:8px}
+.s6 .eyebrow::before{content:'';width:20px;height:2px;background:#4285F4;border-radius:2px}
+.s6 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s6 h2 span{color:#4285F4}
+.s6 .camps{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;align-content:start}
+.s6 .camp{background:var(--card);border-radius:12px;padding:24px 28px;border-top:3px solid #4285F4}
+.s6 .camp.b{border-color:#34A853}
+.s6 .camp-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.s6 .camp h3{font-size:16px;font-weight:800;color:var(--white)}
+.s6 .camp-budget{font-size:20px;font-weight:900;color:var(--white);letter-spacing:-.01em}
+.s6 .camp-budget span{font-size:12px;font-weight:400;color:var(--gray)}
+.s6 .kw-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.s6 .kw{background:rgba(66,133,244,.1);border:1px solid rgba(66,133,244,.2);color:#A8C4FF;font-size:11px;padding:3px 10px;border-radius:100px;font-family:'Roboto',sans-serif}
+.s6 .camp.b .kw{background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.2);color:#7DCFA0}
+.s6 .note{background:var(--card);border-radius:10px;padding:16px 24px;display:flex;align-items:center;gap:12px;border-left:3px solid #4285F4}
+.s6 .note p{font-size:13px;color:var(--gray2);font-family:'Roboto',sans-serif}
+.s6 .note strong{color:var(--white)}
+
+/* ═══════════════════════════════
+   SLIDE 7 — GOOGLE DISPLAY
+═══════════════════════════════ */
+.s7 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:28px}
+.s7 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#4285F4;font-weight:700;display:flex;align-items:center;gap:8px}
+.s7 .eyebrow::before{content:'';width:20px;height:2px;background:#4285F4;border-radius:2px}
+.s7 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s7 h2 span{color:#4285F4}
+.s7 .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex:1;align-content:center}
+.s7 .block{background:var(--card);border-radius:12px;padding:28px 24px;display:flex;flex-direction:column;gap:10px}
+.s7 .block-icon{font-size:28px}
+.s7 .block h3{font-size:15px;font-weight:800;color:var(--white);line-height:1.2}
+.s7 .block p{font-size:12px;color:var(--gray2);font-family:'Roboto',sans-serif;line-height:1.55}
+.s7 .block .tag{display:inline-flex;background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.2);color:#A8C4FF;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;width:fit-content;margin-top:4px}
+.s7 .budget-note{background:linear-gradient(135deg,#0B1420 0%,#0D1018 100%);border:1px solid rgba(66,133,244,.2);border-radius:12px;padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+.s7 .budget-note p{font-size:14px;color:var(--gray2);font-family:'Roboto',sans-serif}
+.s7 .budget-note strong{color:var(--white)}
+.s7 .budget-note .val{font-size:36px;font-weight:900;color:#4285F4;letter-spacing:-.02em}
+
+/* ═══════════════════════════════
+   SLIDE 8 — CAPTAÇÃO (LP + TYPEBOT)
+═══════════════════════════════ */
+.s8 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:28px}
+.s8 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700;display:flex;align-items:center;gap:8px}
+.s8 .eyebrow::before{content:'';width:20px;height:2px;background:var(--green);border-radius:2px}
+.s8 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s8 .two-col{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;flex:1}
+.s8 .col{display:flex;flex-direction:column;gap:12px}
+.s8 .col-title{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:4px}
+.s8 .lp-card{background:var(--card);border-radius:12px;overflow:hidden}
+.s8 .lp-header{background:var(--blue);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.s8 .lp-header span{font-size:12px;color:rgba(255,255,255,.7);font-family:'Roboto',sans-serif}
+.s8 .lp-header .badge{background:var(--green);color:#0a0d18;font-size:10px;font-weight:800;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em}
+.s8 .lp-body{padding:20px 24px;display:flex;flex-direction:column;gap:10px}
+.s8 .lp-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray2);font-family:'Roboto',sans-serif}
+.s8 .lp-row::before{content:'→';color:var(--green);font-weight:700;flex-shrink:0}
+.s8 .form-fields{background:var(--card);border-radius:12px;padding:20px 24px;display:flex;flex-direction:column;gap:8px}
+.s8 .field{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:7px;padding:10px 14px;font-size:12px;color:var(--gray);font-family:'Roboto',sans-serif;display:flex;align-items:center;gap:8px}
+.s8 .field span{color:var(--gray2)}
+.s8 .field .dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
+.s8 .cta-btn{background:var(--green);color:#0a0d18;font-family:'Chivo',sans-serif;font-weight:800;font-size:13px;padding:12px 20px;border-radius:8px;text-align:center;margin-top:4px}
+
+/* ═══════════════════════════════
+   SLIDE 9 — INTEGRAÇÕES
+═══════════════════════════════ */
+.s9 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:32px}
+.s9 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700;display:flex;align-items:center;gap:8px}
+.s9 .eyebrow::before{content:'';width:20px;height:2px;background:var(--green);border-radius:2px}
+.s9 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s9 .pipeline{display:flex;align-items:center;justify-content:space-between;flex:1;gap:0}
+.s9 .node{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;width:140px}
+.s9 .node-icon{width:68px;height:68px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.s9 .node-icon.green{background:var(--green-dim);border:1px solid var(--green-border)}
+.s9 .node-icon.blue{background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.25)}
+.s9 .node-icon.purple{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25)}
+.s9 .node-icon.orange{background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.25)}
+.s9 .node-icon.teal{background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.25)}
+.s9 .node h4{font-size:13px;font-weight:800;color:var(--white);line-height:1.2}
+.s9 .node p{font-size:11px;color:var(--gray);font-family:'Roboto',sans-serif;line-height:1.4}
+.s9 .connector{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.s9 .conn-line{height:2px;width:100%;background:linear-gradient(90deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.06) 100%);position:relative}
+.s9 .conn-line::after{content:'▶';position:absolute;right:-6px;top:50%;transform:translateY(-50%);font-size:9px;color:rgba(255,255,255,.2)}
+.s9 .conn-label{font-size:10px;color:var(--gray);font-family:'Roboto',sans-serif;letter-spacing:.04em;margin-top:2px}
+.s9 .bottom-note{background:var(--card);border-radius:10px;padding:16px 24px;display:flex;align-items:center;gap:12px}
+.s9 .bottom-note .icon{font-size:20px}
+.s9 .bottom-note p{font-size:13px;color:var(--gray2);font-family:'Roboto',sans-serif;line-height:1.5}
+.s9 .bottom-note strong{color:var(--white)}
+
+/* ═══════════════════════════════
+   SLIDE 10 — KPIs
+═══════════════════════════════ */
+.s10 .inner{padding:52px 64px;height:100%;display:flex;flex-direction:column;gap:28px}
+.s10 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700;display:flex;align-items:center;gap:8px}
+.s10 .eyebrow::before{content:'';width:20px;height:2px;background:var(--green);border-radius:2px}
+.s10 h2{font-size:38px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.05}
+.s10 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.s10 .kpi{background:var(--card);border-radius:12px;padding:24px 22px;display:flex;flex-direction:column;gap:8px}
+.s10 .kpi-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+.s10 .kpi-val{font-size:28px;font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1}
+.s10 .kpi-val.green{color:var(--green)}
+.s10 .kpi-val.blue{color:#6B9FFF}
+.s10 .kpi-desc{font-size:12px;color:var(--gray);font-family:'Roboto',sans-serif;line-height:1.5}
+.s10 .bottom{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.s10 .bottom-card{background:var(--card);border-radius:12px;padding:22px 28px;display:flex;align-items:flex-start;gap:14px}
+.s10 .bc-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.s10 .bc-info h4{font-size:14px;font-weight:800;color:var(--white);margin-bottom:4px}
+.s10 .bc-info p{font-size:12px;color:var(--gray2);font-family:'Roboto',sans-serif;line-height:1.5}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — DIVIDER -->
+<div class="label">Slide 1 — Abertura da seção</div>
+<div class="slide s1">
+  <div class="accent-bar"></div>
+  <div class="deco-circle big-circle"></div>
+  <div class="deco-circle mid-circle"></div>
+  <div class="deco-circle sm-circle"></div>
+  <div class="content">
+    <div class="tag">Planejamento Digital · 2026</div>
+    <div class="divider-line"></div>
+    <div class="title">Performance &<br><span>Aquisição de Leads</span></div>
+    <div class="sub">Tráfego pago · Landing Pages · Integrações</div>
+  </div>
+  <div class="slide-num">01 / 09</div>
+</div>
+
+<!-- SLIDE 2 — OBJETIVOS -->
+<div class="label">Slide 2 — Objetivos de performance</div>
+<div class="slide s2">
+  <div class="accent-bar"></div>
+  <div class="header">
+    <div class="eyebrow">Performance</div>
+    <h2>O que o tráfego vai entregar</h2>
+  </div>
+  <div class="cards">
+    <div class="card" data-n="01">
+      <div class="card-tag">Meta Ads</div>
+      <h3>Alcance e<br>reconhecimento de marca</h3>
+      <p>Levar a Orcali à mente dos decisores em Ensino, Saúde e Financeiro antes da janela de compra.</p>
+    </div>
+    <div class="card highlight" data-n="02">
+      <div class="card-tag">Meta + Google</div>
+      <h3>Geração de leads<br>qualificados</h3>
+      <p>Capturar gestores com intenção ativa de contratar, conectar ao comercial com origem rastreada.</p>
+    </div>
+    <div class="card accent" data-n="03">
+      <div class="card-tag" style="background:rgba(0,46,110,.3);border-color:rgba(0,46,110,.6);color:#6B9FFF">Google Ads</div>
+      <h3>Mensuração de<br>cada lead gerado</h3>
+      <p>Saber de onde veio cada contato — plataforma, campanha, nicho — e provar o valor do investimento.</p>
+    </div>
+  </div>
+  <div class="slide-num">02 / 09</div>
+</div>
+
+<!-- SLIDE 3 — VERBA -->
+<div class="label">Slide 3 — Distribuição de verba</div>
+<div class="slide s3">
+  <div class="accent-bar"></div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Investimento Mensal</div>
+      <h2>Distribuição de verba</h2>
+    </div>
+    <div class="budget-total">
+      <div class="val">R$ 8.000</div>
+      <div class="period">/mês</div>
+    </div>
+    <div class="split">
+      <div class="plat google">
+        <div class="plat-name">Google Ads</div>
+        <div class="plat-val">R$ 5.500</div>
+        <div class="plat-pct">69% do investimento total</div>
+        <div class="plat-roles">
+          <div class="role">Search Facilities — R$ 2.200</div>
+          <div class="role">Search Segurança — R$ 1.800</div>
+          <div class="role">Display Topo — R$ 1.000</div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+      </div>
+      <div class="plat meta">
+        <div class="plat-name">Meta Ads</div>
+        <div class="plat-val">R$ 2.500</div>
+        <div class="plat-pct">31% do investimento total</div>
+        <div class="plat-roles">
+          <div class="role">Alcance Institucional — R$ 1.600</div>
+          <div class="role">Retargeting LP — R$ 900</div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">03 / 09</div>
+</div>
+
+<!-- SLIDE 4 — META ALCANCE -->
+<div class="label">Slide 4 — Meta Ads: Alcance</div>
+<div class="slide s4">
+  <div class="accent-bar" style="background:linear-gradient(90deg,#0082FB,transparent)"></div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Meta Ads · R$ 1.600/mês</div>
+      <h2>Alcance <span>institucional</span><br>por nicho</h2>
+    </div>
+    <div class="two-col">
+      <div class="left-block">
+        <div class="stat-row">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-info">
+            <h4>Objetivo: Reach</h4>
+            <p>Otimiza CPM — máxima cobertura de decisores em SC e PR</p>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <h4>Público-semente</h4>
+            <p>2.966 clientes ativos → Lookalike 1% SC/PR</p>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-icon">📍</div>
+          <div class="stat-info">
+            <h4>Geografia</h4>
+            <p>Floripa · Itajaí · Joinville · Blumenau · Curitiba · Toledo · Londrina</p>
+          </div>
+        </div>
+      </div>
+      <div class="right-block">
+        <div class="niche-card">
+          <h4>🏥 Saúde</h4>
+          <p>"Operações hospitalares não podem parar. Por trás de cada turno funcionando, existe uma estrutura invisível."</p>
+        </div>
+        <div class="niche-card b">
+          <h4>🎓 Ensino</h4>
+          <p>"De manhã cedo até o fim da noite, um campus nunca para. A gestão que garante isso, sim."</p>
+        </div>
+        <div class="niche-card c">
+          <h4>🏦 Financeiro</h4>
+          <p>"Compliance começa antes da portaria. Facilities e segurança integradas para instituições financeiras."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">04 / 09</div>
+</div>
+
+<!-- SLIDE 5 — META RETARGETING -->
+<div class="label">Slide 5 — Meta Ads: Retargeting</div>
+<div class="slide s5">
+  <div class="accent-bar" style="background:linear-gradient(90deg,#0082FB,transparent)"></div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Meta Ads · R$ 900/mês</div>
+      <h2><span>Retargeting</span> — convertendo<br>quem já demonstrou interesse</h2>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-icon">👁️</div>
+        <h4>Viu o anúncio<br>de alcance</h4>
+        <p>Engajou no Instagram ou visitou o perfil</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="step">
+        <div class="step-icon">🌐</div>
+        <h4>Acessou<br>a LP</h4>
+        <p>Visitantes que não preencheram o form</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="step highlight">
+        <div class="step-icon">🎯</div>
+        <h4>Recebe<br>retargeting</h4>
+        <p>Anúncio com prova social + CTA direto</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="step">
+        <div class="step-icon">📋</div>
+        <h4>Preenche<br>o form</h4>
+        <p>Lead qualificado entra no funil</p>
+      </div>
+    </div>
+    <div class="detail">
+      <div class="det-item">
+        <h4>Janela</h4>
+        <p>Últimos 30 dias de visita à LP</p>
+      </div>
+      <div class="det-item">
+        <h4>Ângulo</h4>
+        <p>"1.554 clientes. Contrato médio de 20 anos." — prova social + urgência</p>
+      </div>
+      <div class="det-item">
+        <h4>CTA</h4>
+        <p>Solicitar diagnóstico operacional gratuito · resposta em 24h</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">05 / 09</div>
+</div>
+
+<!-- SLIDE 6 — GOOGLE SEARCH -->
+<div class="label">Slide 6 — Google Ads: Search (fundo de funil)</div>
+<div class="slide s6">
+  <div class="accent-bar" style="background:linear-gradient(90deg,#4285F4,transparent)"></div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Google Ads · R$ 4.000/mês · Search</div>
+      <h2>Capturar quem <span>já busca</span><br>pelo serviço</h2>
+    </div>
+    <div class="camps">
+      <div class="camp">
+        <div class="camp-header">
+          <h3>Facilities</h3>
+          <div class="camp-budget">R$ 2.200<span>/mês</span></div>
+        </div>
+        <div class="kw-list">
+          <div class="kw">empresa de facilities SC</div>
+          <div class="kw">terceirização portaria Floripa</div>
+          <div class="kw">gestão predial hospital</div>
+          <div class="kw">limpeza terceirizada universidade</div>
+          <div class="kw">facilities Curitiba</div>
+          <div class="kw">zeladoria escola SC</div>
+        </div>
+      </div>
+      <div class="camp b">
+        <div class="camp-header">
+          <h3>Segurança</h3>
+          <div class="camp-budget" style="color:var(--white)">R$ 1.800<span>/mês</span></div>
+        </div>
+        <div class="kw-list">
+          <div class="kw" style="background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.2);color:#7DCFA0">vigilância patrimonial SC</div>
+          <div class="kw" style="background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.2);color:#7DCFA0">empresa de segurança Floripa</div>
+          <div class="kw" style="background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.2);color:#7DCFA0">segurança hospitalar SC</div>
+          <div class="kw" style="background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.2);color:#7DCFA0">vigilante terceirizado Curitiba</div>
+          <div class="kw" style="background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.2);color:#7DCFA0">segurança escolar Joinville</div>
+          <div class="kw" style="background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.2);color:#7DCFA0">segurança instituição financeira</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <p>Ambas as campanhas segmentadas por <strong>nicho dentro dos ad groups</strong> — copy e extensões personalizadas para Saúde, Ensino e Financeiro.</p>
+    </div>
+  </div>
+  <div class="slide-num">06 / 09</div>
+</div>
+
+<!-- SLIDE 7 — GOOGLE DISPLAY -->
+<div class="label">Slide 7 — Google Ads: Display (topo de funil)</div>
+<div class="slide s7">
+  <div class="accent-bar" style="background:linear-gradient(90deg,#4285F4,transparent)"></div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Google Ads · R$ 1.000/mês · Display</div>
+      <h2>Alcançar decisores<br>antes da <span>busca ativa</span></h2>
+    </div>
+    <div class="grid">
+      <div class="block">
+        <div class="block-icon">🎯</div>
+        <h3>Segmentação por cargo</h3>
+        <p>Diretores Administrativos, Gerentes de Facilities e Gestores Operacionais em SC e PR.</p>
+        <div class="tag">In-Market</div>
+      </div>
+      <div class="block">
+        <div class="block-icon">🏢</div>
+        <h3>Segmentação por empresa</h3>
+        <p>Hospitais, universidades, cooperativas e bancos — rede Google + YouTube para tomadores de decisão.</p>
+        <div class="tag">Audience</div>
+      </div>
+      <div class="block">
+        <div class="block-icon">🔄</div>
+        <h3>Alimenta o retargeting</h3>
+        <p>Quem clica no Display entra na LP → cai na audiência de retargeting do Meta. Funil integrado.</p>
+        <div class="tag">Funil</div>
+      </div>
+    </div>
+    <div class="budget-note">
+      <p>Display funciona como <strong>gerador de audiência</strong> para o retargeting — não é onde o lead converte, é onde ele descobre.</p>
+      <div class="val">R$ 1.000</div>
+    </div>
+  </div>
+  <div class="slide-num">07 / 09</div>
+</div>
+
+<!-- SLIDE 8 — LP + TYPEBOT -->
+<div class="label">Slide 8 — Estrutura de captação (LP + Typebot)</div>
+<div class="slide s8">
+  <div class="accent-bar"></div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Estrutura de Captação</div>
+      <h2>Landing Page + Formulário<br>de qualificação</h2>
+    </div>
+    <div class="two-col">
+      <div class="col">
+        <div class="col-title">Landing Page · Facilities</div>
+        <div class="lp-card">
+          <div class="lp-header">
+            <span>orcali.com.br/facilities</span>
+            <div class="badge">Pronto</div>
+          </div>
+          <div class="lp-body">
+            <div class="lp-row">Hero: "Operações que não podem parar"</div>
+            <div class="lp-row">Diferenciais + 58 anos + 1.554 clientes</div>
+            <div class="lp-row">Serviços por nicho (Saúde · Ensino · Financeiro)</div>
+            <div class="lp-row">Prova social + certificações ISO</div>
+            <div class="lp-row">Form qualificador integrado via Typebot</div>
+            <div class="lp-row" style="opacity:.5">LP Segurança → Mês 2</div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col-title">Formulário de qualificação</div>
+        <div class="form-fields">
+          <div class="field"><div class="dot"></div><span>Nome completo</span></div>
+          <div class="field"><div class="dot"></div><span>Empresa</span></div>
+          <div class="field"><div class="dot"></div><span>CNPJ</span></div>
+          <div class="field"><div class="dot"></div><span>E-mail corporativo</span></div>
+          <div class="field"><div class="dot"></div><span>Telefone / WhatsApp</span></div>
+          <div class="field"><div class="dot" style="background:#6B9FFF"></div><span>Segmento (Saúde · Ensino · Financeiro)</span></div>
+          <div class="field"><div class="dot" style="background:#6B9FFF"></div><span>Cidade / Região</span></div>
+          <div class="cta-btn">Solicitar diagnóstico operacional gratuito →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">08 / 09</div>
+</div>
+
+<!-- SLIDE 9 — INTEGRAÇÕES -->
+<div class="label">Slide 9 — Integrações & mensuração</div>
+<div class="slide s9">
+  <div class="accent-bar"></div>
+  <div class="inner">
+    <div>
+      <div class="eyebrow">Integrações & Mensuração</div>
+      <h2>Do clique ao<br>comercial rastreado</h2>
+    </div>
+    <div class="pipeline">
+      <div class="node">
+        <div class="node-icon blue">🔵</div>
+        <h4>Meta Ads<br>Google Ads</h4>
+        <p>Pixel + CAPI<br>Google Tag</p>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-label">clique</div>
+      </div>
+      <div class="node">
+        <div class="node-icon green">📄</div>
+        <h4>Landing<br>Page</h4>
+        <p>Pixel fire<br>ViewContent</p>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-label">form submit</div>
+      </div>
+      <div class="node">
+        <div class="node-icon teal">📊</div>
+        <h4>Planilha<br>Google</h4>
+        <p>Lead + UTMs<br>+ origem</p>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-label">Apps Script</div>
+      </div>
+      <div class="node">
+        <div class="node-icon purple">🟣</div>
+        <h4>RD Station<br>CRM</h4>
+        <p>Nutrição<br>+ funil</p>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-label">alerta</div>
+      </div>
+      <div class="node">
+        <div class="node-icon orange">💼</div>
+        <h4>Time<br>Comercial</h4>
+        <p>Lead pronto<br>para abordagem</p>
+      </div>
+    </div>
+    <div class="bottom-note">
+      <div class="icon">📌</div>
+      <p>Cada lead chega com <strong>origem rastreada</strong> (plataforma · campanha · nicho · palavra-chave) — resolvendo a maior dor do histórico de R$ 6k/mês sem mensuração.</p>
+    </div>
+  </div>
+  <div class="slide-num">09 / 09</div>
+</div>
+
+</body>
+</html>

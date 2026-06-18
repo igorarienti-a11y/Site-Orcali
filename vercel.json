@@ -1,1 +1,7 @@
-{ "cleanUrls": true }
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/seguranca", "destination": "/monitoramento", "permanent": true },
+    { "source": "/", "destination": "/facilities", "permanent": false }
+  ]
+}
