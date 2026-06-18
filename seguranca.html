@@ -352,7 +352,7 @@ fbq('init','1650240729249255');
       <span class="eyebrow">Quem é a ORCALI</span>
       <p class="quote">Proteção patrimonial e tecnologia de monitoramento integradas em uma só gestão.</p>
       <p>Desde 1968, a ORCALI protege hospitais, indústrias, instituições financeiras, condomínios e shoppings por todo o Sul — com vigilantes próprios, central de monitoramento 24h e tecnologia integrada de ponta.</p>
-      <p>Unimos pessoas treinadas, processos rigorosos e tecnologia para reduzir riscos e perdas patrimoniais — para que você concentre sua energia no seu core business, não na sua segurança.</p>
+      <p>Unimos profissionais especializados, processos rigorosos e tecnologia para reduzir riscos e perdas patrimoniais — para que você concentre esforços no seu core business, não na sua segurança.</p>
       <a href="#orcamento" class="btn btn-primary" style="margin-top:var(--space-md)">Falar com um especialista</a>
     </div>
   </div>
@@ -398,7 +398,7 @@ fbq('init','1650240729249255');
       <div class="diff-list">
         <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span><div><h3>Gestão por indicadores e SLA</h3><p>Metas de desempenho acordadas em contrato, supervisão presencial e relatórios do que foi entregue.</p></div></div>
         <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span><div><h3>Central de monitoramento (CICC) 24/7</h3><p>Câmeras, alarmes e eventos acompanhados em tempo real, com resposta imediata a incidentes.</p></div></div>
-        <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span><div><h3>Equipe própria, treinada e com falta coberta</h3><p>Vigilantes e operadores contratados e geridos por nós. Faltou alguém, a ORCALI repõe — sem brecha na sua segurança.</p></div></div>
+        <div class="diff-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span><div><h3>Equipe própria, treinada e com cobertura de faltas</h3><p>Vigilantes e operadores contratados e geridos por nós. Em caso de ausência, a ORCALI repõe de imediato — sem interrupção na sua segurança.</p></div></div>
       </div>
     </div>
     <div class="diff-media reveal" style="transition-delay:.12s">
@@ -415,7 +415,7 @@ fbq('init','1650240729249255');
     <div class="sec-head reveal">
       <span class="eyebrow">Segmentos de atuação</span>
       <h2>Cada setor tem seus riscos. Conhecemos os seus.</h2>
-      De controle de acesso em hospital a CFTV em shopping — o protocolo de segurança muda conforme o segmento.
+      <p>De controle de acesso em hospital a CFTV em shopping — o protocolo de segurança muda conforme o segmento.</p>
     </div>
     <div class="seg-grid" id="seggrid"></div>
   </div>
@@ -492,7 +492,7 @@ fbq('init','1650240729249255');
           <div class="field"><label for="msg">Como podemos ajudar?</label><textarea id="msg" name="msg" placeholder="Ex: vigilância patrimonial + CFTV e controle de acesso para 2 unidades..."></textarea></div>
           <label class="consent"><input type="checkbox" required> Li e concordo com a <a href="#" style="color:var(--green-deep);text-decoration:underline">política de privacidade</a>.</label>
           <button type="submit" class="btn btn-primary btn-lg">Solicitar Orçamento →</button>
-          <p class="form-note">🔒 Dados tratados conforme a LGPD. Sem spam — contato só do comercial.</p>
+          <p class="form-note">🔒 Dados tratados conforme a LGPD. Utilizamos seus dados apenas para contato comercial.</p>
         </form>
         <div class="form-success" id="success"><div class="big-ck">✓</div><h3>Solicitação enviada!</h3><p>Um especialista da ORCALI vai retornar em breve.</p></div>
       </div>
@@ -509,7 +509,7 @@ fbq('init','1650240729249255');
       </div>
       <div>
         <h4>Segurança</h4>
-        <ul><li><a href="#servicos">Vigilância Patrimonial</a></li><li><a href="#servicos">Monitoramento & CFTV</a></li><li><a href="#servicos">Controle de Acesso</a></li><li><a href="/">Facilities</a></li><li><a href="#segmentos">Segmentos atendidos</a></li></ul>
+        <ul><li><a href="#servicos">Vigilância Patrimonial</a></li><li><a href="#servicos">Monitoramento & CFTV</a></li><li><a href="#servicos">Controle de Acesso</a></li><li><a href="#segmentos">Segmentos atendidos</a></li></ul>
       </div>
       <div class="foot-contact">
         <h4>Contato</h4>
@@ -647,7 +647,7 @@ leadform.addEventListener('submit',async function(e){e.preventDefault();if(!e.ta
 var btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Enviando…';
 var f=new FormData(e.target),br=getBrowserData();
 try{var res=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('nome'),email:f.get('email'),phone:f.get('tel'),empresa:f.get('empresa'),segmento:f.get('segmento'),estado:f.get('estado'),cidade:f.get('cidade'),message:f.get('msg'),...br})});
-if(!res.ok)throw new Error('HTTP '+res.status)}catch(err){btn.disabled=false;btn.textContent='Quero meu orçamento gratuito →';alert('Erro ao enviar. Tente novamente.');return}
+if(!res.ok)throw new Error('HTTP '+res.status)}catch(err){btn.disabled=false;btn.textContent='Solicitar Orçamento →';alert('Erro ao enviar. Tente novamente.');return}
 e.target.style.display='none';success.style.display='block'});
 </script>
 </body>
