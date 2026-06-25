@@ -77,6 +77,7 @@ header.scrolled{box-shadow:var(--shadow-sm)}
 .nav-cta{display:flex;align-items:center;gap:var(--space-sm)}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
 .burger span{width:26px;height:2.6px;background:var(--navy);border-radius:2px}
+.nav-cta-m{display:none}
 
 /* HERO */
 .hero{position:relative;min-height:calc(100svh - 108px);display:flex;align-items:center;color:var(--white);isolation:isolate;overflow:hidden}
@@ -262,7 +263,12 @@ footer a:hover{color:var(--green)}
   .cert-pill{min-width:calc(50% - var(--space-sm));padding:var(--space-md)}
 
   .nav-links{display:none}.burger{display:flex}
-  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--white);padding:var(--space-lg);gap:var(--space-md);box-shadow:var(--shadow-md);border-bottom:1px solid var(--line)}
+  .nav-cta .btn-primary{display:none}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--white);padding:var(--space-lg);gap:var(--space-sm);box-shadow:var(--shadow-md);border-bottom:1px solid var(--line)}
+  .nav-links.open a:not(.btn){padding:8px 2px;font-size:1.05rem;width:100%}
+  .nav-links.open .nav-cta-m{display:block;margin-top:var(--space-xs)}
+  .nav-links.open .nav-cta-m .btn{width:100%;justify-content:center}
+  .pain-grid{grid-template-columns:1fr}
   .frow{grid-template-columns:1fr}
   .seg-grid{grid-template-columns:1fr}
   .stats{margin-top:calc(var(--space-xl) * -1)}
@@ -275,6 +281,15 @@ footer a:hover{color:var(--green)}
   .hero .lead{font-size:1.02rem;max-width:100%}
   .hero-cta{gap:12px}
   .hero-cta .btn{flex:1 1 100%;justify-content:center}
+}
+@media(max-width:480px){
+  .wrap{padding-inline:var(--space-md)}
+  .nav-logo img{height:40px}
+  .hero h1{font-size:clamp(1.5rem,8.2vw,2.1rem)}
+  .sec-head h2{font-size:clamp(1.6rem,7vw,2.15rem)}
+  .stat{padding:var(--space-lg) var(--space-sm)}
+  .topbar{font-size:.78rem}
+  .btn-lg{padding:16px 22px;font-size:1rem}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.segc img{transition:none}}
 </style>
@@ -305,6 +320,7 @@ fbq('init','1650240729249255');
       <li><a href="#segmentos">Segmentos</a></li>
       <li><a href="#beneficios">Benefícios</a></li>
       <li><a href="#faq">Dúvidas</a></li>
+      <li class="nav-cta-m"><a href="#orcamento" class="btn btn-primary">Solicitar Orçamento</a></li>
     </ul>
     <div class="nav-cta">
       <a href="#orcamento" class="btn btn-primary">Solicitar Orçamento</a>
