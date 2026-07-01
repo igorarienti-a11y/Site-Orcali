@@ -155,6 +155,8 @@ export default async function handler(req) {
       'estado geo':    geo.region_code,
       'cep':           d.cep        || geo.postal,
       'data iso':      ts.iso,
+      // ── adicionado no FINAL para não desalinhar as 38 colunas → header exato na planilha: "CNPJ" ──
+      'cnpj':          (d.cnpj || '').replace(/\D/g, ''),
     };
 
     const token = await getAccessToken(process.env.GOOGLE_CREDENTIALS);

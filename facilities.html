@@ -494,6 +494,7 @@ fbq('init','1650240729249255');
             <div class="field"><label for="nome">Nome*</label><input id="nome" name="nome" required placeholder="Seu nome"></div>
             <div class="field"><label for="empresa">Empresa*</label><input id="empresa" name="empresa" required placeholder="Razão social"></div>
           </div>
+          <div class="field"><label for="cnpj">CNPJ*</label><input id="cnpj" name="cnpj" required inputmode="numeric" autocomplete="off" maxlength="18" placeholder="00.000.000/0000-00"></div>
           <div class="frow">
             <div class="field"><label for="email">E-mail corporativo*</label><input id="email" name="email" type="email" required placeholder="voce@empresa.com.br"></div>
             <div class="field"><label for="tel">Telefone / WhatsApp*</label><input id="tel" name="tel" required placeholder="(48) 90000-0000"></div>
@@ -504,7 +505,7 @@ fbq('init','1650240729249255');
           </div>
           <div class="field"><label for="segmento">Segmento*</label>
             <select id="segmento" name="segmento" required><option value="" selected disabled>Selecione o segmento</option>
-              <option>Clínicas e Hospitais</option><option>Instituições de Ensino</option><option>Instituições Financeiras</option><option>Condomínios</option><option>Shopping e Varejo</option><option>Indústria</option><option>Logística · Portos e Aeroportos</option><option>Outro</option></select></div>
+              <option>Condomínios Residenciais ou Comerciais</option><option>Clínicas e Hospitais</option><option>Indústrias</option><option>Instituições de Ensino</option><option>Instituições Financeiras</option><option>Shoppings</option><option>Logística</option><option>Portos e Aeroportos</option><option>Comércio</option><option>Construtoras</option><option>Tecnologia</option><option>Imobiliária</option><option>Executiva</option><option>Eventos</option><option>Outro</option></select></div>
           <div class="field"><label for="msg">Como podemos ajudar?</label><textarea id="msg" name="msg" placeholder="Ex: limpeza técnica + portaria para 2 unidades..."></textarea></div>
           <label class="consent"><input type="checkbox" required> Li e concordo com a <a href="#" style="color:var(--green-deep);text-decoration:underline">política de privacidade</a>.</label>
           <button type="submit" class="btn btn-primary btn-lg">Solicitar Orçamento →</button>
@@ -660,10 +661,31 @@ function getUtms(){var p=new URLSearchParams(location.search),keys=['utm_source'
 function getClickIds(){var p=new URLSearchParams(location.search),ks=['fbclid','gclid','ttclid','msclkid','gbraid','wbraid'],cur={};ks.forEach(k=>{if(p.get(k))cur[k]=p.get(k)});if(Object.keys(cur).length)localStorage.setItem('_clickids',JSON.stringify(cur));var st=localStorage.getItem('_clickids');return st?JSON.parse(st):{}}
 function getBrowserData(){var ids=getClickIds(),fbclid=ids.fbclid||'',fbc=getCookie('_fbc');if(!fbc&&fbclid)fbc='fb.1.'+Date.now()+'.'+fbclid;return{event_id:genEvtId(),fbp:getCookie('_fbp'),fbc:fbc,fbclid:fbclid,gclid:ids.gclid||'',gbraid:ids.gbraid||'',wbraid:ids.wbraid||'',ttclid:ids.ttclid||'',msclkid:ids.msclkid||'',page_url:location.href,referrer:document.referrer,user_agent:navigator.userAgent,language:navigator.language,screen:screen.width+'x'+screen.height,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,utms:getUtms()}}
 fetch('/api/pageview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:genEvtId(),fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),page_url:location.href,user_agent:navigator.userAgent})}).catch(function(){});
+/* CNPJ — máscara + validação de dígitos verificadores (inválido bloqueia o envio; Exact exige CPF/CNPJ) */
+(function(){
+  var el=document.getElementById('cnpj');if(!el)return;
+  function mask(v){v=v.replace(/\D/g,'').slice(0,14);
+    if(v.length>12)return v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2}).*/,'$1.$2.$3/$4-$5');
+    if(v.length>8) return v.replace(/^(\d{2})(\d{3})(\d{3})(\d{0,4}).*/,'$1.$2.$3/$4');
+    if(v.length>5) return v.replace(/^(\d{2})(\d{3})(\d{0,3}).*/,'$1.$2.$3');
+    if(v.length>2) return v.replace(/^(\d{2})(\d{0,3}).*/,'$1.$2');
+    return v;}
+  function valida(v){v=(v||'').replace(/\D/g,'');
+    if(v.length!==14)return false;
+    if(/^(\d)\1{13}$/.test(v))return false;
+    var dv=function(b){var s=0,p=b.length-7;for(var i=0;i<b.length;i++){s+=parseInt(b[i],10)*p--;if(p<2)p=9;}var r=s%11;return r<2?0:11-r;};
+    if(dv(v.slice(0,12))!==parseInt(v[12],10))return false;
+    if(dv(v.slice(0,13))!==parseInt(v[13],10))return false;
+    return true;}
+  function check(){var d=el.value.replace(/\D/g,'');el.setCustomValidity(d.length===0?'':(valida(d)?'':'CNPJ inválido — confira os números.'));}
+  el.addEventListener('input',function(){el.value=mask(el.value);check();});
+  el.addEventListener('blur',check);
+  if(el.form)el.form.addEventListener('submit',check,true);
+})();
 leadform.addEventListener('submit',async function(e){e.preventDefault();if(!e.target.checkValidity()){e.target.reportValidity();return}
 var btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Enviando…';
 var f=new FormData(e.target),br=getBrowserData();
-try{var res=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('nome'),email:f.get('email'),phone:f.get('tel'),empresa:f.get('empresa'),segmento:f.get('segmento'),estado:f.get('estado'),cidade:f.get('cidade'),message:f.get('msg'),...br})});
+try{var res=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('nome'),email:f.get('email'),phone:f.get('tel'),empresa:f.get('empresa'),cnpj:f.get('cnpj'),segmento:f.get('segmento'),estado:f.get('estado'),cidade:f.get('cidade'),message:f.get('msg'),...br})});
 if(!res.ok)throw new Error('HTTP '+res.status)}catch(err){btn.disabled=false;btn.textContent='Quero meu orçamento gratuito →';alert('Erro ao enviar. Tente novamente.');return}
 e.target.style.display='none';success.style.display='block'});
 </script>
