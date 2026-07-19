@@ -665,6 +665,12 @@ function genEvtId(){return'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g
 function getUtms(){var p=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content'],cur={};keys.forEach(k=>{if(p.get(k))cur[k]=p.get(k)});var st=localStorage.getItem('_utms');if(!st&&Object.keys(cur).length)localStorage.setItem('_utms',JSON.stringify(cur));var stored=localStorage.getItem('_utms');return stored?JSON.parse(stored):cur}
 function getClickIds(){var p=new URLSearchParams(location.search),ks=['fbclid','gclid','ttclid','msclkid','gbraid','wbraid'],cur={};ks.forEach(k=>{if(p.get(k))cur[k]=p.get(k)});if(Object.keys(cur).length)localStorage.setItem('_clickids',JSON.stringify(cur));var st=localStorage.getItem('_clickids');return st?JSON.parse(st):{}}
 function getBrowserData(){var ids=getClickIds(),fbclid=ids.fbclid||'',fbc=getCookie('_fbc');if(!fbc&&fbclid)fbc='fb.1.'+Date.now()+'.'+fbclid;return{event_id:genEvtId(),fbp:getCookie('_fbp'),fbc:fbc,fbclid:fbclid,gclid:ids.gclid||'',gbraid:ids.gbraid||'',wbraid:ids.wbraid||'',ttclid:ids.ttclid||'',msclkid:ids.msclkid||'',page_url:location.href,referrer:document.referrer,user_agent:navigator.userAgent,language:navigator.language,screen:screen.width+'x'+screen.height,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone,utms:getUtms()}}
+/* Meta — Lead no browser. Mesmo event_id que a edge grava na planilha e o Apps Script
+   manda via CAPI: a Meta deduplica os dois sinais e conta 1 lead so. */
+function fireMetaLead(br){try{
+  if(typeof fbq!=='function')return;
+  fbq('track','Lead',{},{eventID:br.event_id});
+}catch(e){}}
 /* Google Ads — conversao "Leads LP" (AW-996720589). Le do STATE do form (FormData), nunca do DOM:
    o form eh escondido logo apos o submit, DOM scraping pegaria vazio. transaction_id = event_id (anti double-submit).
    Normalizacao do telefone espelha a da edge (api/leads.js) pra Google/Meta/planilha baterem. */
@@ -715,7 +721,7 @@ var btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.text
 var f=new FormData(e.target),br=getBrowserData();
 try{var res=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('nome'),email:f.get('email'),phone:f.get('tel'),empresa:f.get('empresa'),cnpj:f.get('cnpj'),segmento:f.get('segmento'),estado:f.get('estado'),cidade:f.get('cidade'),message:f.get('msg'),...br})});
 if(!res.ok)throw new Error('HTTP '+res.status)}catch(err){btn.disabled=false;btn.textContent='Solicitar Orçamento →';alert('Erro ao enviar. Tente novamente.');return}
-fireGoogleConv(f,br);
+fireGoogleConv(f,br);fireMetaLead(br);
 e.target.style.display='none';success.style.display='block'});
 </script>
 </body>
