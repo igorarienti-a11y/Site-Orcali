@@ -565,6 +565,8 @@ const _ck     = n => { const m = document.cookie.match(new RegExp('(^| )'+n+'=([
 const _fbclid = _p.get('fbclid') || JSON.parse(localStorage.getItem('_clickids')||'{}').fbclid || '';
 const _ids    = (() => { try { return JSON.parse(localStorage.getItem('_clickids') || '{}'); } catch(e) { return {}; } })();
 
+const _tb = { i: 0, d: {}, done: false };
+
 Typebot.initBubble({
   typebot: 'orcali-facilities',
   theme: {
@@ -583,6 +585,33 @@ Typebot.initBubble({
     wbraid:       _ids.wbraid  || _p.get('wbraid')  || '',
     ttclid:       _ids.ttclid  || _p.get('ttclid')  || '',
     msclkid:      _ids.msclkid || _p.get('msclkid') || '',
+  },
+
+  // Rota Typebot: ~1/3 dos leads entram por aqui e nao passavam sinal nenhum pro Google.
+  // Só a conversao do Google e disparada — a Meta fica de fora de proposito, porque o
+  // Apps Script ja manda Lead via CAPI para essas linhas e disparar no browser duplicaria.
+  onAnswer: (a) => {
+    try {
+      const m = ((a && a.message) || '').trim();
+      if (!m) return;
+      if (_tb.i === 0) _tb.d.nome = m;
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)) _tb.d.email = m.toLowerCase();
+      else {
+        const dg = m.replace(/\D/g, '');
+        if (dg.length >= 10 && dg.length <= 13) _tb.d.tel = dg;
+      }
+      _tb.i++;
+    } catch (e) {}
+  },
+  onEnd: () => {
+    try {
+      if (_tb.done || typeof window.fireGoogleConv !== 'function') return;
+      _tb.done = true;
+      const evt = typeof window.genEvtId === 'function'
+        ? window.genEvtId()
+        : 'tb-' + Date.now() + '-' + Math.random().toString(16).slice(2);
+      window.fireGoogleConv({ get: (k) => _tb.d[k] || '' }, { event_id: evt });
+    } catch (e) {}
   },
 });
 </script>
@@ -694,7 +723,9 @@ function fireGoogleConv(f,br){try{
   if(Object.keys(ud).length)gtag('set','user_data',ud);
   gtag('event','conversion',{send_to:'AW-996720589/vXGgCNK8mdMcEM3_otsD',transaction_id:br.event_id});
 }catch(e){}}
-fetch('/api/pageview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:genEvtId(),fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),page_url:location.href,user_agent:navigator.userAgent})}).catch(function(){});
+var _pvId=genEvtId();
+if(typeof fbq==='function')fbq('track','PageView',{},{eventID:_pvId});
+fetch('/api/pageview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:_pvId,fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),page_url:location.href,user_agent:navigator.userAgent})}).catch(function(){});
 /* CNPJ — máscara + validação de dígitos verificadores (inválido bloqueia o envio; Exact exige CPF/CNPJ) */
 (function(){
   var el=document.getElementById('cnpj');if(!el)return;
