@@ -593,11 +593,14 @@ Typebot.initBubble({
     try {
       const m = ((a && a.message) || '').trim();
       if (!m) return;
-      if (_tb.i === 0) _tb.d.nome = m;
+      // O 1o answer e a escolha do menu ("Quero solicitar um orcamento" / "Quero uma vaga
+      // de emprego"), nao um dado do lead. Antes ia como nome pro user_data do Google.
+      if (_tb.i === 0) { _tb.menu = m; _tb.i++; return; }
       if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)) _tb.d.email = m.toLowerCase();
       else {
         const dg = m.replace(/\D/g, '');
         if (dg.length >= 10 && dg.length <= 13) _tb.d.tel = dg;
+        else if (!_tb.d.nome) _tb.d.nome = m;
       }
       _tb.i++;
     } catch (e) {}
@@ -605,6 +608,10 @@ Typebot.initBubble({
   onEnd: () => {
     try {
       if (_tb.done || typeof window.fireGoogleConv !== 'function') return;
+      // A rota "vaga de emprego" (texto + Wait + Redirect) TERMINA o fluxo e cai aqui igual
+      // a um lead. Sem email nem telefone nao houve lead — era isso que gerava conversao
+      // fantasma no Google (21/07: as 2 conversoes do dia foram candidatos a emprego).
+      if (!_tb.d.email && !_tb.d.tel) return;
       _tb.done = true;
       const evt = typeof window.genEvtId === 'function'
         ? window.genEvtId()
