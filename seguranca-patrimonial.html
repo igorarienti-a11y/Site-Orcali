@@ -733,9 +733,16 @@ function fireGoogleConv(f,br){try{
 var _pvId=genEvtId();
 if(typeof fbq==='function')fbq('track','PageView',{},{eventID:_pvId});
 fetch('/api/pageview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_id:_pvId,fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),page_url:location.href,user_agent:navigator.userAgent})}).catch(function(){});
-/* CNPJ — máscara + validação de dígitos verificadores (inválido bloqueia o envio; Exact exige CPF/CNPJ) */
+/* CNPJ — máscara + dígitos verificadores + consulta na Receita Federal (BrasilAPI).
+   Dígito errado ou CNPJ inexistente na Receita BLOQUEIA o envio. API fora do ar/lenta NÃO bloqueia
+   (fail-open — nunca perder lead). Preenche "Empresa" com a razão social quando o campo está vazio. */
 (function(){
   var el=document.getElementById('cnpj');if(!el)return;
+  var emp=document.getElementById('empresa');
+  var hint=document.createElement('div');
+  hint.style.cssText='margin-top:6px;font-size:12.5px;line-height:1.4;min-height:15px';
+  el.parentNode.appendChild(hint);
+  var cache={},reqId=0;
   function mask(v){v=v.replace(/\D/g,'').slice(0,14);
     if(v.length>12)return v.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2}).*/,'$1.$2.$3/$4-$5');
     if(v.length>8) return v.replace(/^(\d{2})(\d{3})(\d{3})(\d{0,4}).*/,'$1.$2.$3/$4');
@@ -749,7 +756,32 @@ fetch('/api/pageview',{method:'POST',headers:{'Content-Type':'application/json'}
     if(dv(v.slice(0,12))!==parseInt(v[12],10))return false;
     if(dv(v.slice(0,13))!==parseInt(v[13],10))return false;
     return true;}
-  function check(){var d=el.value.replace(/\D/g,'');el.setCustomValidity(d.length===0?'':(valida(d)?'':'CNPJ inválido — confira os números.'));}
+  function setHint(t,c){hint.textContent=t||'';hint.style.color=c||'#64748B';}
+  function aplica(d,j){
+    if(el.value.replace(/\D/g,'')!==d)return;
+    if(!j||j.__nf){el.setCustomValidity('CNPJ não encontrado na Receita Federal — confira os números.');
+      setHint('CNPJ não encontrado na Receita Federal.','#C53030');return;}
+    el.setCustomValidity('');
+    var razao=(j.razao_social||'').trim(),fant=(j.nome_fantasia||'').trim(),nome=razao||fant;
+    if(nome&&emp&&(!emp.value.trim()||emp.dataset.rf==='1')){emp.value=nome;emp.dataset.rf='1';}
+    var sit=(j.descricao_situacao_cadastral||'').toUpperCase();
+    var txt='✓ '+(razao||'CNPJ válido')+(j.municipio?' · '+j.municipio+'/'+(j.uf||''):'');
+    if(sit&&sit!=='ATIVA')setHint(txt+' · situação cadastral: '+sit,'#B7791F');
+    else setHint(txt,'#2F855A');}
+  function consulta(d){
+    if(cache[d]){aplica(d,cache[d]);return;}
+    var id=++reqId,done=false;
+    setHint('Consultando na Receita Federal…','#64748B');
+    var to=setTimeout(function(){if(done)return;done=true;if(id===reqId){el.setCustomValidity('');setHint('','');}},7000);
+    fetch('https://brasilapi.com.br/api/cnpj/v1/'+d)
+      .then(function(r){if(r.status===404||r.status===400)return{__nf:true};if(!r.ok)throw 0;return r.json();})
+      .then(function(j){if(done)return;done=true;clearTimeout(to);cache[d]=j;if(id===reqId)aplica(d,j);})
+      .catch(function(){if(done)return;done=true;clearTimeout(to);if(id===reqId){el.setCustomValidity('');setHint('','');}});}
+  function check(){var d=el.value.replace(/\D/g,'');
+    if(!d){el.setCustomValidity('');setHint('','');return;}
+    if(!valida(d)){el.setCustomValidity('CNPJ inválido — confira os números.');setHint('','');return;}
+    el.setCustomValidity('');consulta(d);}
+  if(emp)emp.addEventListener('input',function(){delete emp.dataset.rf;});
   el.addEventListener('input',function(){el.value=mask(el.value);check();});
   el.addEventListener('blur',check);
   if(el.form)el.form.addEventListener('submit',check,true);
