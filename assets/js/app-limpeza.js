@@ -284,29 +284,4 @@
       cx.appendChild(f);
     });
   });
-
-  /* Prévia A/B do hero: só aparece com ?ab=1 na URL */
-  if (new URLSearchParams(location.search).has('ab')) document.getElementById('painelAB').hidden = false;
-  var variantes = {
-    a: {
-      h1:'Limpeza e conservação',
-      sub:'Terceirização de limpeza empresarial com padrão auditável Orcali',
-      desc:'Equipes próprias, treinadas e supervisionadas. Mais de 58 anos em Santa Catarina e Paraná.'
-    },
-    b: {
-      h1:'Limpeza e conservação completa, uma só gestão.',
-      sub:'Da higienização diária à conservação de áreas externas.',
-      desc:'Equipe própria, treinada e dimensionada para a sua operação, com equipes volantes garantindo que nenhum posto fique descoberto.'
-    }
-  };
-  document.querySelectorAll('.ab button').forEach(function(b){
-    b.addEventListener('click', function(){
-      var v = variantes[b.dataset.hero];
-      document.getElementById('heroH1').textContent = v.h1;
-      document.getElementById('heroSub').textContent = v.sub;
-      document.getElementById('heroDesc').textContent = v.desc;
-      document.querySelectorAll('.ab button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
-      b.setAttribute('aria-pressed','true');
-    });
-  });
 })();

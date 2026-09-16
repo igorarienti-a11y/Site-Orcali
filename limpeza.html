@@ -318,18 +318,6 @@ h2.titulo.larga{max-width:26ch}
 .zap:hover{background:#1fb356;color:#fff}
 .barra-mob{display:none}
 
-/* ---------- PRÉVIA A/B (REMOVER ANTES DE PUBLICAR) -------- */
-.ab{
-  position:fixed;left:18px;bottom:22px;z-index:70;background:#fff;border:1px solid var(--linha);
-  border-radius:var(--pill);padding:7px 8px 7px 16px;display:flex;align-items:center;gap:10px;
-  box-shadow:var(--sombra);font-size:.82rem;font-weight:700;color:var(--texto-2)
-}
-.ab button{
-  border:1px solid var(--linha);background:#fff;border-radius:var(--pill);
-  padding:6px 13px;cursor:pointer;font-size:.82rem;font-weight:700;color:var(--texto-2)
-}
-.ab button[aria-pressed="true"]{background:var(--marinho);border-color:var(--marinho);color:#fff}
-
 /* ---------- MOTION ---------------------------------------- */
 @keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .entra{animation:sobe .6s cubic-bezier(.2,.7,.3,1) both}
@@ -425,7 +413,6 @@ h2.titulo.larga{max-width:26ch}
 @media (max-width:900px){
   .nav,.cab .wrap > .btn{display:none}   /* esconde só o CTA do header, não o do menu aberto */
   .menu-btn{display:block}
-  .ab{display:none}
   .band{padding:60px 0}
   .band--tight{padding:48px 0}
   .hero .wrap{padding-top:52px}
@@ -1047,13 +1034,6 @@ fbq('init','1650240729249255');
 <!-- Barra fixa (mobile) -->
 <div class="barra-mob">
   <a class="btn btn--verde" href="#orcamento">Solicitar orçamento</a>
-</div>
-
-<!-- ====== PRÉVIA A/B DO HERO — REMOVER ANTES DE PUBLICAR ====== -->
-<div class="ab" id="painelAB" hidden role="group" aria-label="Prévia das alternativas de H1">
-  Hero:
-  <button type="button" data-hero="a" aria-pressed="false">A</button>
-  <button type="button" data-hero="b" aria-pressed="true">B</button>
 </div>
 
 <script src="assets/js/app-limpeza.js" defer></script>
