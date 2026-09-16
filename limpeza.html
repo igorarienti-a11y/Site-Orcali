@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-996720589"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-996720589');
+</script>
+<title>Orcali · Limpeza e Conservação</title>
+<meta name="description" content="Terceirização de limpeza empresarial com padrão auditável Orcali. Equipes próprias, treinadas e supervisionadas. Mais de 58 anos em Santa Catarina e Paraná.">
+<meta name="theme-color" content="#001B42">
+<link rel="canonical" href="https://lp.orcali.com.br/limpeza">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Orcali Segurança e Serviços">
+<meta property="og:title" content="Limpeza e conservação completa, uma só gestão.">
+<meta property="og:description" content="Equipe própria, treinada e dimensionada para a sua operação, com equipes volantes garantindo que nenhum posto fique descoberto.">
+<meta property="og:image" content="assets/img/hero-limpeza-desktop.jpg">
+<meta property="og:url" content="https://lp.orcali.com.br/limpeza">
+
+<link rel="icon" href="https://www.orcali.com.br/wp-content/uploads/2024/06/cropped-cropped-BRANCA-1-270x270.jpg">
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/figtree-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/figtree-800.woff2" crossorigin>
+
+<style>
+@font-face{font-family:'Figtree';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/figtree-400.woff2') format('woff2')}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/figtree-500.woff2') format('woff2')}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/figtree-700.woff2') format('woff2')}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:800;font-display:swap;src:url('assets/fonts/figtree-800.woff2') format('woff2')}
+
+/* ============================================================
+   ORCALI · LP LIMPEZA E CONSERVAÇÃO
+   Arquivo único (HTML + CSS + JS). Sem dependências externas
+   além da fonte Figtree e das imagens já hospedadas em
+   lp.orcali.com.br/assets/img/
+   ============================================================ */
+
+/* ---------- TOKENS ---------------------------------------- */
+:root{
+  /* Cores da marca — confirmar HEX exatos com o manual da Orcali */
+  /* HEX extraidos do logo oficial da Orcali */
+  --marinho:#002E6E;      /* azul institucional */
+  --verde:#72BF45;        /* verde da marca */
+  --tinta:#001B42;        /* azul mais profundo: rodapé, vídeo e bloco do form */
+  --marinho-2:#0B4EA8;    /* azul de apoio / links */
+  --verde-2:#58A32F;      /* verde de hover (fundo) */
+  --verde-texto:#3C7A1E;  /* verde escuro o bastante para texto e ícone em fundo claro */
+  --verde-claro:#EDF7E5;  /* verde de fundo, para chips e ícones */
+  --verde-linha:#C9E7B4;  /* verde de borda */
+  --gelo:#F2F6FA;         /* fundo claro */
+  --linha:#DDE5EF;        /* hairlines e bordas */
+  --texto:#16202F;
+  --texto-2:#4A5A70;
+  --branco:#fff;
+
+  /* Matriz de cores da biossegurança (validar contra o POP da Orcali) */
+  --mc-azul:#2A6BD4;
+  --mc-vermelho:#D6453F;
+  --mc-verde:#3E9B37;
+  --mc-amarelo:#E3A511;
+
+  --wrap:1180px;
+  --pill:999px;
+  --r:16px;
+  --sombra:0 18px 40px -24px rgba(0,27,66,.45);
+}
+
+/* ---------- BASE ------------------------------------------ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:17px;line-height:1.65;color:var(--texto);background:var(--branco);
+  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:800}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+ul{margin:0;padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--marinho);outline-offset:2px;border-radius:4px;box-shadow:0 0 0 5px rgba(114,191,69,.6)}
+.hero :focus-visible,.band--tinta :focus-visible,.rodape :focus-visible{outline-color:#fff}
+
+/* compensa o header fixo ao navegar pelas âncoras */
+section[id],#top{scroll-margin-top:92px}
+
+.wrap{width:min(100% - 40px,var(--wrap));margin-inline:auto}
+.band{padding:84px 0}
+.band--tight{padding:60px 0}
+.band--gelo{background:var(--gelo)}
+.band--tinta{background:var(--tinta);color:#EAF1FB}
+.medida{max-width:62ch}
+
+.skip{position:fixed;left:-9999px;top:0;background:var(--verde);color:#04122e;padding:10px 16px;z-index:999;font-weight:700}
+.skip:focus{left:12px;top:12px}
+
+/* Título de seção: rótulo curto + h2. Sem caixa alta espaçada. */
+.rotulo{
+  display:inline-flex;align-items:center;gap:9px;margin:0 0 14px;
+  font-size:.9rem;font-weight:700;color:var(--marinho-2);letter-spacing:0;
+}
+.rotulo::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--verde)}
+.rotulo{color:var(--verde-texto)}
+.band--tinta .rotulo{color:var(--verde)}
+h2.titulo{font-size:clamp(1.85rem,3.5vw,2.75rem);max-width:20ch}
+h2.titulo.larga{max-width:26ch}
+.lead{font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--texto-2);max-width:64ch;margin-top:18px}
+.band--tinta .lead{color:#B9CDE8}
+
+/* ---------- BOTÕES ---------------------------------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 28px;border-radius:var(--pill);border:2px solid transparent;
+  font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;
+  transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn--verde{background:var(--verde);color:#08203f;border-color:var(--verde)}
+.btn--verde:hover{background:var(--verde-2);border-color:var(--verde-2);color:#08203f}
+.btn--marinho{background:var(--marinho);color:#fff;border-color:var(--marinho)}
+.btn--marinho:hover{background:var(--tinta);border-color:var(--tinta)}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,.12)}
+.btn--linha{background:transparent;color:var(--marinho);border-color:var(--linha)}
+.btn--linha:hover{border-color:var(--marinho)}
+.btn--bloco{width:100%}
+
+/* ---------- TOPO ------------------------------------------ */
+.topbar{background:var(--tinta);color:#C3D6F0;font-size:.86rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:40px}
+.topbar a{text-decoration:none;font-weight:700;color:#fff}
+.topbar a:hover{color:var(--verde)}
+.topbar-links{display:flex;gap:22px;align-items:center}
+
+.cab{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+.cab .wrap{display:flex;align-items:center;gap:28px;min-height:74px}
+.logo{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.logo img{height:40px;width:auto}
+.logo-txt{display:none;font-weight:800;font-size:1.35rem;color:var(--marinho);letter-spacing:.02em}
+.nav{margin-left:auto;display:flex;gap:26px;align-items:center}
+.nav a{text-decoration:none;font-size:.98rem;font-weight:500;color:var(--texto-2);padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--marinho);border-color:var(--verde)}
+.cab .btn{padding:12px 22px;font-size:.95rem}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--linha);border-radius:12px;width:46px;height:44px;cursor:pointer}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{content:"";display:block;height:2px;width:20px;background:var(--marinho);margin-inline:auto;border-radius:2px;position:relative}
+.menu-btn span::before{position:absolute;top:-6px}
+.menu-btn span::after{position:absolute;top:6px}
+.nav-mob{display:none;border-top:1px solid var(--linha);background:#fff}
+.nav-mob.aberto{display:block}
+.nav-mob a{display:block;padding:15px 20px;text-decoration:none;font-weight:500;border-bottom:1px solid var(--linha)}
+.nav-mob .btn{margin:16px 20px 22px;width:calc(100% - 40px)}
+
+/* ---------- HERO ------------------------------------------ */
+.hero{position:relative;background:var(--tinta);color:#fff;overflow:hidden;isolation:isolate}
+.hero-img{position:absolute;inset:0;z-index:-2}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:70% 40%}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(96deg,rgba(0,27,66,.97) 0%,rgba(0,27,66,.93) 38%,rgba(0,27,66,.62) 66%,rgba(0,27,66,.30) 100%);
+}
+.hero .wrap{padding:76px 0 0}
+.hero-txt{max-width:44rem}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4rem);letter-spacing:-.035em;line-height:1.02}
+.hero-sub{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:700;color:var(--verde);margin:20px 0 0;line-height:1.35}
+.hero-desc{margin-top:16px;font-size:1.06rem;color:#CBDCF2;max-width:52ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.hero-checks{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:24px;font-size:.95rem;color:#CBDCF2}
+.hero-checks li{display:flex;align-items:center;gap:9px}
+.hero-checks svg{flex:0 0 auto}
+
+/* Barra de números */
+.numeros{margin-top:56px;border-top:1px solid rgba(255,255,255,.18);display:grid;grid-template-columns:repeat(4,1fr)}
+.numeros li{padding:26px 26px 30px 0}
+.numeros li+li{border-left:1px solid rgba(255,255,255,.18);padding-left:26px}
+.numeros b{display:block;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:800;letter-spacing:-.03em;line-height:1}
+.numeros span{display:block;margin-top:7px;font-size:.9rem;color:#A9C3E3;line-height:1.35}
+
+/* ---------- RISCO ----------------------------------------- */
+.risco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;margin-top:44px}
+.risco-card p{font-size:.97rem;color:var(--texto-2);line-height:1.6}
+.risco-tag{display:inline-block;margin-top:16px;padding:5px 13px;border-radius:var(--pill);font-size:.8rem;font-weight:700}
+
+/* ---------- DIFERENCIAL ----------------------------------- */
+.dif{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.dif-foto{position:relative;overflow:hidden;border-radius:200px 24px 24px 24px}
+.dif-foto img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:var(--verde-claro)}
+.rotulo--lista{margin-top:38px}
+.rotulo--linha{margin-top:60px;margin-bottom:2px}
+.dif-lista{margin-top:4px;border-top:1px solid var(--linha)}
+.dif-lista li{display:grid;grid-template-columns:60px 1fr;gap:22px;padding:28px 0;border-bottom:1px solid var(--linha)}
+.dif-ico{width:60px;height:60px;border-radius:16px;display:grid;place-items:center}
+.dif-lista h3{font-size:1.06rem;color:var(--marinho);margin-bottom:6px}
+.dif-lista p{font-size:.97rem;color:var(--texto-2)}
+.dif-cta{margin-top:30px}
+
+/* ---------- EMPRESA + LINHA DO TEMPO ---------------------- */
+.empresa{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.empresa-foto img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:24px 24px 24px 200px;background:var(--gelo)}
+.linha{margin-top:10px;border-top:2px solid var(--verde-linha);display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.linha li{padding:28px 0 0;position:relative}
+.linha li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--linha)}
+.linha li:last-child::before{background:var(--verde)}
+.tl-card{height:100%;background:rgba(0,46,110,.045);border:1px solid var(--linha);border-radius:14px;
+  padding:18px 16px 20px;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+.tl-card:hover{border-color:var(--verde);background:rgba(114,191,69,.09);transform:translateY(-3px)}
+.linha b{display:block;font-size:1.3rem;color:var(--marinho);letter-spacing:-.02em}
+.linha span{display:block;margin-top:6px;font-size:.92rem;color:var(--texto-2);line-height:1.45}
+.normas{margin-top:44px;padding:24px 28px;border-radius:var(--r);background:var(--gelo);border:1px solid var(--linha);display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center}
+.normas p{font-size:.98rem;color:var(--texto-2);flex:1 1 340px}
+
+/* ---------- SEGMENTOS ------------------------------------- */
+.seg{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.seg li{
+  background:#fff;border:1px solid var(--linha);border-radius:18px;padding:32px 26px 30px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease
+}
+.seg li:hover{border-color:var(--verde);transform:translateY(-4px);box-shadow:0 18px 34px -26px rgba(0,27,66,.55)}
+.seg-ico{
+  width:64px;height:64px;border-radius:50%;background:var(--verde-claro);border:1px solid var(--verde-linha);
+  display:grid;place-items:center;color:var(--verde-texto);margin-bottom:4px;transition:background .18s ease,color .18s ease
+}
+.seg li:hover .seg-ico{background:var(--verde);border-color:var(--verde);color:#08203f}
+.seg b{color:var(--marinho);font-size:1.04rem;line-height:1.3}
+.seg span{font-size:.94rem;color:var(--texto-2);line-height:1.55}
+
+/* ---------- ORÇAMENTO ------------------------------------- */
+.orc{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.orc-vantagens{margin-top:30px}
+.orc-vantagens li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:1rem;color:#DDEBFA}
+.orc-vantagens svg{flex:0 0 auto;margin-top:5px}
+
+.form-card{background:#fff;border-radius:22px;padding:36px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);color:var(--texto)}
+.form-card h3{font-size:1.35rem;color:var(--marinho)}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.campo{display:flex;flex-direction:column;gap:7px}
+.campo--full{grid-column:1/-1}
+.campo label,.rot-campo{font-size:.88rem;font-weight:700;color:var(--texto)}
+.campo label span{color:var(--texto-2);font-weight:500}
+.campo input,.campo select,.campo textarea{
+  width:100%;padding:13px 15px;border:1.5px solid var(--linha);border-radius:11px;background:#fff;
+  transition:border-color .16s ease,box-shadow .16s ease;font-size:.98rem
+}
+.campo textarea{min-height:96px;resize:vertical}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--marinho-2);box-shadow:0 0 0 4px rgba(20,69,143,.12);outline:none}
+.campo input:user-invalid,.campo select:user-invalid{border-color:var(--mc-vermelho)}
+.dupla{display:grid;grid-template-columns:110px 1fr;gap:12px}
+.lgpd{grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;margin-top:6px;font-size:.92rem;color:var(--texto-2)}
+.lgpd input{width:20px;height:20px;flex:0 0 auto;margin-top:2px;accent-color:var(--verde)}
+.lgpd a{color:var(--marinho-2)}
+.form-card .btn{margin-top:22px}
+.status-campo{margin:0;font-size:.84rem;line-height:1.4}
+.status-campo--ok{color:var(--verde-texto)}
+.status-campo--aviso{color:#9A6700}
+.status-campo--erro{color:#9B2C2C}
+.status-campo--carregando{color:var(--texto-2)}
+.erro-form{margin-top:14px;padding:12px 14px;border-radius:10px;background:#FDECEC;border:1px solid #F3BDBD;
+  color:#9B2C2C;font-size:.9rem}
+.btn[disabled]{opacity:.65;cursor:progress}
+.aviso{margin-top:16px;font-size:.85rem;color:var(--texto-2);display:flex;gap:9px;align-items:flex-start}
+
+/* Sucesso + cross-sell */
+.sucesso{display:none;text-align:left}
+.sucesso.ativo{display:block;animation:sobe .4s ease both}
+.sucesso-ico{width:56px;height:56px;border-radius:50%;background:var(--verde);display:grid;place-items:center;margin-bottom:20px}
+.sucesso h3{font-size:1.45rem;margin-bottom:10px}
+.crossell{margin-top:28px;padding:24px;border-radius:var(--r);background:var(--gelo);border:1px solid var(--linha)}
+.crossell b{color:var(--marinho)}
+.crossell p{font-size:.96rem;color:var(--texto-2)}
+.crossell .btn{margin-top:18px}
+
+/* ---------- FAQ ------------------------------------------- */
+.faq{margin-top:40px;border-top:1px solid var(--linha);max-width:900px}
+.faq-item{border-bottom:1px solid var(--linha)}
+.faq-btn{
+  width:100%;background:none;border:0;text-align:left;cursor:pointer;
+  padding:24px 46px 24px 0;font-size:1.06rem;font-weight:700;color:var(--marinho);position:relative;
+  letter-spacing:-.01em;line-height:1.35
+}
+.faq-btn::after{
+  content:"";position:absolute;right:8px;top:50%;width:12px;height:12px;
+  border-right:2.5px solid var(--verde);border-bottom:2.5px solid var(--verde);
+  transform:translateY(-70%) rotate(45deg);transition:transform .22s ease
+}
+.faq-btn[aria-expanded="true"]::after{transform:translateY(-20%) rotate(-135deg)}
+.faq-resp{display:none;padding:0 40px 26px 0;color:var(--texto-2);font-size:1rem;max-width:72ch}
+.faq-resp.aberta{display:block}
+
+/* ---------- RODAPÉ ---------------------------------------- */
+.rodape{background:var(--tinta);color:#A9C3E3;padding:70px 0 0;font-size:.96rem}
+.rodape-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:48px}
+.rodape img{height:42px;margin-bottom:20px}
+.rodape h4{color:#fff;font-size:1rem;margin-bottom:16px}
+.rodape a{color:#A9C3E3;text-decoration:none}
+.rodape a:hover{color:var(--verde)}
+.rodape li{padding:5px 0}
+.rodape-fone{color:#fff;font-weight:800;font-size:1.25rem;display:block;margin-bottom:12px}
+.rodape-fim{margin-top:52px;border-top:1px solid rgba(255,255,255,.15);padding:22px 0 26px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:.87rem}
+
+/* ---------- FLUTUANTES ------------------------------------ */
+.zap{
+  position:fixed;right:22px;bottom:22px;z-index:70;display:flex;align-items:center;gap:11px;
+  background:#25D366;color:#04241a;padding:13px 20px 13px 16px;border-radius:var(--pill);
+  text-decoration:none;font-weight:700;font-size:.95rem;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)
+}
+.zap:hover{background:#1fb356;color:#fff}
+.barra-mob{display:none}
+
+/* ---------- PRÉVIA A/B (REMOVER ANTES DE PUBLICAR) -------- */
+.ab{
+  position:fixed;left:18px;bottom:22px;z-index:70;background:#fff;border:1px solid var(--linha);
+  border-radius:var(--pill);padding:7px 8px 7px 16px;display:flex;align-items:center;gap:10px;
+  box-shadow:var(--sombra);font-size:.82rem;font-weight:700;color:var(--texto-2)
+}
+.ab button{
+  border:1px solid var(--linha);background:#fff;border-radius:var(--pill);
+  padding:6px 13px;cursor:pointer;font-size:.82rem;font-weight:700;color:var(--texto-2)
+}
+.ab button[aria-pressed="true"]{background:var(--marinho);border-color:var(--marinho);color:#fff}
+
+/* ---------- MOTION ---------------------------------------- */
+@keyframes sobe{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.entra{animation:sobe .6s cubic-bezier(.2,.7,.3,1) both}
+.entra:nth-child(2){animation-delay:.07s}
+.entra:nth-child(3){animation-delay:.13s}
+.entra:nth-child(4){animation-delay:.19s}
+
+
+/* ---------- RISCO: cards com icone ----------------------- */
+.risco-card{background:#fff;padding:28px 26px;position:relative;transition:background .18s ease}
+.risco-ico{
+  width:44px;height:44px;border-radius:12px;background:var(--verde-claro);border:1px solid var(--verde-linha);
+  display:grid;place-items:center;color:var(--verde-texto);margin-bottom:18px
+}
+.risco-card h3{font-size:1.06rem;color:var(--marinho);margin-bottom:10px;letter-spacing:-.01em;line-height:1.3}
+.risco-card h3 em{font-style:normal;color:var(--verde-texto)}
+.risco-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--verde);
+  transform:scaleY(0);transform-origin:top;transition:transform .22s ease}
+.risco-card:hover{background:#FCFEFA}
+.risco-card:hover::after{transform:scaleY(1)}
+.risco-card:hover .risco-ico{background:var(--verde);border-color:var(--verde);color:#08203f}
+
+/* ---------- VIDEO INSTITUCIONAL -------------------------- */
+.video-bloco{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.video{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#061F4C;
+  border:1px solid rgba(114,191,69,.30)}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video-btn{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:linear-gradient(180deg,rgba(0,27,66,.25),rgba(0,27,66,.72));border:0;cursor:pointer;color:#fff;
+  font:inherit;font-weight:700;font-size:.95rem;letter-spacing:.01em
+}
+.video-btn span{display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:var(--verde);
+  box-shadow:0 14px 34px -12px rgba(0,0,0,.7);transition:transform .2s ease,background .2s ease}
+.video-btn:hover span{transform:scale(1.07);background:#86D257}
+.video-selo{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:.86rem;color:#9FBEE4}
+
+/* ---------- UNIDADES ------------------------------------- */
+.unidades{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
+.matriz{background:var(--marinho);color:#fff;border-radius:20px;padding:32px 34px;position:relative;overflow:hidden}
+.matriz::after{content:"";position:absolute;right:-70px;bottom:-70px;width:200px;height:200px;border-radius:50%;
+  background:rgba(114,191,69,.16)}
+.matriz .tag{display:inline-block;padding:5px 14px;border-radius:var(--pill);background:var(--verde);
+  color:#08203f;font-size:.78rem;font-weight:700;margin-bottom:16px}
+.matriz h3{font-size:1.6rem;margin-bottom:10px}
+.matriz p{color:#C3D8F2;font-size:1rem;position:relative}
+.matriz a{display:inline-flex;align-items:center;gap:8px;margin-top:20px;color:var(--verde);font-weight:700;
+  text-decoration:none;font-size:.95rem;position:relative}
+.matriz a:hover{color:#8FD06E}
+.bases{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bases li{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:16px 18px;
+  display:flex;align-items:center;gap:12px;transition:border-color .18s ease,transform .18s ease}
+.bases li:hover{border-color:var(--verde);transform:translateY(-2px)}
+.bases svg{flex:0 0 auto;color:var(--verde-texto)}
+.bases b{display:block;color:var(--marinho);font-size:1rem;line-height:1.2}
+.bases span{font-size:.82rem;color:var(--texto-2)}
+
+/* ---------- TIPO DE CONTRATO (form) ---------------------- */
+.contrato{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.contrato label{
+  display:flex;align-items:center;gap:11px;padding:13px 15px;border:1.5px solid var(--linha);border-radius:11px;
+  cursor:pointer;font-size:.95rem;font-weight:500;transition:border-color .16s ease,background .16s ease
+}
+.contrato input{width:18px;height:18px;flex:0 0 auto;accent-color:var(--verde-2);margin:0}
+.contrato label:hover{border-color:var(--verde)}
+.contrato label:has(input:checked){border-color:var(--verde-2);background:var(--verde-claro)}
+
+/* ---------- DETALHES EM VERDE ---------------------------- */
+.dif-ico{background:var(--verde-claro);border:1px solid var(--verde-linha);color:var(--verde-texto)}
+.linha li::before{background:var(--verde-linha)}
+.linha li:last-child::before{background:var(--verde);box-shadow:0 0 0 5px rgba(114,191,69,.22)}
+.linha b{color:var(--marinho)}
+.normas{border-left:4px solid var(--verde)}
+.rodape{border-top:4px solid var(--verde)}
+.numeros{border-top:2px solid var(--verde)}
+.numeros li b{color:#fff}
+.selo-iso img{height:50px;width:auto;display:block}
+.selo-iso span{margin-top:10px}
+.risco-tag{background:var(--verde-claro);color:var(--verde-texto);border:1px solid var(--verde-linha)}
+
+/* ---------- RESPONSIVO ------------------------------------ */
+@media (max-width:1080px){
+  .dif,.empresa,.orc,.video-bloco,.unidades{grid-template-columns:1fr;gap:44px}
+  .dif-foto{border-radius:140px 24px 24px 24px}
+  .dif-foto img{aspect-ratio:16/10}
+  .empresa-foto img{border-radius:24px 24px 24px 140px}
+  .risco-grid,.seg{grid-template-columns:repeat(2,1fr)}
+  .linha{grid-template-columns:repeat(3,1fr);border-top:0}
+  .linha li{border-top:2px solid var(--linha);padding-top:24px;margin-top:18px}
+  h2.titulo{max-width:24ch}
+}
+@media (max-width:900px){
+  .nav,.cab .wrap > .btn{display:none}   /* esconde só o CTA do header, não o do menu aberto */
+  .menu-btn{display:block}
+  .ab{display:none}
+  .band{padding:60px 0}
+  .band--tight{padding:48px 0}
+  .hero .wrap{padding-top:52px}
+  /* no mobile o texto ocupa toda a largura: o overlay passa a ser vertical */
+  .hero::before{background:linear-gradient(180deg,rgba(0,27,66,.94) 0%,rgba(0,27,66,.88) 55%,rgba(0,27,66,.74) 100%)}
+  .hero-img img{object-position:50% 35%}
+  .numeros{grid-template-columns:1fr 1fr}
+  .numeros li{padding:20px 20px 22px 0}
+  .numeros li:nth-child(2n){border-left:1px solid rgba(255,255,255,.18);padding-left:22px}
+  .numeros li:nth-child(3),.numeros li:nth-child(4){border-top:1px solid rgba(255,255,255,.18)}
+  .numeros li:nth-child(3){border-left:0;padding-left:0}
+  .seg{grid-template-columns:1fr}
+  .linha{gap:10px}
+  .bases{grid-template-columns:1fr 1fr}
+  .contrato{grid-template-columns:1fr}
+  .form-card{padding:26px 22px}
+  .rodape-grid{grid-template-columns:1fr;gap:36px}
+  .zap{bottom:88px;right:16px;padding:12px 18px}
+  .barra-mob{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:75;gap:10px;padding:12px 16px;
+    background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--linha)
+  }
+  .barra-mob .btn{flex:1;padding:14px 18px}
+  body{padding-bottom:76px}
+}
+@media (max-width:620px){
+  .risco-grid{grid-template-columns:1fr}
+  .campos{grid-template-columns:1fr}
+  .linha{grid-template-columns:1fr 1fr}
+  .hero-cta .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style>
+
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1650240729249255');
+</script>
+</head>
+<body id="top">
+<a class="skip" href="#orcamento">Ir para o formulário de orçamento</a>
+
+<!-- ===================== TOPO ===================== -->
+<div class="topbar">
+  <div class="wrap">
+    <span>Segunda a Sexta-feira, das 08h às 18h</span>
+    <div class="topbar-links">
+      <a href="tel:08002428888">0800 242 8888</a>
+    </div>
+  </div>
+</div>
+
+<header class="cab">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Orcali Segurança e Serviços — início">
+      <img src="assets/img/logo-color.png" alt="Orcali Segurança e Serviços" width="180" height="40" id="logoImg">
+      <span class="logo-txt" id="logoTxt">ORCALI</span>
+    </a>
+    <nav class="nav" aria-label="Seções da página">
+      <a href="#diferencial">Diferenciais</a>
+      <a href="#segmentos">Segmentos</a>
+      <a href="#empresa">Orcali</a>
+      <a href="#unidades">Unidades</a>
+      <a href="#faq">Perguntas frequentes</a>
+    </nav>
+    <a class="btn btn--verde" href="#orcamento">Solicitar orçamento</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navMob" aria-label="Abrir menu"><span></span></button>
+  </div>
+  <nav class="nav-mob" id="navMob" aria-label="Menu">
+    <a href="#diferencial">Diferenciais</a>
+    <a href="#segmentos">Segmentos</a>
+    <a href="#empresa">Orcali</a>
+    <a href="#unidades">Unidades</a>
+    <a href="#faq">Perguntas frequentes</a>
+    <a class="btn btn--verde" href="#orcamento">Solicitar orçamento</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="assets/img/hero-limpeza-desktop.jpg" alt="Profissional de limpeza da Orcali em operação" fetchpriority="high" width="2560" height="900">
+  </div>
+  <div class="wrap">
+    <div class="hero-txt">
+      <!-- HERO A/B: os textos abaixo são trocados pelo painel de prévia -->
+      <h1 class="entra" id="heroH1">Limpeza e conservação completa, uma só gestão.</h1>
+      <p class="hero-sub entra" id="heroSub">Da higienização diária à conservação de áreas externas.</p>
+      <p class="hero-desc entra" id="heroDesc">Equipe própria, treinada e dimensionada para a sua operação, com equipes volantes garantindo que nenhum posto fique descoberto.</p>
+      <div class="hero-cta">
+        <a class="btn btn--verde" href="#orcamento">Solicitar orçamento</a>
+      </div>
+      <ul class="hero-checks">
+        <li><svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#72BF45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Visita técnica presencial</li>
+        <li><svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#72BF45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Proposta personalizada</li>
+      </ul>
+    </div>
+
+    <ul class="numeros">
+      <li><b>+58</b><span>anos no mercado</span></li>
+      <li><b>+5.000</b><span>colaboradores próprios</span></li>
+      <li><b>+1.500</b><span>clientes atendidos</span></li>
+      <li class="selo-iso">
+        <img src="assets/img/iso-9001-2015.png" alt="Certificação ISO 9001:2015" width="333" height="150">
+        <span>auditada pela SGS</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== RISCO ===================== -->
+<section class="band" id="risco">
+  <div class="wrap">
+    <p class="rotulo">As operações que não podem falhar</p>
+    <h2 class="titulo larga">O que está em risco quando a limpeza falha?</h2>
+    <p class="lead">Em ambientes de alta circulação e alta criticidade, uma falha de higienização não é um detalhe.</p>
+
+    <div class="risco-grid">
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V7.5L12 3l7 4.5V21"/><path d="M12 9.5v6M9 12.5h6M3 21h18"/></svg></span>
+        <h3>Um hospital <em>não pode falhar.</em></h3>
+        <p>Áreas críticas, semicríticas e não críticas exigem rotinas distintas, produtos corretos e prevenção de contaminação cruzada. Uma falha aqui é risco de infecção.</p>
+        <span class="risco-tag">Saúde</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 016.5 3H19v15.5H6.5A2.5 2.5 0 004 21z"/><path d="M8.5 7.5h6"/></svg></span>
+        <h3>Uma escola <em>não pode falhar.</em></h3>
+        <p>Sanitários, bebedouros, refeitórios e salas de alta rotatividade exigem limpeza diária e sinalização de segurança. Uma falha aqui é o absenteísmo e reclamação de famílias.</p>
+        <span class="risco-tag">Ensino Básico</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9 4.4-9 4.4-9-4.4z"/><path d="M7 11v4.4c0 1.4 2.2 2.4 5 2.4s5-1 5-2.4V11"/></svg></span>
+        <h3>Uma universidade <em>não pode falhar.</em></h3>
+        <p>Campi somam salas, laboratórios, bibliotecas, áreas administrativas e grandes áreas externas. Uma falha aqui é depreciação de patrimônio e queda na percepção institucional.</p>
+        <span class="risco-tag">Ensino Superior</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3h4M11 3v6.2L5.6 18a2 2 0 001.7 3h9.4a2 2 0 001.7-3L13 9.2V3"/><path d="M8.6 15h6.8"/></svg></span>
+        <h3>Um laboratório <em>não pode falhar.</em></h3>
+        <p>Bancadas, geladeiras, congeladores e superfícies exigem procedimento próprio e desinfecção com álcool 70%, sempre sob orientação do responsável técnico. Uma falha aqui compromete resultado de análise.</p>
+        <span class="risco-tag">Laboratórios</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span>
+        <h3>Um shopping <em>não pode falhar.</em></h3>
+        <p>Praça de alimentação, sanitários de uso público, corredores e estacionamento operam sob fluxo intenso e olhar constante do consumidor. Uma falha aqui é perda de tráfego e reclamação de lojista.</p>
+        <span class="risco-tag">Shopping &amp; Varejo</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5l9-5.5 9 5.5"/><path d="M5.5 10v8M10 10v8M14 10v8M18.5 10v8M3 21h18"/></svg></span>
+        <h3>Uma instituição financeira <em>não pode falhar.</em></h3>
+        <p>Agências e centros administrativos são ambiente de atendimento e de imagem de marca. Uma falha aqui é percepção de descuido onde o cliente exige rigor.</p>
+        <span class="risco-tag">Financeiro</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 21V8.5L10 5.5V21"/><path d="M10 21V11l6.5 2.2V21"/><path d="M6.3 11h1.4M6.3 15h1.4M12.8 16h1.4"/><path d="M2.5 21h19"/></svg></span>
+        <h3>Um condomínio <em>não pode falhar.</em></h3>
+        <p>Halls, elevadores, garagens, áreas comuns e de lazer são o patrimônio compartilhado de todos os moradores. Uma falha aqui é desvalorização e conflito em assembleia.</p>
+        <span class="risco-tag">Condomínios</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9.5 7V4.8h5V7M6.2 7l1 13.2h9.6L18 7"/><path d="M10.3 11v6M13.7 11v6"/></svg></span>
+        <h3>O ambiente da sua empresa <em>não pode falhar.</em></h3>
+        <p>Resíduo comum, orgânico, reciclável, infectante e perfurocortante exigem segregação e acondicionamento corretos. Uma falha aqui é risco ocupacional e não conformidade.</p>
+        <span class="risco-tag">Resíduos</span>
+      </article>
+      <article class="risco-card">
+        <span class="risco-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l4.6 6.6h-2.7L18 15.5H6l4.1-5.9H7.4z"/><path d="M12 15.5V21M7 21h10"/></svg></span>
+        <h3>Uma área externa <em>não pode falhar.</em></h3>
+        <p>Pátios, calçadas e acessos são o primeiro contato de pacientes, alunos, clientes e visitantes com a sua instituição. Uma falha aqui é a primeira impressão errada.</p>
+        <span class="risco-tag">Áreas Externas</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DIFERENCIAL ===================== -->
+<section class="band band--gelo" id="diferencial">
+  <div class="wrap dif">
+    <div class="dif-foto">
+      <img src="assets/img/diferencial-vertical.jpg" alt="Equipe própria da Orcali em rotina de limpeza e conservação" loading="lazy" decoding="async" width="1080" height="1920">
+    </div>
+
+    <div>
+      <h2 class="titulo larga">Não entregamos mão de obra. Entregamos limpeza supervisionada</h2>
+      <p class="lead">Da higienização diária à conservação de áreas externas — equipe própria, treinada e dimensionada para a sua operação, com equipes volantes garantindo que nenhum posto fique descoberto.</p>
+
+      <p class="rotulo rotulo--lista">Diferenciais operacionais</p>
+      <ul class="dif-lista">
+        <li>
+          <span class="dif-ico" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M6 3h8l4 4v14H6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v4h4M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h3>Procedimento Operacional padrão documentado</h3>
+            <p>Cada atividade tem definição, material necessário e passo a passo. Cada posto tem cronograma próprio, auditado e atualizado. A qualidade não oscila com a troca de colaborador.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dif-ico" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M9 6l1.2-2h3.6L15 6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3.2" stroke="currentColor" stroke-width="1.8"/></svg>
+          </span>
+          <div>
+            <h3>Registro auditável de cada rotina</h3>
+            <p>Vistorias diárias no SGO (Sistema de Gestão Operacional) com fotos e observações, vinculadas à conta do cliente. Você não pergunta se foi feito — você vê.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dif-ico" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c.6-3.2 2.9-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16.5 9.5h5m-2.5-2.5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <div>
+            <h3>Cobertura de faltas e afastamentos</h3>
+            <p>Equipes volantes repõem ausências, férias e afastamentos sem deixar brecha na sua rotina de higienização. Sua limpeza não para porque alguém faltou.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dif-ico" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12.2l2 2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div>
+            <h3>Biossegurança aplicada</h3>
+            <p>Matriz de cores para panos, mops e acessórios, prevenindo contaminação cruzada entre ambientes. Sequência de limpeza sempre da área menos crítica para a mais crítica.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="dif-cta">
+        <a class="btn btn--marinho" href="#orcamento">Falar com um consultor Orcali</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EMPRESA ===================== -->
+<section class="band" id="empresa">
+  <div class="wrap">
+    <div class="empresa">
+      <div>
+        <p class="rotulo">Orcali</p>
+        <h2 class="titulo larga">Mais de 58 anos. Mais de 5.000 colaboradores.</h2>
+        <p class="lead">Em 1968, na Rua Saldanha Marinho, em Florianópolis, nascia a Organização Catarinense de Limpeza — Orcali. Quase seis décadas depois, o grupo cresceu para segurança patrimonial, portaria e sistemas integrados, mas a limpeza continua sendo aquilo que sabemos fazer há mais tempo que qualquer concorrente do mercado.</p>
+      </div>
+      <div class="empresa-foto">
+        <img src="assets/img/orcali-equipe.jpg" alt="Profissionais da Orcali em operação" loading="lazy" decoding="async" width="1600" height="1200">
+      </div>
+    </div>
+
+    <p class="rotulo rotulo--linha">Linha do tempo operacional</p>
+    <ul class="linha">
+      <li><div class="tl-card"><b>1968</b><span>Nasce a Organização Catarinense de Limpeza, em Florianópolis</span></div></li>
+      <li><div class="tl-card"><b>1974</b><span>Expansão para segurança privada com a SOSEBAN</span></div></li>
+      <li><div class="tl-card"><b>1990</b><span>Aquisição da CORINGA, com mais de 2 mil colaboradores</span></div></li>
+      <li><div class="tl-card"><b>2000</b><span>Consolidação da marca e conquista da certificação ISO 9001</span></div></li>
+      <li><div class="tl-card"><b>2018</b><span>50 anos, nova gestão e aceleração tecnológica</span></div></li>
+      <li><div class="tl-card"><b>2026</b><span>58 anos, mais de 5.000 colaboradores</span></div></li>
+    </ul>
+
+    <div class="normas">
+      <p>Procedimentos com embasamento em referências reconhecidas do setor, incluindo classificação de áreas de risco da ANVISA e boas práticas de limpeza profissional da ABRALIMP.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== VÍDEO INSTITUCIONAL =====================
+     Fachada estática: o player do YouTube só é carregado no clique,
+     então a página não baixa nada do YouTube antes disso e o vídeo
+     nunca começa sozinho.
+================================================================== -->
+<section class="band band--tinta" id="video">
+  <div class="wrap video-bloco">
+    <div>
+      <p class="rotulo">Vídeo institucional</p>
+      <h2 class="titulo">Há mais de 58 anos, cuidando do que é seu.</h2>
+      <p class="lead">Conheça a Orcali em menos de um minuto.</p>
+      <p class="video-selo">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#72BF45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        O vídeo só carrega quando você clicar
+      </p>
+    </div>
+
+    <div class="video" data-yt="cy4NUJruF_o">
+      <img src="assets/img/video-capa.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" data-remover-se-falhar>
+      <button class="video-btn" type="button" aria-label="Assistir ao vídeo institucional da Orcali">
+        <span><svg width="26" height="26" viewBox="0 0 24 24" fill="#08203f" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z"/></svg></span>
+        Assistir ao vídeo institucional
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== UNIDADES ===================== -->
+<section class="band band--gelo" id="unidades">
+  <div class="wrap">
+    <p class="rotulo">Nossas unidades</p>
+    <h2 class="titulo larga">Matriz em Florianópolis, bases operacionais em Santa Catarina e no Paraná.</h2>
+    <p class="lead">A equipe que atende a sua unidade sai da base mais próxima — supervisão presencial, não remota.</p>
+
+    <div class="unidades" style="margin-top:44px">
+      <div class="matriz">
+        <span class="tag">Matriz</span>
+        <h3>Florianópolis · SC</h3>
+        <p>Av. Mauro Ramos, 755 — Centro<br>CEP 88020-301</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Mauro+Ramos,+755+-+Centro,+Florian%C3%B3polis+-+SC,+88020-301" target="_blank" rel="noopener">
+          Ver no mapa
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <ul class="bases">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span><b>Blumenau</b><span>SC</span></span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span><b>Itajaí</b><span>SC</span></span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span><b>Joinville</b><span>SC</span></span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span><b>Tubarão</b><span>SC</span></span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span><b>Curitiba</b><span>PR</span></span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 3.5l2.5 4-2 2a12 12 0 006.5 6.5l2-2 4 2.5v3a1.5 1.5 0 01-1.7 1.5C10.4 20.1 3.9 13.6 3 5.2A1.5 1.5 0 014.5 3.5z"/></svg><span><b>0800 242 8888</b><span>Central de atendimento</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SEGMENTOS ===================== -->
+<section class="band" id="segmentos">
+  <div class="wrap">
+    <p class="rotulo">Segmentos de atuação</p>
+    <h2 class="titulo larga">Cada ambiente tem sua criticidade. Conhecemos a sua.</h2>
+    <p class="lead">De um centro cirúrgico a uma praça de alimentação, o procedimento de limpeza muda e o nosso muda com ele.</p>
+
+    <ul class="seg">
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V7.5L12 3l7 4.5V21"/><path d="M12 9.5v6M9 12.5h6M3 21h18"/></svg></span>
+        <b>Clínicas, Hospitais e Laboratórios</b>
+        <span>Áreas críticas, semicríticas e gestão de resíduos infectantes</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 016.5 3H19v15.5H6.5A2.5 2.5 0 004 21z"/><path d="M8.5 7.5h6"/></svg></span>
+        <b>Instituições de Ensino</b>
+        <span>Salas, sanitários, refeitórios e pátios de alta rotatividade</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9 4.4-9 4.4-9-4.4z"/><path d="M7 11v4.4c0 1.4 2.2 2.4 5 2.4s5-1 5-2.4V11"/></svg></span>
+        <b>Universidades e Centros de Pesquisa</b>
+        <span>Campus, laboratórios, bibliotecas e áreas verdes</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5l9-5.5 9 5.5"/><path d="M5.5 10v8M10 10v8M14 10v8M18.5 10v8M3 21h18"/></svg></span>
+        <b>Instituições Financeiras</b>
+        <span>Agências e centros administrativos, com rotina fora do horário de atendimento</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12.5H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></span>
+        <b>Shoppings e Varejo</b>
+        <span>Corredores, praça de alimentação, sanitários públicos e estacionamento</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 21V8.5L10 5.5V21"/><path d="M10 21V11l6.5 2.2V21"/><path d="M6.3 11h1.4M6.3 15h1.4M12.8 16h1.4"/><path d="M2.5 21h19"/></svg></span>
+        <b>Condomínios Residenciais e Comerciais</b>
+        <span>Halls, elevadores, garagens, áreas comuns e de lazer</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V10.5l5.5 3.2V10.5L14 13.7V6.5l5.5 3.2V21z"/><path d="M2 21h20"/><path d="M7 17.5h1.6M12.2 17.5h1.6"/></svg></span>
+        <b>Indústria</b>
+        <span>Áreas produtivas, vestiários e refeitórios</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7.5a1 1 0 011-1h9.5v9H2.5z"/><path d="M13 10h3.9l3.6 3.4v2.1H13z"/><circle cx="7" cy="17.6" r="1.9"/><circle cx="17" cy="17.6" r="1.9"/></svg></span>
+        <b>Comércio, Construção e Logística</b>
+        <span>Conservação diária e boa apresentação do ambiente</span>
+      </li>
+      <li>
+        <span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.95 0 1.6.85 1.6 1.9v5.5l7.4 4v2l-7.4-2.2v3.5l2.2 1.7v1.6L12 20l-3.8.9v-1.6l2.2-1.7v-3.5L3 16.4v-2l7.4-4V4.9C10.4 3.85 11.05 3 12 3z"/></svg></span>
+        <b>Portos e Aeroportos</b>
+        <span>Grandes áreas, alto fluxo e operação contínua</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== ORÇAMENTO ===================== -->
+<section class="band band--tinta" id="orcamento">
+  <div class="wrap orc">
+    <div>
+      <h2 class="titulo">Solicite um orçamento personalizado</h2>
+      <p class="lead">Preencha o formulário e nossa equipe entrará em contato para agendar a visita técnica.</p>
+
+      <p class="rotulo rotulo--lista">Diferenciais de atendimento</p>
+      <ul class="orc-vantagens">
+        <li><svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#72BF45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Visita técnica presencial de um consultor Orcali</li>
+        <li><svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#72BF45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Proposta exclusiva, com escopo, equipe e dimensionamento detalhados</li>
+        <li><svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#72BF45" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Atendimento humano: 2ª a 6ª, 08h–18h</li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <form id="formOrcamento" novalidate>
+        <div class="campos">
+          <div class="campo campo--full">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="campo campo--full">
+            <label for="campo-empresa">Empresa</label>
+            <input id="campo-empresa" name="empresa" type="text" autocomplete="organization" required>
+          </div>
+          <div class="campo">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input id="telefone" name="telefone" type="tel" inputmode="numeric" placeholder="(48) 99999-9999" autocomplete="tel" required>
+          </div>
+          <div class="campo">
+            <label for="cnpj">CNPJ</label>
+            <input id="cnpj" name="cnpj" type="text" placeholder="00.000.000/0000-00"
+                   autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="18" required>
+            <p class="status-campo" id="statusCnpj" role="status" hidden></p>
+          </div>
+          <div class="campo">
+            <label for="cargo">Cargo / Área</label>
+            <input id="cargo" name="cargo" type="text">
+          </div>
+          <div class="campo">
+            <label for="email">E-mail corporativo</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="campo campo--full">
+            <label for="cidade">Cidade / UF</label>
+            <div class="dupla">
+              <select id="uf" name="uf" required aria-label="Estado">
+                <option value="">UF</option>
+                <option>AC</option>
+                <option>AL</option>
+                <option>AP</option>
+                <option>AM</option>
+                <option>BA</option>
+                <option>CE</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>GO</option>
+                <option>MA</option>
+                <option>MT</option>
+                <option>MS</option>
+                <option>MG</option>
+                <option>PA</option>
+                <option>PB</option>
+                <option>PR</option>
+                <option>PE</option>
+                <option>PI</option>
+                <option>RJ</option>
+                <option>RN</option>
+                <option>RS</option>
+                <option>RO</option>
+                <option>RR</option>
+                <option>SC</option>
+                <option>SP</option>
+                <option>SE</option>
+                <option>TO</option>
+              </select>
+              <input id="cidade" name="cidade" type="text" placeholder="Cidade" autocomplete="address-level2" required>
+            </div>
+          </div>
+          <div class="campo campo--full">
+            <label for="segmento">Segmento</label>
+            <select id="segmento" name="segmento" required>
+              <option value="">Selecione o segmento</option>
+              <option>Clínicas, Hospitais e Laboratórios</option>
+              <option>Instituições de Ensino</option>
+              <option>Universidades e Centros de Pesquisa</option>
+              <option>Instituições Financeiras</option>
+              <option>Shoppings e Varejo</option>
+              <option>Condomínios Residenciais e Comerciais</option>
+              <option>Indústria</option>
+              <option>Comércio, Construção e Logística</option>
+              <option>Portos e Aeroportos</option>
+            </select>
+          </div>
+          <div class="campo campo--full">
+            <span class="rot-campo" id="rot-contrato">Tipo de contrato</span>
+            <div class="contrato" role="radiogroup" aria-labelledby="rot-contrato">
+              <label for="contrato-anual"><input type="radio" id="contrato-anual" name="contrato" value="Anual" required> Anual</label>
+              <label for="contrato-temp"><input type="radio" id="contrato-temp" name="contrato" value="Temporário"> Temporário</label>
+            </div>
+          </div>
+
+          <div class="campo campo--full">
+            <label for="mensagem">Mensagem <span>(opcional)</span></label>
+            <textarea id="mensagem" name="mensagem"></textarea>
+          </div>
+
+          <div class="lgpd">
+            <input id="lgpd" name="lgpd" type="checkbox" required>
+            <label for="lgpd">Declaro que li e concordo com a <a href="https://www.orcali.com.br/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> (LGPD).</label>
+          </div>
+        </div>
+
+        <!-- honeypot: invisível para pessoas, preenchido por robôs -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
+          <label for="website">Não preencha este campo</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="btn btn--verde btn--bloco" type="submit" id="btnEnviar">Solicitar Orçamento</button>
+        <p class="erro-form" id="erroForm" role="alert" hidden></p>
+
+        <p class="aviso">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4" y="8.5" width="12" height="8" rx="2" stroke="#4A5A70" stroke-width="1.6"/><path d="M7 8.5V6.8a3 3 0 016 0v1.7" stroke="#4A5A70" stroke-width="1.6"/></svg>
+          Dados tratados conforme a LGPD. Utilizamos seus dados apenas para contato comercial.
+        </p>
+      </form>
+
+      <!-- Tela de sucesso + cross-sell -->
+      <div class="sucesso" id="sucesso" role="status" aria-live="polite">
+        <div class="sucesso-ico" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="#08203f" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Recebemos sua solicitação.</h3>
+        <p>Nossa equipe comercial entrará em contato para agendar a visita técnica do consultor.</p>
+
+        <div class="crossell">
+          <p><b>Você sabia?</b> A Orcali também atua com segurança patrimonial, portaria, controle de acesso e sistemas integrados. Muitos clientes concentram os dois contratos — um interlocutor, um padrão de gestão, uma prestação de contas.</p>
+          <a class="btn btn--linha" href="https://lp.orcali.com.br/seguranca-patrimonial">Segurança Patrimonial Orcali</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="band" id="faq">
+  <div class="wrap">
+    <h2 class="titulo">Perguntas frequentes</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <h3><button class="faq-btn" aria-expanded="false">Os colaboradores são próprios ou terceirizados?</button></h3>
+        <div class="faq-resp"><p>Próprios. Serventes, ASGs, zeladores, jardineiros, líderes e encarregados são contratados, treinados e geridos pela Orcali.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-btn" aria-expanded="false">Como acompanho a qualidade do serviço?</button></h3>
+        <div class="faq-resp"><p>Pelos relatórios de vistoria diária do SGO, com registro fotográfico e observações, além do contato direto com a supervisão em campo.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-btn" aria-expanded="false">Como a Orcali cobre faltas, férias e afastamentos?</button></h3>
+        <div class="faq-resp"><p>Com equipes volantes, mantendo a rotina de higienização sem interrupção.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-btn" aria-expanded="false">Os procedimentos são adaptáveis à minha instituição?</button></h3>
+        <div class="faq-resp"><p>Sim. O POP é a base técnica. Rotinas, produtos, equipamentos e frequências são ajustados às características do ambiente, aos riscos envolvidos e às diretrizes do local atendido.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-btn" aria-expanded="false">Como funciona o orçamento?</button></h3>
+        <div class="faq-resp"><p>Um consultor visita a sua unidade presencialmente e elabora uma proposta exclusiva. Não trabalhamos com pacotes padronizados.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-btn" aria-expanded="false">A Orcali é certificada?</button></h3>
+        <div class="faq-resp"><p>Sim. Certificação NBR ISO 9001, auditada pela SGS ICS Certificadora, abrangendo todo o grupo.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-btn" aria-expanded="false">Em quais estados a Orcali atua?</button></h3>
+        <div class="faq-resp"><p>Nossa atuação em limpeza e conservação está consolidada em Santa Catarina e no Paraná.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RODAPÉ ===================== -->
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape-grid">
+      <div>
+        <img src="assets/img/logo-white.png" alt="Orcali Segurança e Serviços" loading="lazy" decoding="async" width="180" height="42">
+        <p>Fundada em 1968 como Organização Catarinense de Limpeza, a Orcali é um dos grupos de terceirização mais experientes e respeitados do Sul do Brasil.</p>
+      </div>
+
+      <div>
+        <h4>Limpeza e Conservação</h4>
+        <ul>
+          <li>Clínicas e Hospitais</li>
+          <li>Instituições de Ensino</li>
+          <li>Instituições Financeiras</li>
+          <li>Shoppings e Varejo</li>
+          <li>Condomínios</li>
+          <li>Indústria</li>
+          <li>Comércio</li>
+          <li>Portos e Aeroportos</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Central de Atendimento</h4>
+        <a class="rodape-fone" href="tel:08002428888">0800 242 8888</a>
+        <ul>
+          <li>WhatsApp: <a href="https://api.whatsapp.com/send?phone=5548998090090" target="_blank" rel="noopener">(48) 99809-0090</a></li>
+          <li><a href="mailto:comercial@orcali.com.br">comercial@orcali.com.br</a></li>
+          <li>Segunda a Sexta-feira, das 08h às 18h</li>
+          <li>Av. Mauro Ramos, 755 — Centro, Florianópolis/SC — CEP 88020-301</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rodape-fim">
+      <span>© 2026 Orcali Segurança e Serviços Ltda · CNPJ 83.930.214/0001-94</span>
+      <span>Há mais de 58 anos, cuidando do que é seu.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Botão flutuante (canal alternativo) -->
+<a class="zap" href="https://api.whatsapp.com/send?phone=5548998090090" target="_blank" rel="noopener">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1a12 12 0 01-5.4-4.6c-.4-.6-.9-1.5-.9-2.4 0-.9.5-1.4.7-1.6.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.4l.8 1.9c.1.2 0 .4-.1.5l-.3.4c-.1.2-.3.3-.1.6.3.5.7 1.1 1.3 1.6.7.6 1.3.8 1.6 1 .2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.6-.1l1.8.9c.3.1.4.2.4.4 0 .2 0 .8-.2 1.1z"/></svg>
+  Prefere falar agora?
+</a>
+
+<!-- Barra fixa (mobile) -->
+<div class="barra-mob">
+  <a class="btn btn--verde" href="#orcamento">Solicitar orçamento</a>
+</div>
+
+<!-- ====== PRÉVIA A/B DO HERO — REMOVER ANTES DE PUBLICAR ====== -->
+<div class="ab" id="painelAB" hidden role="group" aria-label="Prévia das alternativas de H1">
+  Hero:
+  <button type="button" data-hero="a" aria-pressed="false">A</button>
+  <button type="button" data-hero="b" aria-pressed="true">B</button>
+</div>
+
+<script src="assets/js/app-limpeza.js" defer></script>
+</body>
+</html>
