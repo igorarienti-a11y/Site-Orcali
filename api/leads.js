@@ -1,9 +1,7 @@
 export const config = { runtime: 'edge' };
 
 const SPREADSHEET_ID  = process.env.ORCALI_SPREADSHEET_ID;
-// "Leads" não recebe mais linhas — fica só com o cabeçalho, servindo de
-// modelo (ordem das colunas) para as abas mensais criadas abaixo.
-const TEMPLATE_SHEET  = 'Leads';
+const SHEET_NAME      = 'Leads';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -55,48 +53,6 @@ async function getAccessToken(serviceAccountKey) {
   const td = await tok.json();
   if (!tok.ok) throw new Error(`TOKEN_FAIL: ${td.error_description}`);
   return td.access_token;
-}
-
-// Nomes de aba com "/" (ex. "Setembro/2026") precisam ir entre aspas simples
-// em notação A1 — sem isso o Sheets interpreta errado o range.
-function a1Range(sheetName, range) {
-  return encodeURIComponent(`'${sheetName.replace(/'/g, "''")}'`) + '!' + range;
-}
-
-async function sheetExists(token, spreadsheetId, sheetName) {
-  const res = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?fields=sheets.properties.title`,
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
-  if (!res.ok) throw new Error(`META_FAIL(${res.status})`);
-  const meta = await res.json();
-  return (meta.sheets || []).some(s => s.properties.title === sheetName);
-}
-
-// Garante que existe uma aba com o nome do mês (ex. "Setembro/2026"), criando-a
-// com o mesmo cabeçalho da aba "Leads" na primeira vez que esse mês aparecer.
-async function ensureMonthSheet(token, spreadsheetId, sheetName, headerRow) {
-  if (await sheetExists(token, spreadsheetId, sheetName)) return;
-
-  const createRes = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}:batchUpdate`,
-    {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ requests: [{ addSheet: { properties: { title: sheetName } } }] }),
-    }
-  );
-  if (!createRes.ok) throw new Error(`ADD_SHEET_FAIL(${createRes.status})`);
-
-  const headerRes = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${a1Range(sheetName, '1:1')}?valueInputOption=RAW`,
-    {
-      method: 'PUT',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ values: [headerRow] }),
-    }
-  );
-  if (!headerRes.ok) throw new Error(`SET_HEADER_FAIL(${headerRes.status})`);
 }
 
 function formatPhone(raw) {
@@ -206,23 +162,17 @@ export default async function handler(req) {
     const token = await getAccessToken(process.env.GOOGLE_CREDENTIALS);
 
     const headersRes = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${a1Range(TEMPLATE_SHEET, '1:1')}`,
+      `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}!1:1`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     if (!headersRes.ok) throw new Error(`HEADERS_FAIL(${headersRes.status})`);
 
     const headersData = await headersRes.json();
-    const rawHeaders = headersData.values?.[0] || [];
-    const sheetHeaders = rawHeaders.map(h => h.toLowerCase().trim());
+    const sheetHeaders = (headersData.values?.[0] || []).map(h => h.toLowerCase().trim());
     const row = sheetHeaders.map(h => fieldMap[h] ?? '');
 
-    // Cada mês tem sua própria aba (ex. "Setembro/2026"), criada sob demanda
-    // com o mesmo cabeçalho de "Leads" na primeira vez que aparece.
-    const sheetName = ts.mes;
-    await ensureMonthSheet(token, SPREADSHEET_ID, sheetName, rawHeaders);
-
     const appendRes = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${a1Range(sheetName, 'A:A')}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
+      `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}!A:A:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`,
       {
         method:  'POST',
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
