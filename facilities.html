@@ -152,6 +152,12 @@ section{padding-block:clamp(64px,8vw,118px)}
 .svc .ico i{font-size:22px;line-height:1}
 .svc h3{font-size:1.06rem;font-weight:700}
 .svc p{margin-top:6px;font-size:.88rem;color:var(--ink-soft);line-height:1.5}
+.svc-link{display:flex;flex-direction:column;color:inherit;text-decoration:none}
+.svc-link h3{color:var(--navy)}
+.svc-mais{margin-top:auto;padding-top:var(--space-md);display:inline-flex;align-items:center;gap:7px;font-size:.84rem;font-weight:700;color:var(--green-deep)}
+.svc-mais svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.svc-link:hover .svc-mais svg{transform:translateX(4px)}
+.svc-link:focus-visible{outline:3px solid var(--green-deep);outline-offset:3px}
 
 /* DIFERENCIAL */
 .diff{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
@@ -659,7 +665,7 @@ Typebot.initBubble({
 
 <script>
 const servicos=[
- ['fas fa-broom','Limpeza Especializada','Vidros em altura, fachadas, pós-obra e ambientes de difícil acesso.'],
+ ['fas fa-broom','Limpeza e Conservação','Da higienização diária à conservação de áreas externas — equipe própria, treinada e dimensionada para a sua operação, com equipes volantes garantindo que nenhum posto fique descoberto.','/limpeza'],
  ['fas fa-pump-soap','Higienização de Ambientes','Limpeza técnica de pisos, superfícies e áreas comuns em rotina programada.'],
  ['fas fa-bug','Desinfecção e Descontaminação','Protocolos hospitalares contra vírus, bactérias e fungos em áreas críticas.'],
  ['fas fa-headset','Telefonista','Atendimento e triagem de chamadas com o padrão da sua marca.'],
@@ -724,7 +730,14 @@ certsgrid.innerHTML=certs.map((c,i)=>c.img
  ?`<div class="cert-pill cert-img reveal" style="transition-delay:${(i%6)*.04}s"><img src="${c.img}" alt="${c.alt}" loading="lazy"></div>`
  :`<div class="cert-pill reveal" style="transition-delay:${(i%6)*.04}s"><span class="cn">${c.name}</span><span class="cs">${c.sub}</span></div>`
 ).join('');
-svcgrid.innerHTML=servicos.map((s,i)=>`<article class="svc reveal" style="transition-delay:${(i%4)*.05}s"><span class="ico"><i class="${s[0]}"></i></span><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join('');
+svcgrid.innerHTML=servicos.map((s,i)=>{
+ const corpo=`<span class="ico"><i class="${s[0]}"></i></span><h3>${s[1]}</h3><p>${s[2]}</p>`;
+ const atrs=`style="transition-delay:${(i%4)*.05}s"`;
+ // com 4o item o card inteiro vira link para a LP daquele servico
+ return s[3]
+  ? `<a class="svc svc-link reveal" href="${s[3]}" ${atrs}>${corpo}<span class="svc-mais">Saiba mais<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>`
+  : `<article class="svc reveal" ${atrs}>${corpo}</article>`;
+}).join('');
 bengrid.innerHTML=beneficios.map((b,i)=>`<article class="ben reveal" style="transition-delay:${(i%3)*.07}s"><div class="num">${b[0]}</div><h3>${b[1]}</h3><p>${b[2]}</p></article>`).join('');
 seggrid.innerHTML=segmentos.map((s,i)=>`<article class="segc reveal" style="transition-delay:${(i%3)*.07}s"><img src="assets/img/${s[3]}" alt="${s[1]}" loading="lazy" width="370" height="230"><div class="arrow">${svg('<path d="M5 12h14M13 6l6 6-6 6"/>')}</div><div class="body"><span class="ico">${svg(segIcon[s[0]])}</span><h3>${s[1]}</h3><p>${s[2]}</p></div></article>`).join('');
 faqwrap.innerHTML=faqs.map((f,i)=>`<details class="faq-item reveal"${i===0?' open':''}><summary class="faq-q">${f[0]}<span class="pm">+</span></summary><div class="faq-a">${f[1]}</div></details>`).join('');
