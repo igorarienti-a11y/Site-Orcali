@@ -259,8 +259,19 @@ footer a:hover{color:var(--green)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
+/* GESTAO TECNOLOGICA */
+.tech-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,5vw,72px);align-items:center}
+.tech-grid .sec-head{margin-bottom:0}
+.tech-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(24px,3vw,40px);box-shadow:var(--shadow-sm)}
+.tech-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-md)}
+.tech-list li{display:flex;gap:var(--space-md);align-items:flex-start;font-size:1rem;line-height:1.55}
+.tech-list .ck{flex:none;width:30px;height:30px;border-radius:50%;background:var(--green-soft);color:var(--green-deep);display:grid;place-items:center}
+.tech-list .ck svg{width:17px;height:17px}
+.tech-note{margin-top:var(--space-xl);padding-top:var(--space-lg);border-top:1px solid var(--line);color:var(--ink-soft);font-size:.96rem}
+
 @media(max-width:980px){
-  .about .wrap,.diff .wrap,.form-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .about .wrap,.diff .wrap,.form-grid,.tech-grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .nav-links{gap:var(--space-sm)}
   .diff-media{aspect-ratio:16/10;max-height:420px}
   .seg-grid{grid-template-columns:repeat(2,1fr)}
   .pain-grid{grid-template-columns:repeat(2,1fr)}
@@ -326,6 +337,7 @@ fbq('init','1650240729249255');
     <ul class="nav-links" id="navlinks">
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#diferencial">Diferencial</a></li>
+      <li><a href="#tecnologia">Tecnologia</a></li>
       <li><a href="#segmentos">Segmentos</a></li>
       <li><a href="#beneficios">Benefícios</a></li>
       <li><a href="#faq">Dúvidas</a></li>
@@ -430,6 +442,29 @@ fbq('init','1650240729249255');
       <img src="assets/img/op2.jpg" alt="Profissionais Orcali" loading="lazy" width="470" height="470">
       <div class="ov"></div>
       <div class="diff-quote"><p>Por trás de toda operação que funciona existe uma <em>estrutura invisível</em> trabalhando.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GESTAO TECNOLOGICA -->
+<section class="tech" id="tecnologia">
+  <div class="wrap">
+    <div class="tech-grid">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Tecnologia</span>
+        <h2>Gestão Tecnológica</h2>
+        <p>Utilizamos uma plataforma de gestão operacional que permite:</p>
+      </div>
+      <div class="tech-card reveal" style="transition-delay:.1s">
+        <ul class="tech-list">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>Acompanhar a presença das equipes nos postos;</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>Registrar visitas técnicas, auditorias e inspeções;</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>Controlar ocorrências em tempo real;</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>Gerar evidências por geolocalização, fotografias e checklists digitais;</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span>Disponibilizar indicadores para acompanhamento da operação e cliente.</span></li>
+        </ul>
+        <p class="tech-note">Esses recursos proporcionam maior transparência, rastreabilidade e agilidade na tomada de decisões.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -624,9 +659,9 @@ Typebot.initBubble({
 
 <script>
 const servicos=[
+ ['fas fa-broom','Limpeza Especializada','Vidros em altura, fachadas, pós-obra e ambientes de difícil acesso.'],
  ['fas fa-pump-soap','Higienização de Ambientes','Limpeza técnica de pisos, superfícies e áreas comuns em rotina programada.'],
  ['fas fa-bug','Desinfecção e Descontaminação','Protocolos hospitalares contra vírus, bactérias e fungos em áreas críticas.'],
- ['fas fa-broom','Limpeza Especializada','Vidros em altura, fachadas, pós-obra e ambientes de difícil acesso.'],
  ['fas fa-headset','Telefonista','Atendimento e triagem de chamadas com o padrão da sua marca.'],
  ['fas fa-mug-hot','Copeira','Copa e café organizados, com reposição e higiene das áreas de convívio.'],
  ['fas fa-seedling','Jardineiro','Poda, irrigação e conservação de áreas verdes sempre apresentáveis.'],
