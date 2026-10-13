@@ -82,6 +82,28 @@ export default async function handler(req) {
   if (req.method === 'OPTIONS')
     return new Response(null, { status: 204, headers: CORS });
 
+  // Verifica a mesma credencial e o mesmo contrato usados pelo POST, sem gravar leads.
+  if (req.method === 'GET' && new URL(req.url).searchParams.get('health') === '1') {
+    const healthHeaders = { ...CORS, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
+    try {
+      if (!SPREADSHEET_ID || !process.env.GOOGLE_CREDENTIALS) throw new Error('Missing configuration');
+      const token = await getAccessToken(process.env.GOOGLE_CREDENTIALS);
+      const result = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}!1:1`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (!result.ok) throw new Error(`HEADERS_FAIL(${result.status})`);
+      const data = await result.json();
+      const headers = (data.values?.[0] || []).map(h => String(h).toLowerCase().trim());
+      if (!['nome', 'email', 'telefone', 'event id', 'data iso'].every(h => headers.includes(h)))
+        throw new Error('Invalid lead headers');
+      return new Response(JSON.stringify({ success: true, ready: true }), { status: 200, headers: healthHeaders });
+    } catch (err) {
+      console.error('[orcali/leads/health]', err);
+      return new Response(JSON.stringify({ success: false, ready: false }), { status: 503, headers: healthHeaders });
+    }
+  }
+
   if (req.method !== 'POST')
     return new Response(JSON.stringify({ error: 'method not allowed' }), { status: 405, headers: CORS });
 
