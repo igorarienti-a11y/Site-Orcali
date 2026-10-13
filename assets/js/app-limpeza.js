@@ -184,6 +184,60 @@
     gtag('event','conversion',{send_to:'AW-996720589/vXGgCNK8mdMcEM3_otsD', transaction_id: br.event_id});
   }catch(e){} }
 
+  /* Chatbot compartilhado com Facilities, Monitoramento e Segurança.
+     Mantém o helper de conversão no escopo desta página (telefone, não tel). */
+  function iniciarChatbotLimpeza(Typebot) {
+    var params = new URLSearchParams(location.search);
+    function lerArmazenado(chave) {
+      try { return JSON.parse(localStorage.getItem(chave) || '{}') || {}; }
+      catch (_) { return {}; }
+    }
+    var utms = lerArmazenado('_utms'), ids = lerArmazenado('_clickids'), prefilled = {};
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k) {
+      prefilled[k] = params.get(k) || utms[k] || '';
+    });
+    ['fbclid','gclid','gbraid','wbraid','ttclid','msclkid'].forEach(function(k) {
+      prefilled[k] = params.get(k) || ids[k] || '';
+    });
+    var conversa = { menu: '', respostas: 0, dados: {}, convertido: false };
+    Typebot.initBubble({
+      typebot: 'orcali-facilities',
+      theme: {
+        button: { backgroundColor: '#29a71a', customIconSrc: 'https://cdn-icons-png.flaticon.com/512/3670/3670051.png', size: 'large' },
+        chatWindow: { backgroundColor: '#F8F8F8' }
+      },
+      prefilledVariables: prefilled,
+      onAnswer: function(a) {
+        var mensagem = String(a && a.message || '').trim();
+        if (!mensagem) return;
+        if (conversa.respostas++ === 0) { conversa.menu = mensagem; return; }
+        if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mensagem)) conversa.dados.email = mensagem.toLowerCase();
+        else {
+          var digitos = mensagem.replace(/\D/g, '');
+          if (/^[+\d\s().-]+$/.test(mensagem) && digitos.length >= 10 && digitos.length <= 13)
+            conversa.dados.telefone = digitos;
+          else if (!conversa.dados.nome) conversa.dados.nome = mensagem;
+        }
+      },
+      // Mesmo sinal de conclusão das outras LPs. O webhook permanece no Typebot;
+      // onEnd não fornece comprovação independente de gravação na planilha.
+      onEnd: function() {
+        if (conversa.convertido || conversa.menu !== 'Quero solicitar um orçamento') return;
+        if (!conversa.dados.email && !conversa.dados.telefone) return;
+        conversa.convertido = true;
+        fireGoogleConv({ get: function(k) { return conversa.dados[k] || ''; } }, { event_id: genEvtId() });
+        // Sem Lead Meta no browser: a integração da planilha já envia CAPI.
+      }
+    });
+    document.documentElement.classList.add('chatbot-limpeza-ativo');
+  }
+  import('https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js')
+    .then(function(modulo) { iniciarChatbotLimpeza(modulo.default); })
+    .catch(function() {
+      // O link flutuante de WhatsApp permanece disponível se o SDK não carregar.
+      document.documentElement.classList.remove('chatbot-limpeza-ativo');
+    });
+
   /* PageView — mesmo event_id enviado ao Pixel (browser) e ao /api/pageview
      (CAPI), para a Meta deduplicar os dois sinais e contar 1 só. */
   var _pvId = genEvtId();
