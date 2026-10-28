@@ -242,6 +242,13 @@ section{padding-block:clamp(64px,8vw,118px)}
 .field input,.field select,.field textarea{font-family:inherit;font-size:.95rem;color:var(--ink);padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);transition:.2s;width:100%}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px oklch(73% .18 138/.18)}
 .field textarea{resize:vertical;min-height:72px}
+.field .lbl{font-size:.82rem;font-weight:600;color:var(--navy-700)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-sm)}
+.opts.col1{grid-template-columns:1fr}
+.opts label{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-size:.92rem;font-weight:500;color:var(--ink);cursor:pointer;transition:.2s}
+.opts label:hover{border-color:var(--green)}
+.opts label:has(input:checked){border-color:var(--green-deep);background:var(--green-soft)}
+.field .opts input{width:18px;height:18px;padding:0;margin:0;flex:0 0 auto;accent-color:var(--green-deep)}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--ink-soft);margin:var(--space-sm) 0 var(--space-lg)}
 .consent input{margin-top:3px;accent-color:var(--green-deep)}
 .form-card .btn-primary{width:100%;justify-content:center}
@@ -556,6 +563,8 @@ fbq('init','1650240729249255');
           <div class="field"><label for="segmento">Segmento*</label>
             <select id="segmento" name="segmento" required><option value="" selected disabled>Selecione o segmento</option>
               <option>Condomínios Residenciais ou Comerciais</option><option>Clínicas e Hospitais</option><option>Indústrias</option><option>Instituições de Ensino</option><option>Instituições Financeiras</option><option>Shoppings</option><option>Logística</option><option>Portos e Aeroportos</option><option>Comércio</option><option>Construtoras</option><option>Tecnologia</option><option>Imobiliária</option><option>Executiva</option><option>Eventos</option><option>Outro</option></select></div>
+          <div class="field"><span class="lbl" id="rot-contrato">Tipo de contrato*</span>
+            <div class="opts" role="radiogroup" aria-labelledby="rot-contrato"><label><input type="radio" name="contrato" value="Anual" required> Anual</label><label><input type="radio" name="contrato" value="Temporário"> Temporário</label></div></div>
           <div class="field"><label for="msg">Como podemos ajudar?</label><textarea id="msg" name="msg" placeholder="Ex: limpeza técnica + portaria para 2 unidades..."></textarea></div>
           <label class="consent"><input type="checkbox" required> Li e concordo com a <a href="#" style="color:var(--green-deep);text-decoration:underline">política de privacidade</a>.</label>
           <button type="submit" class="btn btn-primary btn-lg">Solicitar Orçamento →</button>
@@ -840,7 +849,7 @@ fetch('/api/pageview',{method:'POST',headers:{'Content-Type':'application/json'}
 leadform.addEventListener('submit',async function(e){e.preventDefault();if(!e.target.checkValidity()){e.target.reportValidity();return}
 var btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Enviando…';
 var f=new FormData(e.target),br=getBrowserData();
-try{var res=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('nome'),email:f.get('email'),phone:f.get('tel'),empresa:f.get('empresa'),cnpj:f.get('cnpj'),segmento:f.get('segmento'),estado:f.get('estado'),cidade:f.get('cidade'),message:f.get('msg'),...br})});
+try{var res=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:f.get('nome'),email:f.get('email'),phone:f.get('tel'),empresa:f.get('empresa'),cnpj:f.get('cnpj'),segmento:f.get('segmento'),estado:f.get('estado'),cidade:f.get('cidade'),message:f.get('msg'),contrato:f.get('contrato'),...br})});
 if(!res.ok)throw new Error('HTTP '+res.status)}catch(err){btn.disabled=false;btn.textContent='Quero meu orçamento gratuito →';alert('Erro ao enviar. Tente novamente.');return}
 fireGoogleConv(f,br);fireMetaLead(br);
 e.target.style.display='none';success.style.display='block'});

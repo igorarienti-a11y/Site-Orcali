@@ -179,6 +179,9 @@ export default async function handler(req) {
       'data iso':      ts.iso,
       // ── adicionado no FINAL para não desalinhar as 38 colunas → header exato na planilha: "CNPJ" ──
       'cnpj':          (d.cnpj || '').replace(/\D/g, ''),
+      // ── 28/10: qualificação do pedido → headers "Tipo de contrato" e "Serviço", no fim da planilha ──
+      'tipo de contrato': ['Anual', 'Temporário'].includes(d.contrato) ? d.contrato : '',
+      'serviço':          ['Segurança patrimonial + Monitoramento', 'Segurança patrimonial'].includes(d.servico) ? d.servico : '',
     };
 
     const token = await getAccessToken(process.env.GOOGLE_CREDENTIALS);

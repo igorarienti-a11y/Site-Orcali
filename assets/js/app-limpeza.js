@@ -275,7 +275,8 @@
         segmento: f.get('segmento'),
         estado:   f.get('uf'),
         cidade:   f.get('cidade'),
-        message:  f.get('mensagem')
+        message:  f.get('mensagem'),
+        contrato: f.get('contrato')
       }, br))
     })
     .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
