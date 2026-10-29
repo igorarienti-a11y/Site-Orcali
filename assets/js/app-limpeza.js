@@ -211,8 +211,9 @@
         var mensagem = String(a && a.message || '').trim();
         if (!mensagem) return;
         if (conversa.respostas++ === 0) { conversa.menu = mensagem; return; }
-        // O contrato vem antes do contato, então a ordem das respostas não diz mais o que é
-        // nome. Lê pelo bloco da pergunta; sem blockId, só e-mail e telefone pelo formato.
+        // A conversa mistura contato e contrato, então lê cada dado pelo bloco da pergunta;
+        // sem blockId, só e-mail e telefone pelo formato. Quem recusa o contrato anual
+        // encerra já tendo dado contato: só a última pergunta (mensagem) marca lead enviado.
         var bloco = String(a && a.blockId || '');
         var digitos = mensagem.replace(/\D/g, '');
         var ehTelefone = /^[+\d\s().-]+$/.test(mensagem) && digitos.length >= 10 && digitos.length <= 13;
@@ -221,6 +222,7 @@
         else if (bloco === 'b-tel-in') { if (ehTelefone) conversa.dados.telefone = digitos; }
         else if (bloco === 'b-cid-in') conversa.dados.cidade = mensagem;
         else if (bloco === 'b-uf-in') conversa.dados.uf = mensagem;
+        else if (bloco === 'b-msg-in') conversa.fim = true;
         else if (!bloco) {
           if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mensagem)) conversa.dados.email = mensagem.toLowerCase();
           else if (ehTelefone && !conversa.dados.telefone) conversa.dados.telefone = digitos;
@@ -230,7 +232,7 @@
       // onEnd não fornece comprovação independente de gravação na planilha.
       onEnd: function() {
         if (conversa.convertido || conversa.menu !== 'Quero solicitar um orçamento') return;
-        if (!conversa.dados.email && !conversa.dados.telefone) return;
+        if (!conversa.fim || (!conversa.dados.email && !conversa.dados.telefone)) return;
         conversa.convertido = true;
         fireGoogleConv({ get: function(k) { return conversa.dados[k] || ''; } }, { event_id: genEvtId() });
         // Sem Lead Meta no browser: a integração da planilha já envia CAPI.

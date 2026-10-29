@@ -644,15 +644,17 @@ Typebot.initBubble({
     try {
       const m = ((a && a.message) || '').trim();
       if (!m) return;
-      // Menu e qualificacao (contrato) vem antes do contato, entao a ordem das respostas
-      // nao diz mais o que e nome. Le pelo bloco da pergunta; sem blockId, so e-mail e
-      // telefone, que se reconhecem pelo formato.
+      // A conversa mistura contato e qualificacao (contrato), entao le cada dado pelo
+      // bloco da pergunta; sem blockId, so e-mail e telefone, pelo formato. Quem recusa
+      // o contrato anual encerra ja tendo dado contato: so a ultima pergunta (mensagem)
+      // marca que o lead foi enviado.
       const b = (a && a.blockId) || '';
       const dg = m.replace(/\D/g, '');
       const ehTel = dg.length >= 10 && dg.length <= 13;
       if (b === 'b-nome-in') _tb.d.nome = m;
       else if (b === 'b-email-in') _tb.d.email = m.toLowerCase();
       else if (b === 'b-tel-in') { if (ehTel) _tb.d.tel = dg; }
+      else if (b === 'b-msg-in') _tb.fim = true;
       else if (!b) {
         if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)) _tb.d.email = m.toLowerCase();
         else if (ehTel && !_tb.d.tel) _tb.d.tel = dg;
@@ -665,7 +667,8 @@ Typebot.initBubble({
       // A rota "vaga de emprego" (texto + Wait + Redirect) TERMINA o fluxo e cai aqui igual
       // a um lead. Sem email nem telefone nao houve lead — era isso que gerava conversao
       // fantasma no Google (21/07: as 2 conversoes do dia foram candidatos a emprego).
-      if (!_tb.d.email && !_tb.d.tel) return;
+      // Fora do perfil (servico pontual) tambem termina com contato, sem lead.
+      if (!_tb.fim || (!_tb.d.email && !_tb.d.tel)) return;
       _tb.done = true;
       const evt = typeof window.genEvtId === 'function'
         ? window.genEvtId()
