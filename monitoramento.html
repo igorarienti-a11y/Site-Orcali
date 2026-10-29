@@ -575,10 +575,11 @@ const _ck     = n => { const m = document.cookie.match(new RegExp('(^| )'+n+'=([
 const _fbclid = _p.get('fbclid') || JSON.parse(localStorage.getItem('_clickids')||'{}').fbclid || '';
 const _ids    = (() => { try { return JSON.parse(localStorage.getItem('_clickids') || '{}'); } catch(e) { return {}; } })();
 
-const _tb = { i: 0, d: {}, done: false };
+const _tb = { d: {}, done: false };
 
 Typebot.initBubble({
-  typebot: 'orcali-facilities',
+  // Bot proprio da LP (29/10): qualifica servico e contrato antes de pedir o contato.
+  typebot: 'orcali-seguranca-monitoramento',
   theme: {
     button: { backgroundColor: '#29a71a', customIconSrc: 'https://cdn-icons-png.flaticon.com/512/3670/3670051.png', size: 'large' },
     chatWindow: { backgroundColor: '#F8F8F8' },
@@ -604,16 +605,19 @@ Typebot.initBubble({
     try {
       const m = ((a && a.message) || '').trim();
       if (!m) return;
-      // O 1o answer e a escolha do menu ("Quero solicitar um orcamento" / "Quero uma vaga
-      // de emprego"), nao um dado do lead. Antes ia como nome pro user_data do Google.
-      if (_tb.i === 0) { _tb.menu = m; _tb.i++; return; }
-      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)) _tb.d.email = m.toLowerCase();
-      else {
-        const dg = m.replace(/\D/g, '');
-        if (dg.length >= 10 && dg.length <= 13) _tb.d.tel = dg;
-        else if (!_tb.d.nome) _tb.d.nome = m;
+      // Menu e qualificacao (servico, contrato) vem antes do contato, entao a ordem das
+      // respostas nao diz mais o que e nome. Le pelo bloco da pergunta; sem blockId, so
+      // e-mail e telefone, que se reconhecem pelo formato.
+      const b = (a && a.blockId) || '';
+      const dg = m.replace(/\D/g, '');
+      const ehTel = dg.length >= 10 && dg.length <= 13;
+      if (b === 'b-nome-in') _tb.d.nome = m;
+      else if (b === 'b-email-in') _tb.d.email = m.toLowerCase();
+      else if (b === 'b-tel-in') { if (ehTel) _tb.d.tel = dg; }
+      else if (!b) {
+        if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)) _tb.d.email = m.toLowerCase();
+        else if (ehTel && !_tb.d.tel) _tb.d.tel = dg;
       }
-      _tb.i++;
     } catch (e) {}
   },
   onEnd: () => {
