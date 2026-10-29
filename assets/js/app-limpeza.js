@@ -184,7 +184,7 @@
     gtag('event','conversion',{send_to:'AW-996720589/vXGgCNK8mdMcEM3_otsD', transaction_id: br.event_id});
   }catch(e){} }
 
-  /* Chatbot compartilhado com Facilities, Monitoramento e Segurança.
+  /* Chatbot próprio da Limpeza (29/10): qualifica o tipo de contrato antes do contato.
      Mantém o helper de conversão no escopo desta página (telefone, não tel). */
   function iniciarChatbotLimpeza(Typebot) {
     var params = new URLSearchParams(location.search);
@@ -201,7 +201,7 @@
     });
     var conversa = { menu: '', respostas: 0, dados: {}, convertido: false };
     Typebot.initBubble({
-      typebot: 'orcali-facilities',
+      typebot: 'orcali-limpeza-conservacao',
       theme: {
         button: { backgroundColor: '#29a71a', customIconSrc: 'https://cdn-icons-png.flaticon.com/512/3670/3670051.png', size: 'large' },
         chatWindow: { backgroundColor: '#F8F8F8' }
@@ -211,12 +211,19 @@
         var mensagem = String(a && a.message || '').trim();
         if (!mensagem) return;
         if (conversa.respostas++ === 0) { conversa.menu = mensagem; return; }
-        if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mensagem)) conversa.dados.email = mensagem.toLowerCase();
-        else {
-          var digitos = mensagem.replace(/\D/g, '');
-          if (/^[+\d\s().-]+$/.test(mensagem) && digitos.length >= 10 && digitos.length <= 13)
-            conversa.dados.telefone = digitos;
-          else if (!conversa.dados.nome) conversa.dados.nome = mensagem;
+        // O contrato vem antes do contato, então a ordem das respostas não diz mais o que é
+        // nome. Lê pelo bloco da pergunta; sem blockId, só e-mail e telefone pelo formato.
+        var bloco = String(a && a.blockId || '');
+        var digitos = mensagem.replace(/\D/g, '');
+        var ehTelefone = /^[+\d\s().-]+$/.test(mensagem) && digitos.length >= 10 && digitos.length <= 13;
+        if (bloco === 'b-nome-in') conversa.dados.nome = mensagem;
+        else if (bloco === 'b-email-in') conversa.dados.email = mensagem.toLowerCase();
+        else if (bloco === 'b-tel-in') { if (ehTelefone) conversa.dados.telefone = digitos; }
+        else if (bloco === 'b-cid-in') conversa.dados.cidade = mensagem;
+        else if (bloco === 'b-uf-in') conversa.dados.uf = mensagem;
+        else if (!bloco) {
+          if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mensagem)) conversa.dados.email = mensagem.toLowerCase();
+          else if (ehTelefone && !conversa.dados.telefone) conversa.dados.telefone = digitos;
         }
       },
       // Mesmo sinal de conclusão das outras LPs. O webhook permanece no Typebot;
