@@ -818,6 +818,13 @@ fbq('init','1650240729249255');
       <form id="formOrcamento" novalidate>
         <div class="campos">
           <div class="campo campo--full">
+            <span class="rot-campo" id="rot-setor">Tipo de empresa</span>
+            <div class="contrato" role="radiogroup" aria-labelledby="rot-setor">
+              <label for="setor-privada"><input type="radio" id="setor-privada" name="setor" value="Privada" required> Empresa privada</label>
+              <label for="setor-publico"><input type="radio" id="setor-publico" name="setor" value="Público"> Órgão público</label>
+            </div>
+          </div>
+          <div class="campo campo--full">
             <label for="nome">Nome</label>
             <input id="nome" name="nome" type="text" autocomplete="name" required>
           </div>
@@ -1039,5 +1046,6 @@ fbq('init','1650240729249255');
 </div>
 
 <script src="assets/js/app-limpeza.js?v=chatbot-20261029b" defer></script>
+<script src="assets/js/filtro-perfil.js?v=20261110" defer></script>
 </body>
 </html>

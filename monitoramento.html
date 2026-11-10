@@ -506,6 +506,8 @@ fbq('init','1650240729249255');
         <form id="leadform" novalidate>
           <div class="fh">Cotação ORCALI · Segurança & Monitoramento</div>
           <div class="fs">Preencha abaixo. Leva menos de 1 minuto.</div>
+          <div class="field"><span class="lbl" id="rot-setor">Tipo de empresa*</span>
+            <div class="opts" role="radiogroup" aria-labelledby="rot-setor"><label><input type="radio" name="setor" value="Privada" required> Empresa privada</label><label><input type="radio" name="setor" value="Público"> Órgão público</label></div></div>
           <div class="frow">
             <div class="field"><label for="nome">Nome*</label><input id="nome" name="nome" required placeholder="Seu nome"></div>
             <div class="field"><label for="empresa">Empresa*</label><input id="empresa" name="empresa" required placeholder="Razão social"></div>
@@ -815,5 +817,6 @@ if(!res.ok)throw new Error('HTTP '+res.status)}catch(err){btn.disabled=false;btn
 fireGoogleConv(f,br);fireMetaLead(br);
 e.target.style.display='none';success.style.display='block'});
 </script>
+<script src="assets/js/filtro-perfil.js?v=20261110" defer></script>
 </body>
 </html>
